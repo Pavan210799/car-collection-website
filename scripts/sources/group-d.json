@@ -1,0 +1,76 @@
+{
+  "cars": [
+    {
+      "model": "BMW M4",
+      "variantSeen": "G82 M4 Competition",
+      "primaryColor": "Isle of Man Green (dark green)",
+      "images": [
+        { "id": "1744223679536-0f43320cad95", "role": "primary", "width": 4672, "height": 3115, "desc": "Green G82 M4 Competition, front three-quarter on a rooftop parking deck", "author": "Nils Limp" },
+        { "id": "1744223679834-6f00ce1764c6", "role": "gallery", "width": 4672, "height": 7008, "desc": "Same green G82 M4, head-on front view, same shoot", "author": "Nils Limp" },
+        { "id": "1743040534746-4b1cf5bd39e2", "role": "gallery", "width": 5304, "height": 6630, "desc": "Green G82 M4 driving on a highway", "author": "Salvo Media LLC" },
+        { "id": "1728060838443-691dc6279245", "role": "gallery", "width": 5456, "height": 3064, "desc": "Black G82 M4 headlight with yellow DRL glowing in the dark", "author": "Mathew Antony" }
+      ]
+    },
+    {
+      "model": "Nissan GT-R",
+      "variantSeen": "R35 (facelift)",
+      "primaryColor": "silver",
+      "images": [
+        { "id": "1690349645856-95a2d75c3c3e", "role": "primary", "width": 6000, "height": 4000, "desc": "Silver R35 GT-R, front three-quarter against a dark corrugated wall", "author": "Nate Dieckhaus" },
+        { "id": "1666899711761-59c820bacc5f", "role": "gallery", "width": 7723, "height": 4919, "desc": "Black R35 GT-R rear three-quarter on a drag strip, stylized monochrome", "author": "JOHN BEARBY IMAGES" },
+        { "id": "1633416793944-ee71b2d4e227", "role": "gallery", "width": 3999, "height": 5999, "desc": "Black R35 GT-R parked on gravel below a castle hill", "author": "Tim Meyer" }
+      ]
+    },
+    {
+      "model": "Chevrolet Corvette C8 Stingray",
+      "variantSeen": "C8 Stingray coupe",
+      "primaryColor": "Arctic White with black roof",
+      "images": [
+        { "id": "1617255148744-4ceabfaaf884", "role": "primary", "width": 7800, "height": 5203, "desc": "White C8 Stingray, front three-quarter in a dark studio", "author": "Adrian Newell" },
+        { "id": "1612071078206-bc912b559e3a", "role": "gallery", "width": 7685, "height": 5126, "desc": "White C8 Stingray, alternate front three-quarter angle, same car", "author": "Adrian Newell" },
+        { "id": "1617255148661-afb26d4f933e", "role": "gallery", "width": 7800, "height": 5203, "desc": "White C8 Stingray, low front three-quarter on a dark background", "author": "Adrian Newell" },
+        { "id": "1685580712146-503f3fa948f9", "role": "gallery", "width": 15000, "height": 10000, "desc": "White C8 Stingray side and wheel detail at a beach", "author": "Caleb Bennetts" }
+      ]
+    },
+    {
+      "model": "Tesla Model S",
+      "variantSeen": "Model S (pre-refresh, 2016+ nose)",
+      "primaryColor": "black",
+      "images": [
+        { "id": "1536700503339-1e4b06520771", "role": "primary", "width": 5472, "height": 3648, "desc": "Black Model S driving at dusk, front three-quarter", "author": "Jp Valery" },
+        { "id": "1536883442700-ffaa4d76e372", "role": "gallery", "width": 3648, "height": 5472, "desc": "Same black Model S at night on a forest road", "author": "Jp Valery" },
+        { "id": "1633433419653-358368c5dcaa", "role": "gallery", "width": 5980, "height": 3988, "desc": "Black Model S headlight close-up", "author": "Philipp Mandler" },
+        { "id": "1748446460790-0f199ef1b891", "role": "gallery", "width": 7728, "height": 5152, "desc": "Model S hood and badge reflecting the sky", "author": "Haberdoedas" }
+      ]
+    },
+    {
+      "model": "Ford Mustang",
+      "variantSeen": "S550 Mustang GT (2018+ facelift)",
+      "primaryColor": "Orange Fury",
+      "images": [
+        { "id": "1649274749460-5851a718dd2a", "role": "primary", "width": 12480, "height": 8320, "desc": "Orange S550 Mustang GT, front three-quarter on a tree-lined road", "author": "Wes Tindel" },
+        { "id": "1547744152-14d985cb937f", "role": "gallery", "width": 4983, "height": 3322, "desc": "Black 2015-17 S550 Mustang GT", "author": "Agustin Segura" },
+        { "id": "1678826537247-fc1e60fbda51", "role": "gallery", "width": 5346, "height": 3569, "desc": "Dark grey 2018+ S550 Mustang on a snowy road", "author": "Vitali Adutskevich" },
+        { "id": "1702451122321-165764887222", "role": "gallery", "width": 5456, "height": 3632, "desc": "Red S550 Mustang GT in front of a garage", "author": "Vincent Raine" }
+      ]
+    }
+  ],
+  "site": [
+    { "id": "1645400379459-f6fd3d963fd4", "role": "hero", "width": 6555, "height": 3744, "desc": "Ferrari 488 rim-lit in darkness, large negative space", "author": "Tuna Ekici" },
+    { "id": "1580654712603-eb43273aff33", "role": "hero", "width": 4094, "height": 2731, "desc": "Blue Lamborghini Aventador, headlights on, black background", "author": "𝗔𝗹𝗲𝘅 𝘙𝘢𝘪𝘯𝘦𝘳" },
+    { "id": "1765522022000-3e1f428d3060", "role": "hero", "width": 6000, "height": 3375, "desc": "Green Lamborghini Urus in a foggy neon-lit underground garage", "author": "Johann Noby" },
+    { "id": "1728060693031-5999c4ee6c3b", "role": "hero", "width": 7680, "height": 4320, "desc": "BMW M4 (G82) headlights glowing in total darkness", "author": "Mathew Antony" },
+    { "id": "1563339018-51d1ef22f402", "role": "hero", "width": 6000, "height": 4000, "desc": "Audi R8 V10 front three-quarter at golden hour, backlit sun flare", "author": "Nathan Trampe" },
+    { "id": "1634119307607-b9a7d4680769", "role": "hero", "width": 7360, "height": 4912, "desc": "Tesla Model S rear at night by a waterfront with city lights and red taillight glow, dark sky (Sandefjord, Norway)", "author": "Emil Dosen" },
+    { "id": "1760550818717-4b948c14c5de", "role": "interior", "width": 4128, "height": 6192, "desc": "Aston Martin Vantage cabin, red/black diamond-stitched leather and steering wheel", "author": "Titi Iaru" },
+    { "id": "1760161339261-56487b766a17", "role": "interior", "width": 3778, "height": 4722, "desc": "Audi RS quilted black leather sport seat", "author": "Vadym Kudriavtsev" },
+    { "id": "1630686122575-c94d9a1bdda4", "role": "interior", "width": 3328, "height": 4160, "desc": "BMW M4 Competition red/black leather sport seats", "author": "Josué Soto" },
+    { "id": "1755288348267-3b8bf38e7961", "role": "showroom", "width": 6016, "height": 4016, "desc": "Mercedes-AMG cars in a modern dealership showroom", "author": "Portafolio fotográfico automotriz" },
+    { "id": "1744921761306-b1ea64e5babf", "role": "showroom", "width": 6240, "height": 4160, "desc": "Porsche lineup inside a Porsche dealership showroom", "author": "Leiada Krözjhen" },
+    { "id": "1767907571229-01cf4ba03590", "role": "showroom", "width": 4000, "height": 6000, "desc": "Two Ferraris in a dark, moody showroom", "author": "Sam Tsonis" },
+    { "id": "1763087978864-fe5b2778c9f7", "role": "detail", "width": 6144, "height": 8160, "desc": "Red 'GTD' carbon-ceramic brake caliper and wheel macro (Mustang GTD)", "author": "Obi" },
+    { "id": "1691093325210-8f0f20055f9b", "role": "detail", "width": 5304, "height": 7952, "desc": "Corvette crossed-flags badge on a red C8 hood", "author": "Marcel Strauß" },
+    { "id": "1672598570454-331a1c10e063", "role": "road", "width": 5892, "height": 3933, "desc": "Red Ferrari 812 Competizione on a coastal road by the sea", "author": "Blacklist Tallinn" },
+    { "id": "1696421509653-b5c3e441d85c", "role": "road", "width": 9504, "height": 6336, "desc": "Porsche 718 on a winding alpine mountain road in the French Alps", "author": "Zieben VH" }
+  ]
+}

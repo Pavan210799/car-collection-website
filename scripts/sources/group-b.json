@@ -1,0 +1,68 @@
+[
+  {
+    "model": "Porsche 911 GT3 RS",
+    "variantSeen": "992 GT3 RS",
+    "primaryColor": "grey (Arctic/Ice Grey style) with red wheels",
+    "images": [
+      {"id": "1699325635304-a2f409b06d19", "role": "primary", "width": 6000, "height": 4000, "desc": "grey 992 GT3 RS front 3/4 with red wheels in front of glass Porsche Centre facade, moody light", "author": "Rico Reynaldi"},
+      {"id": "1699325524552-555bd48866b6", "role": "gallery", "width": 6000, "height": 4000, "desc": "close-up of the swan-neck rear wing with red PORSCHE lettering, same grey car", "author": "Rico Reynaldi"},
+      {"id": "1699325536076-91d01d5e2ad5", "role": "gallery", "width": 6000, "height": 4000, "desc": "rear light bar and red GT3 RS badge detail, same grey car", "author": "Rico Reynaldi"},
+      {"id": "1699325490806-902b139a6682", "role": "gallery", "width": 4000, "height": 6000, "desc": "red forged wheel and brake detail (portrait), same grey car", "author": "Rico Reynaldi"}
+    ]
+  },
+  {
+    "model": "Porsche 911 Turbo S",
+    "variantSeen": "992 Turbo S",
+    "primaryColor": "white with yellow calipers",
+    "images": [
+      {"id": "1679478878845-af7294f28b27", "role": "primary", "width": 5583, "height": 3722, "desc": "white 992 Turbo S rear 3/4 on street at golden hour, PORSCHE side script, yellow calipers", "author": "David Ford"},
+      {"id": "1691795680273-cb411e618dbd", "role": "gallery", "width": 6000, "height": 4000, "desc": "white 992 Turbo S rear 3/4 parked by modern building", "author": "Andrew Akabane"},
+      {"id": "1742600042999-5f6822c6d485", "role": "gallery", "width": 3898, "height": 4872, "desc": "white 992 Turbo front 3/4 on brick paving (portrait)", "author": "Imad 786"},
+      {"id": "1643108239223-e82d41b7be88", "role": "gallery", "width": 5766, "height": 3844, "desc": "grey 992 Turbo S rear haunch and wing detail in city street", "author": "Yannic Alexander"}
+    ]
+  },
+  {
+    "model": "Porsche Taycan",
+    "variantSeen": "Taycan (J1, Turbo/Turbo S-style wheels)",
+    "primaryColor": "white",
+    "images": [
+      {"id": "1642911041553-297e5295276b", "role": "primary", "width": 3934, "height": 2213, "desc": "white Taycan front 3/4 at villa driveway under dramatic blue sky", "author": "Renaldo Matamoro"},
+      {"id": "1642911041079-13c39400413e", "role": "gallery", "width": 3934, "height": 2213, "desc": "same white Taycan side/front 3/4 overlooking city skyline", "author": "Renaldo Matamoro"},
+      {"id": "1695192111167-dfcf2a6d0815", "role": "gallery", "width": 5902, "height": 3689, "desc": "white Taycan straight-on front view with four-point LED headlights", "author": "Moaaz Baig"},
+      {"id": "1631782485769-939e88230049", "role": "gallery", "width": 3905, "height": 5686, "desc": "Taycan Turbo S wheel with yellow PCCB caliper close-up (portrait)", "author": "Finn IJspeert"}
+    ]
+  },
+  {
+    "model": "McLaren 720S",
+    "variantSeen": "720S coupe",
+    "primaryColor": "silver/white",
+    "images": [
+      {"id": "1542362567-b07e54358753", "role": "primary", "width": 6000, "height": 4000, "desc": "silver-white 720S front 3/4 on gravel in front of Norwegian timber houses", "author": "Olav Tvedt"},
+      {"id": "1617335692042-7a3779b8e050", "role": "gallery", "width": 4126, "height": 6189, "desc": "white 720S front view with dihedral doors raised (portrait)", "author": "Wes Tindel"},
+      {"id": "1689596323441-94fe62ac5f0c", "role": "gallery", "width": 5632, "height": 3755, "desc": "grey 720S rolling shot on tree-lined road", "author": "Ino Pascual"},
+      {"id": "1577473403731-a36ec9087f44", "role": "gallery", "width": 3524, "height": 5286, "desc": "orange 720S front headlight 'eye socket' detail (portrait)", "author": "Jeff Tumale"}
+    ]
+  },
+  {
+    "model": "Bugatti Chiron",
+    "variantSeen": "Chiron (black/blue two-tone, 0-400-0 style livery)",
+    "primaryColor": "black with blue accents",
+    "images": [
+      {"id": "1689826493949-5e5824a5474e", "role": "primary", "width": 5604, "height": 3150, "desc": "black and blue Chiron front 3/4 on display plinth under stormy sky", "author": "Dmitriy Sidorov"},
+      {"id": "1653680271731-a40287f83781", "role": "gallery", "width": 4041, "height": 6062, "desc": "blue Chiron horseshoe grille and Bugatti badge close-up (portrait)", "author": "Edoardo Giudici Saraval"},
+      {"id": "1622319102641-a2cd35c1f56c", "role": "gallery", "width": 4032, "height": 3024, "desc": "black Chiron quad-LED headlight detail with light reflections", "author": "Agent J"},
+      {"id": "1622319491958-29176bac2711", "role": "gallery", "width": 4032, "height": 3024, "desc": "Chiron interior: EB steering wheel and digital cluster", "author": "Agent J"}
+    ]
+  },
+  {
+    "model": "Audi R8",
+    "variantSeen": "1st-gen R8 (Type 42) primary; 2nd-gen R8 V10 / V10 plus in gallery",
+    "primaryColor": "silver/grey",
+    "images": [
+      {"id": "1563339018-51d1ef22f402", "role": "primary", "width": 6000, "height": 4000, "desc": "silver R8 front 3/4 on open road at sunset with mountains, Wyoming", "author": "Nathan Trampe"},
+      {"id": "1742742340032-f07101f63db3", "role": "gallery", "width": 3055, "height": 4582, "desc": "silver 2nd-gen R8 V10 plus front grille and headlight close-up at Estoril (portrait)", "author": "Tiago Ferreira"},
+      {"id": "1493238792000-8113da705763", "role": "gallery", "width": 6939, "height": 4631, "desc": "black 2nd-gen R8 rear light bar glowing on city street with bokeh", "author": "Evgeny Tchebotarev"},
+      {"id": "1748843290996-e8685570966b", "role": "gallery", "width": 4672, "height": 6541, "desc": "red 2nd-gen R8 rear 3/4 with fixed wing on road (portrait)", "author": "Jack Stapleton"}
+    ]
+  }
+]

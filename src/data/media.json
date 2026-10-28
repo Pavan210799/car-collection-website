@@ -1,0 +1,926 @@
+{
+  "cars": {
+    "lamborghini-huracan-sto": [
+      {
+        "src": "/images/cars/lamborghini-huracan-sto/01",
+        "alt": "Blue/orange Huracán STO in front of curved modern building, rear 3/4",
+        "width": 3840,
+        "height": 5749,
+        "credit": "noir.",
+        "unsplashId": "1742800074526-cc655bf036a4"
+      },
+      {
+        "src": "/images/cars/lamborghini-huracan-sto/02",
+        "alt": "Dark green Huracán Performante with bronze wheels and orange calipers, snow-dusted, smoky dark studio, front 3/4",
+        "width": 3840,
+        "height": 2563,
+        "credit": "Håkon Sataøen",
+        "unsplashId": "1552176625-e47ff529b595"
+      },
+      {
+        "src": "/images/cars/lamborghini-huracan-sto/03",
+        "alt": "Orange Huracán",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Dominik Puskas",
+        "unsplashId": "1746455488303-fd15bc8cf7a7"
+      },
+      {
+        "src": "/images/cars/lamborghini-huracan-sto/04",
+        "alt": "Yellow Huracán LP580-2 front 3/4 on tree-lined street",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Dhiva Krishna",
+        "unsplashId": "1511919884226-fd3cad34687c"
+      }
+    ],
+    "lamborghini-aventador-svj": [
+      {
+        "src": "/images/cars/lamborghini-aventador-svj/01",
+        "alt": "Yellow Aventador SVJ on race track under stormy sky, rear 3/4 with big wing, motion",
+        "width": 3840,
+        "height": 2160,
+        "credit": "Damian Ochrymowicz",
+        "unsplashId": "1676113125191-c4237fbe7ebc"
+      },
+      {
+        "src": "/images/cars/lamborghini-aventador-svj/02",
+        "alt": "Yellow Aventador SVJ front 3/4 driving on road",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Yannis Zaugg",
+        "unsplashId": "1596711715198-16788fb84007"
+      },
+      {
+        "src": "/images/cars/lamborghini-aventador-svj/03",
+        "alt": "Orange Aventador Roadster on alpine mountain road, front 3/4, dramatic peaks",
+        "width": 3840,
+        "height": 2400,
+        "credit": "Václav Pechar",
+        "unsplashId": "1696958363946-b58f40cda426"
+      },
+      {
+        "src": "/images/cars/lamborghini-aventador-svj/04",
+        "alt": "Green Aventador SVJ headlight detail close-up",
+        "width": 3064,
+        "height": 5456,
+        "credit": "Mathew Antony",
+        "unsplashId": "1725201744106-ca6996682e39"
+      }
+    ],
+    "lamborghini-urus-performante": [
+      {
+        "src": "/images/cars/lamborghini-urus-performante/01",
+        "alt": "Black Urus with red calipers on city street at dusk, front 3/4, moody",
+        "width": 3840,
+        "height": 1920,
+        "credit": "Samuel Hagger",
+        "unsplashId": "1748189285388-c8852b6a7ed6"
+      },
+      {
+        "src": "/images/cars/lamborghini-urus-performante/02",
+        "alt": "Black Urus front 3/4 outside Hôtel Barrière Le Majestic, Cannes",
+        "width": 3840,
+        "height": 2160,
+        "credit": "Cristian Musolino",
+        "unsplashId": "1575650681837-c0ca3b1e7275"
+      },
+      {
+        "src": "/images/cars/lamborghini-urus-performante/03",
+        "alt": "Black Urus rear 3/4 in front of Dior boutique",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Danilo Capece",
+        "unsplashId": "1559385072-5adb2c4fc83f"
+      },
+      {
+        "src": "/images/cars/lamborghini-urus-performante/04",
+        "alt": "Urus interior: steering wheel, dash and center console, black with red stitching",
+        "width": 3456,
+        "height": 5184,
+        "credit": "Viktor Theo",
+        "unsplashId": "1547672932-0c1fcf8be920"
+      }
+    ],
+    "ferrari-sf90-stradale": [
+      {
+        "src": "/images/cars/ferrari-sf90-stradale/01",
+        "alt": "Red SF90 Stradale on coastal road below sand dunes, rear 3/4",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Ninah Heikamp",
+        "unsplashId": "1675426513962-1db7e4c707c3"
+      },
+      {
+        "src": "/images/cars/ferrari-sf90-stradale/02",
+        "alt": "Red SF90 Stradale front 3/4 by sand dunes, same shoot",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Ninah Heikamp",
+        "unsplashId": "1675426513824-25a43c3ae0ba"
+      },
+      {
+        "src": "/images/cars/ferrari-sf90-stradale/03",
+        "alt": "Red SF90 Stradale head-on on steel bridge with trees",
+        "width": 3513,
+        "height": 5707,
+        "credit": "Ninah Heikamp",
+        "unsplashId": "1714045220139-ea1991039054"
+      },
+      {
+        "src": "/images/cars/ferrari-sf90-stradale/04",
+        "alt": "Red SF90 Stradale front view on autumn street",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Adrian Newell",
+        "unsplashId": "1642056095922-7ade96f52674"
+      }
+    ],
+    "ferrari-f8-tributo": [
+      {
+        "src": "/images/cars/ferrari-f8-tributo/01",
+        "alt": "Red F8 Tributo driving toward camera on tree-lined road, front 3/4, motion blur",
+        "width": 3840,
+        "height": 2563,
+        "credit": "Blacklist Tallinn",
+        "unsplashId": "1694725732944-033440f78f85"
+      },
+      {
+        "src": "/images/cars/ferrari-f8-tributo/02",
+        "alt": "Red F8 Tributo front 3/4 parked on Parisian street",
+        "width": 3840,
+        "height": 5760,
+        "credit": "loïc pauwels",
+        "unsplashId": "1730110206438-84d983766aa1"
+      },
+      {
+        "src": "/images/cars/ferrari-f8-tributo/03",
+        "alt": "Red F8 Tributo rear view on Paris street, same shoot",
+        "width": 3752,
+        "height": 5675,
+        "credit": "loïc pauwels",
+        "unsplashId": "1730110206434-37f276d38675"
+      },
+      {
+        "src": "/images/cars/ferrari-f8-tributo/04",
+        "alt": "Red F8 Tributo front bumper/hood detail with prancing horse, same shoot",
+        "width": 3840,
+        "height": 5760,
+        "credit": "loïc pauwels",
+        "unsplashId": "1730110206435-09c2a9bae61d"
+      }
+    ],
+    "ferrari-roma": [
+      {
+        "src": "/images/cars/ferrari-roma/01",
+        "alt": "Red Ferrari Roma in front of modern white villa, front 3/4, blue sky",
+        "width": 3840,
+        "height": 2585,
+        "credit": "Christo Griessel",
+        "unsplashId": "1666790995628-9b55f65cdeeb"
+      },
+      {
+        "src": "/images/cars/ferrari-roma/02",
+        "alt": "Red Roma in Ferrari showroom under prancing horse logo, front 3/4",
+        "width": 3840,
+        "height": 6827,
+        "credit": "Paul Cuad",
+        "unsplashId": "1643422487068-e3b0202c6b7c"
+      },
+      {
+        "src": "/images/cars/ferrari-roma/03",
+        "alt": "Black Roma close front 3/4 in glass showroom, red calipers",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Aidan Tottori",
+        "unsplashId": "1720070227808-9a8f79279af8"
+      },
+      {
+        "src": "/images/cars/ferrari-roma/04",
+        "alt": "Black Roma wheel and side detail close-up",
+        "width": 3840,
+        "height": 5771,
+        "credit": "serjan midili",
+        "unsplashId": "1676762480264-b4c6402ecab4"
+      }
+    ],
+    "porsche-911-gt3-rs": [
+      {
+        "src": "/images/cars/porsche-911-gt3-rs/01",
+        "alt": "Grey 992 GT3 RS front 3/4 with red wheels in front of glass Porsche Centre facade, moody light",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Rico Reynaldi",
+        "unsplashId": "1699325635304-a2f409b06d19"
+      },
+      {
+        "src": "/images/cars/porsche-911-gt3-rs/02",
+        "alt": "Close-up of the swan-neck rear wing with red PORSCHE lettering, same grey car",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Rico Reynaldi",
+        "unsplashId": "1699325524552-555bd48866b6"
+      },
+      {
+        "src": "/images/cars/porsche-911-gt3-rs/03",
+        "alt": "Rear light bar and red GT3 RS badge detail, same grey car",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Rico Reynaldi",
+        "unsplashId": "1699325536076-91d01d5e2ad5"
+      },
+      {
+        "src": "/images/cars/porsche-911-gt3-rs/04",
+        "alt": "Red forged wheel and brake detail",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Rico Reynaldi",
+        "unsplashId": "1699325490806-902b139a6682"
+      }
+    ],
+    "porsche-911-turbo-s": [
+      {
+        "src": "/images/cars/porsche-911-turbo-s/01",
+        "alt": "White 992 Turbo S rear 3/4 on street at golden hour, PORSCHE side script, yellow calipers",
+        "width": 3840,
+        "height": 2560,
+        "credit": "David Ford",
+        "unsplashId": "1679478878845-af7294f28b27"
+      },
+      {
+        "src": "/images/cars/porsche-911-turbo-s/02",
+        "alt": "White 992 Turbo S rear 3/4 parked by modern building",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Andrew Akabane",
+        "unsplashId": "1691795680273-cb411e618dbd"
+      },
+      {
+        "src": "/images/cars/porsche-911-turbo-s/03",
+        "alt": "White 992 Turbo front 3/4 on brick paving",
+        "width": 3840,
+        "height": 4800,
+        "credit": "Imad 786",
+        "unsplashId": "1742600042999-5f6822c6d485"
+      },
+      {
+        "src": "/images/cars/porsche-911-turbo-s/04",
+        "alt": "Grey 992 Turbo S rear haunch and wing detail in city street",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Yannic Alexander",
+        "unsplashId": "1643108239223-e82d41b7be88"
+      }
+    ],
+    "porsche-taycan-turbo-s": [
+      {
+        "src": "/images/cars/porsche-taycan-turbo-s/01",
+        "alt": "White Taycan front 3/4 at villa driveway under dramatic blue sky",
+        "width": 3840,
+        "height": 2160,
+        "credit": "Renaldo Matamoro",
+        "unsplashId": "1642911041553-297e5295276b"
+      },
+      {
+        "src": "/images/cars/porsche-taycan-turbo-s/02",
+        "alt": "Same white Taycan side/front 3/4 overlooking city skyline",
+        "width": 3840,
+        "height": 2160,
+        "credit": "Renaldo Matamoro",
+        "unsplashId": "1642911041079-13c39400413e"
+      },
+      {
+        "src": "/images/cars/porsche-taycan-turbo-s/03",
+        "alt": "White Taycan straight-on front view with four-point LED headlights",
+        "width": 3840,
+        "height": 2400,
+        "credit": "Moaaz Baig",
+        "unsplashId": "1695192111167-dfcf2a6d0815"
+      },
+      {
+        "src": "/images/cars/porsche-taycan-turbo-s/04",
+        "alt": "Taycan Turbo S wheel with yellow PCCB caliper close-up",
+        "width": 3840,
+        "height": 5591,
+        "credit": "Finn IJspeert",
+        "unsplashId": "1631782485769-939e88230049"
+      }
+    ],
+    "mclaren-720s": [
+      {
+        "src": "/images/cars/mclaren-720s/01",
+        "alt": "Silver-white 720S front 3/4 on gravel in front of Norwegian timber houses",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Olav Tvedt",
+        "unsplashId": "1542362567-b07e54358753"
+      },
+      {
+        "src": "/images/cars/mclaren-720s/02",
+        "alt": "White 720S front view with dihedral doors raised",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Wes Tindel",
+        "unsplashId": "1617335692042-7a3779b8e050"
+      },
+      {
+        "src": "/images/cars/mclaren-720s/03",
+        "alt": "Grey 720S rolling shot on tree-lined road",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Ino Pascual",
+        "unsplashId": "1689596323441-94fe62ac5f0c"
+      },
+      {
+        "src": "/images/cars/mclaren-720s/04",
+        "alt": "Orange 720S front headlight 'eye socket' detail",
+        "width": 3524,
+        "height": 5286,
+        "credit": "Jeff Tumale",
+        "unsplashId": "1577473403731-a36ec9087f44"
+      }
+    ],
+    "bugatti-chiron": [
+      {
+        "src": "/images/cars/bugatti-chiron/01",
+        "alt": "Black and blue Chiron front 3/4 on display plinth under stormy sky",
+        "width": 3840,
+        "height": 2158,
+        "credit": "Dmitriy Sidorov",
+        "unsplashId": "1689826493949-5e5824a5474e"
+      },
+      {
+        "src": "/images/cars/bugatti-chiron/02",
+        "alt": "Blue Chiron horseshoe grille and Bugatti badge close-up",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Edoardo Giudici Saraval",
+        "unsplashId": "1653680271731-a40287f83781"
+      },
+      {
+        "src": "/images/cars/bugatti-chiron/03",
+        "alt": "Black Chiron quad-LED headlight detail with light reflections",
+        "width": 3840,
+        "height": 2880,
+        "credit": "Agent J",
+        "unsplashId": "1622319102641-a2cd35c1f56c"
+      },
+      {
+        "src": "/images/cars/bugatti-chiron/04",
+        "alt": "Chiron interior: EB steering wheel and digital cluster",
+        "width": 3840,
+        "height": 2880,
+        "credit": "Agent J",
+        "unsplashId": "1622319491958-29176bac2711"
+      }
+    ],
+    "rolls-royce-cullinan": [
+      {
+        "src": "/images/cars/rolls-royce-cullinan/01",
+        "alt": "Black Cullinan front three-quarter under a stormy sky beside a red-roofed building",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Franco Debartolo",
+        "unsplashId": "1687634366100-547fd24324f1"
+      },
+      {
+        "src": "/images/cars/rolls-royce-cullinan/02",
+        "alt": "Low front three-quarter of the same black Cullinan",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Franco Debartolo",
+        "unsplashId": "1687634365967-a74a0889ef02"
+      },
+      {
+        "src": "/images/cars/rolls-royce-cullinan/03",
+        "alt": "Interior dashboard with orange leather at dusk",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Franco Debartolo",
+        "unsplashId": "1687634366089-f7d39bbd6dd6"
+      },
+      {
+        "src": "/images/cars/rolls-royce-cullinan/04",
+        "alt": "Black forged wheel with orange RR centre cap",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Franco Debartolo",
+        "unsplashId": "1687634366237-a7878b69496d"
+      }
+    ],
+    "rolls-royce-ghost": [
+      {
+        "src": "/images/cars/rolls-royce-ghost/01",
+        "alt": "Black-and-white front three-quarter of a 2nd-gen Ghost on a launch stage",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Akram Huseyn",
+        "unsplashId": "1647200527435-cc6b0e91e120"
+      },
+      {
+        "src": "/images/cars/rolls-royce-ghost/02",
+        "alt": "Head-on view of the same Ghost under spotlights",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Akram Huseyn",
+        "unsplashId": "1647200528165-12fc669c247e"
+      },
+      {
+        "src": "/images/cars/rolls-royce-ghost/03",
+        "alt": "Ghost Series II front view in dark burgundy on a garden plinth",
+        "width": 3038,
+        "height": 3797,
+        "credit": "Martin Katler",
+        "unsplashId": "1624804269473-828dcc30a210"
+      },
+      {
+        "src": "/images/cars/rolls-royce-ghost/04",
+        "alt": "Two-tone blue and silver 1st-gen Ghost side profile",
+        "width": 3024,
+        "height": 4032,
+        "credit": "Jimmy Jin",
+        "unsplashId": "1619362360115-f57612eda98d"
+      }
+    ],
+    "bentley-continental-gt": [
+      {
+        "src": "/images/cars/bentley-continental-gt/01",
+        "alt": "Sage green Continental GT front three-quarter on a San Francisco street",
+        "width": 3648,
+        "height": 5472,
+        "credit": "Humberto Portillo",
+        "unsplashId": "1631827741430-98c01f33e84f"
+      },
+      {
+        "src": "/images/cars/bentley-continental-gt/02",
+        "alt": "Continental GT interior steering wheel and dashboard",
+        "width": 3840,
+        "height": 2836,
+        "credit": "Ajeet Panesar",
+        "unsplashId": "1629820408206-e9fc918abf63"
+      }
+    ],
+    "mercedes-amg-g63": [
+      {
+        "src": "/images/cars/mercedes-amg-g63/01",
+        "alt": "Black G 63 front three-quarter against snowy mountains, red-rimmed black wheels",
+        "width": 3840,
+        "height": 2160,
+        "credit": "D Panyukov",
+        "unsplashId": "1648413653877-ade5eefd2f1b"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-g63/02",
+        "alt": "Same black G 63 from the snowy mountain shoot",
+        "width": 3326,
+        "height": 4157,
+        "credit": "D Panyukov",
+        "unsplashId": "1648413653819-7c0fd93e8e6a"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-g63/03",
+        "alt": "Black G 63 in a tunnel at night with halo headlights",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Alexis AMZ DA CRUZ",
+        "unsplashId": "1709072245760-ec5b9a6b9f9b"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-g63/04",
+        "alt": "AMG wheel and red brake caliper detail",
+        "width": 3840,
+        "height": 4800,
+        "credit": "Caleb Bennetts",
+        "unsplashId": "1679095529027-c0f09b287409"
+      }
+    ],
+    "mercedes-amg-gt-r": [
+      {
+        "src": "/images/cars/mercedes-amg-gt-r/01",
+        "alt": "Matte grey AMG GT R with yellow accents, front three-quarter",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Aaron Huber",
+        "unsplashId": "1618843479313-40f8afb4b4d8"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-gt-r/02",
+        "alt": "Side profile of the same AMG GT R",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Aaron Huber",
+        "unsplashId": "1618863099278-75222d755814"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-gt-r/03",
+        "alt": "Grey AMG GT R on an alpine road",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Paul Steiner",
+        "unsplashId": "1650585313140-36f77de7367c"
+      },
+      {
+        "src": "/images/cars/mercedes-amg-gt-r/04",
+        "alt": "Matte black AMG GT Black Series headlight detail",
+        "width": 3840,
+        "height": 2160,
+        "credit": "Nothing ToC",
+        "unsplashId": "1666195782998-5189c6a40793"
+      }
+    ],
+    "aston-martin-vantage": [
+      {
+        "src": "/images/cars/aston-martin-vantage/01",
+        "alt": "Racing green Vantage F1 Edition front three-quarter before an ornate white building",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Dark Ace Studios",
+        "unsplashId": "1730365646968-baa17eb4406e"
+      },
+      {
+        "src": "/images/cars/aston-martin-vantage/02",
+        "alt": "Elevated rear view showing the wing and Aston Martin lettering",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Dark Ace Studios",
+        "unsplashId": "1730365646666-e854a4d87ed3"
+      },
+      {
+        "src": "/images/cars/aston-martin-vantage/03",
+        "alt": "Rolling front shot on an open road with headlights on",
+        "width": 3840,
+        "height": 4800,
+        "credit": "Dark Ace Studios",
+        "unsplashId": "1730365646174-5cd3d9136dd0"
+      },
+      {
+        "src": "/images/cars/aston-martin-vantage/04",
+        "alt": "Rear quarter detail of wing, tail light and diffuser",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Dark Ace Studios",
+        "unsplashId": "1730365646529-0d0de23d7471"
+      }
+    ],
+    "range-rover-autobiography": [
+      {
+        "src": "/images/cars/range-rover-autobiography/01",
+        "alt": "Black full-size Range Rover front three-quarter among trees",
+        "width": 3840,
+        "height": 2563,
+        "credit": "César Badilla Miranda",
+        "unsplashId": "1688744207911-da0aeac913ad"
+      },
+      {
+        "src": "/images/cars/range-rover-autobiography/02",
+        "alt": "Interior steering wheel with ivory leather and wood trim",
+        "width": 3840,
+        "height": 2563,
+        "credit": "César Badilla Miranda",
+        "unsplashId": "1688744208868-4e7b111c85dd"
+      },
+      {
+        "src": "/images/cars/range-rover-autobiography/03",
+        "alt": "Range Rover key fob detail",
+        "width": 3840,
+        "height": 2563,
+        "credit": "César Badilla Miranda",
+        "unsplashId": "1688744207716-9113d0ca269d"
+      },
+      {
+        "src": "/images/cars/range-rover-autobiography/04",
+        "alt": "Black L460 front grille with RANGE lettering",
+        "width": 3840,
+        "height": 2550,
+        "credit": "Olivie Zemanova",
+        "unsplashId": "1705054780982-de950da197d4"
+      }
+    ],
+    "bmw-m4-competition": [
+      {
+        "src": "/images/cars/bmw-m4-competition/01",
+        "alt": "Green G82 M4 driving on a highway",
+        "width": 3840,
+        "height": 4800,
+        "credit": "Salvo Media LLC",
+        "unsplashId": "1743040534746-4b1cf5bd39e2"
+      },
+      {
+        "src": "/images/cars/bmw-m4-competition/02",
+        "alt": "Green G82 M4 Competition, front three-quarter on a rooftop parking deck",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Nils Limp",
+        "unsplashId": "1744223679536-0f43320cad95"
+      },
+      {
+        "src": "/images/cars/bmw-m4-competition/03",
+        "alt": "Same green G82 M4, head-on front view, same shoot",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Nils Limp",
+        "unsplashId": "1744223679834-6f00ce1764c6"
+      },
+      {
+        "src": "/images/cars/bmw-m4-competition/04",
+        "alt": "Black G82 M4 headlight with yellow DRL glowing in the dark",
+        "width": 3840,
+        "height": 2156,
+        "credit": "Mathew Antony",
+        "unsplashId": "1728060838443-691dc6279245"
+      }
+    ],
+    "audi-r8": [
+      {
+        "src": "/images/cars/audi-r8/01",
+        "alt": "Audi R8 V10 front three-quarter at golden hour, backlit sun flare",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Nathan Trampe",
+        "unsplashId": "1563339018-51d1ef22f402"
+      },
+      {
+        "src": "/images/cars/audi-r8/02",
+        "alt": "Red 2nd-gen R8 rear 3/4 with fixed wing on road",
+        "width": 3840,
+        "height": 5376,
+        "credit": "Jack Stapleton",
+        "unsplashId": "1748843290996-e8685570966b"
+      },
+      {
+        "src": "/images/cars/audi-r8/03",
+        "alt": "Silver 2nd-gen R8 V10 plus front grille and headlight close-up at Estoril",
+        "width": 3055,
+        "height": 4582,
+        "credit": "Tiago Ferreira",
+        "unsplashId": "1742742340032-f07101f63db3"
+      },
+      {
+        "src": "/images/cars/audi-r8/04",
+        "alt": "Black 2nd-gen R8 rear light bar glowing on city street with bokeh",
+        "width": 3840,
+        "height": 2563,
+        "credit": "Evgeny Tchebotarev",
+        "unsplashId": "1493238792000-8113da705763"
+      }
+    ],
+    "nissan-gt-r-nismo": [
+      {
+        "src": "/images/cars/nissan-gt-r-nismo/01",
+        "alt": "Black R35 GT-R rear three-quarter on a drag strip, stylized monochrome",
+        "width": 3840,
+        "height": 2446,
+        "credit": "JOHN BEARBY IMAGES",
+        "unsplashId": "1666899711761-59c820bacc5f"
+      },
+      {
+        "src": "/images/cars/nissan-gt-r-nismo/02",
+        "alt": "Silver R35 GT-R, front three-quarter against a dark corrugated wall",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Nate Dieckhaus",
+        "unsplashId": "1690349645856-95a2d75c3c3e"
+      },
+      {
+        "src": "/images/cars/nissan-gt-r-nismo/03",
+        "alt": "Black R35 GT-R parked on gravel below a castle hill",
+        "width": 3840,
+        "height": 5760,
+        "credit": "Tim Meyer",
+        "unsplashId": "1633416793944-ee71b2d4e227"
+      }
+    ],
+    "chevrolet-corvette-stingray": [
+      {
+        "src": "/images/cars/chevrolet-corvette-stingray/01",
+        "alt": "White C8 Stingray, front three-quarter in a dark studio",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Adrian Newell",
+        "unsplashId": "1617255148744-4ceabfaaf884"
+      },
+      {
+        "src": "/images/cars/chevrolet-corvette-stingray/02",
+        "alt": "White C8 Stingray, alternate front three-quarter angle, same car",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Adrian Newell",
+        "unsplashId": "1612071078206-bc912b559e3a"
+      },
+      {
+        "src": "/images/cars/chevrolet-corvette-stingray/03",
+        "alt": "White C8 Stingray, low front three-quarter on a dark background",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Adrian Newell",
+        "unsplashId": "1617255148661-afb26d4f933e"
+      },
+      {
+        "src": "/images/cars/chevrolet-corvette-stingray/04",
+        "alt": "White C8 Stingray side and wheel detail at a beach",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Caleb Bennetts",
+        "unsplashId": "1685580712146-503f3fa948f9"
+      }
+    ],
+    "tesla-model-s-plaid": [
+      {
+        "src": "/images/cars/tesla-model-s-plaid/01",
+        "alt": "Black Model S driving at dusk, front three-quarter",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Jp Valery",
+        "unsplashId": "1536700503339-1e4b06520771"
+      },
+      {
+        "src": "/images/cars/tesla-model-s-plaid/02",
+        "alt": "Same black Model S at night on a forest road",
+        "width": 3648,
+        "height": 5472,
+        "credit": "Jp Valery",
+        "unsplashId": "1536883442700-ffaa4d76e372"
+      },
+      {
+        "src": "/images/cars/tesla-model-s-plaid/03",
+        "alt": "Black Model S headlight close-up",
+        "width": 3840,
+        "height": 2561,
+        "credit": "Philipp Mandler",
+        "unsplashId": "1633433419653-358368c5dcaa"
+      },
+      {
+        "src": "/images/cars/tesla-model-s-plaid/04",
+        "alt": "Model S hood and badge reflecting the sky",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Haberdoedas",
+        "unsplashId": "1748446460790-0f199ef1b891"
+      }
+    ],
+    "ford-mustang-gt": [
+      {
+        "src": "/images/cars/ford-mustang-gt/01",
+        "alt": "Orange S550 Mustang GT, front three-quarter on a tree-lined road",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Wes Tindel",
+        "unsplashId": "1649274749460-5851a718dd2a"
+      },
+      {
+        "src": "/images/cars/ford-mustang-gt/02",
+        "alt": "Black 2015-17 S550 Mustang GT",
+        "width": 3840,
+        "height": 2560,
+        "credit": "Agustin Segura",
+        "unsplashId": "1547744152-14d985cb937f"
+      },
+      {
+        "src": "/images/cars/ford-mustang-gt/03",
+        "alt": "Dark grey 2018+ S550 Mustang on a snowy road",
+        "width": 3840,
+        "height": 2564,
+        "credit": "Vitali Adutskevich",
+        "unsplashId": "1678826537247-fc1e60fbda51"
+      },
+      {
+        "src": "/images/cars/ford-mustang-gt/04",
+        "alt": "Red S550 Mustang GT in front of a garage",
+        "width": 3840,
+        "height": 2556,
+        "credit": "Vincent Raine",
+        "unsplashId": "1702451122321-165764887222"
+      }
+    ]
+  },
+  "site": {
+    "hero-1": {
+      "src": "/images/site/hero-1",
+      "alt": "Ferrari 488 rim-lit in darkness, large negative space",
+      "width": 3840,
+      "height": 2193,
+      "credit": "Tuna Ekici",
+      "unsplashId": "1645400379459-f6fd3d963fd4"
+    },
+    "hero-2": {
+      "src": "/images/site/hero-2",
+      "alt": "Blue Lamborghini Aventador, headlights on, black background",
+      "width": 3840,
+      "height": 2562,
+      "credit": "𝗔𝗹𝗲𝘅 𝘙𝘢𝘪𝘯𝘦𝘳",
+      "unsplashId": "1580654712603-eb43273aff33"
+    },
+    "hero-3": {
+      "src": "/images/site/hero-3",
+      "alt": "Green Lamborghini Urus in a foggy neon-lit underground garage",
+      "width": 3840,
+      "height": 2160,
+      "credit": "Johann Noby",
+      "unsplashId": "1765522022000-3e1f428d3060"
+    },
+    "hero-4": {
+      "src": "/images/site/hero-4",
+      "alt": "BMW M4",
+      "width": 3840,
+      "height": 2160,
+      "credit": "Mathew Antony",
+      "unsplashId": "1728060693031-5999c4ee6c3b"
+    },
+    "hero-5": {
+      "src": "/images/site/hero-5",
+      "alt": "Audi R8 V10 front three-quarter at golden hour, backlit sun flare",
+      "width": 3840,
+      "height": 2560,
+      "credit": "Nathan Trampe",
+      "unsplashId": "1563339018-51d1ef22f402"
+    },
+    "hero-6": {
+      "src": "/images/site/hero-6",
+      "alt": "Tesla Model S rear at night by a waterfront with city lights and red taillight glow, dark sky",
+      "width": 3840,
+      "height": 2563,
+      "credit": "Emil Dosen",
+      "unsplashId": "1634119307607-b9a7d4680769"
+    },
+    "interior-1": {
+      "src": "/images/site/interior-1",
+      "alt": "Aston Martin Vantage cabin, red/black diamond-stitched leather and steering wheel",
+      "width": 3840,
+      "height": 5760,
+      "credit": "Titi Iaru",
+      "unsplashId": "1760550818717-4b948c14c5de"
+    },
+    "interior-2": {
+      "src": "/images/site/interior-2",
+      "alt": "Audi RS quilted black leather sport seat",
+      "width": 3778,
+      "height": 4722,
+      "credit": "Vadym Kudriavtsev",
+      "unsplashId": "1760161339261-56487b766a17"
+    },
+    "interior-3": {
+      "src": "/images/site/interior-3",
+      "alt": "BMW M4 Competition red/black leather sport seats",
+      "width": 3328,
+      "height": 4160,
+      "credit": "Josué Soto",
+      "unsplashId": "1630686122575-c94d9a1bdda4"
+    },
+    "showroom-1": {
+      "src": "/images/site/showroom-1",
+      "alt": "Mercedes-AMG cars in a modern dealership showroom",
+      "width": 3840,
+      "height": 2563,
+      "credit": "Portafolio fotográfico automotriz",
+      "unsplashId": "1755288348267-3b8bf38e7961"
+    },
+    "showroom-2": {
+      "src": "/images/site/showroom-2",
+      "alt": "Porsche lineup inside a Porsche dealership showroom",
+      "width": 3840,
+      "height": 2560,
+      "credit": "Leiada Krözjhen",
+      "unsplashId": "1744921761306-b1ea64e5babf"
+    },
+    "showroom-3": {
+      "src": "/images/site/showroom-3",
+      "alt": "Two Ferraris in a dark, moody showroom",
+      "width": 3840,
+      "height": 5760,
+      "credit": "Sam Tsonis",
+      "unsplashId": "1767907571229-01cf4ba03590"
+    },
+    "detail-1": {
+      "src": "/images/site/detail-1",
+      "alt": "Red 'GTD' carbon-ceramic brake caliper and wheel macro",
+      "width": 3840,
+      "height": 5100,
+      "credit": "Obi",
+      "unsplashId": "1763087978864-fe5b2778c9f7"
+    },
+    "detail-2": {
+      "src": "/images/site/detail-2",
+      "alt": "Corvette crossed-flags badge on a red C8 hood",
+      "width": 3840,
+      "height": 5757,
+      "credit": "Marcel Strauß",
+      "unsplashId": "1691093325210-8f0f20055f9b"
+    },
+    "road-1": {
+      "src": "/images/site/road-1",
+      "alt": "Red Ferrari 812 Competizione on a coastal road by the sea",
+      "width": 3840,
+      "height": 2563,
+      "credit": "Blacklist Tallinn",
+      "unsplashId": "1672598570454-331a1c10e063"
+    },
+    "road-2": {
+      "src": "/images/site/road-2",
+      "alt": "Porsche 718 on a winding alpine mountain road in the French Alps",
+      "width": 3840,
+      "height": 2560,
+      "credit": "Zieben VH",
+      "unsplashId": "1696421509653-b5c3e441d85c"
+    }
+  }
+}

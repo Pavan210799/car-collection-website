@@ -1,0 +1,77 @@
+[
+  {
+    "model": "Rolls-Royce Cullinan",
+    "variantSeen": "Rolls-Royce Cullinan (Series I) with custom black forged wheels and orange RR centre caps",
+    "primaryColor": "black",
+    "images": [
+      { "id": "1687634366100-547fd24324f1", "role": "primary", "width": 4608, "height": 3072, "desc": "Black Cullinan front three-quarter under a stormy sky beside a red-roofed building", "author": "Franco Debartolo" },
+      { "id": "1687634365967-a74a0889ef02", "role": "gallery", "width": 4672, "height": 7008, "desc": "Low front three-quarter of the same black Cullinan", "author": "Franco Debartolo" },
+      { "id": "1687634366089-f7d39bbd6dd6", "role": "gallery", "width": 7008, "height": 4672, "desc": "Interior dashboard with orange leather at dusk", "author": "Franco Debartolo" },
+      { "id": "1687634366237-a7878b69496d", "role": "gallery", "width": 4672, "height": 7008, "desc": "Black forged wheel with orange RR centre cap", "author": "Franco Debartolo" }
+    ]
+  },
+  {
+    "model": "Rolls-Royce Ghost",
+    "variantSeen": "Ghost (2nd gen, Black Badge styling) for primary; gallery mixes 2nd-gen launch, Ghost Series II and 1st-gen Ghost",
+    "primaryColor": "black",
+    "images": [
+      { "id": "1647200527435-cc6b0e91e120", "role": "primary", "width": 5675, "height": 3783, "desc": "Black-and-white front three-quarter of a 2nd-gen Ghost on a launch stage", "author": "Akram Huseyn" },
+      { "id": "1647200528165-12fc669c247e", "role": "gallery", "width": 3967, "height": 5950, "desc": "Head-on view of the same Ghost under spotlights", "author": "Akram Huseyn" },
+      { "id": "1624804269473-828dcc30a210", "role": "gallery", "width": 3038, "height": 3797, "desc": "Ghost Series II front view in dark burgundy on a garden plinth", "author": "Martin Katler" },
+      { "id": "1619362360115-f57612eda98d", "role": "gallery", "width": 3024, "height": 4032, "desc": "Two-tone blue and silver 1st-gen Ghost side profile", "author": "Jimmy Jin" }
+    ]
+  },
+  {
+    "model": "Bentley Continental GT",
+    "variantSeen": "Continental GT (3rd gen) exterior; interior shot of Continental GT",
+    "primaryColor": "green",
+    "images": [
+      { "id": "1631827741430-98c01f33e84f", "role": "primary", "width": 3648, "height": 5472, "desc": "Sage green Continental GT front three-quarter on a San Francisco street (portrait)", "author": "Humberto Portillo" },
+      { "id": "1629820408206-e9fc918abf63", "role": "gallery", "width": 5457, "height": 4030, "desc": "Continental GT interior steering wheel and dashboard", "author": "Ajeet Panesar" }
+    ]
+  },
+  {
+    "model": "Mercedes-AMG G 63",
+    "variantSeen": "Mercedes-AMG G 63 (W463A)",
+    "primaryColor": "black",
+    "images": [
+      { "id": "1648413653877-ade5eefd2f1b", "role": "primary", "width": 5036, "height": 2833, "desc": "Black G 63 front three-quarter against snowy mountains, red-rimmed black wheels", "author": "D Panyukov" },
+      { "id": "1648413653819-7c0fd93e8e6a", "role": "gallery", "width": 3326, "height": 4157, "desc": "Same black G 63 from the snowy mountain shoot", "author": "D Panyukov" },
+      { "id": "1709072245760-ec5b9a6b9f9b", "role": "gallery", "width": 4000, "height": 6000, "desc": "Black G 63 in a tunnel at night with halo headlights", "author": "Alexis AMZ DA CRUZ" },
+      { "id": "1679095529027-c0f09b287409", "role": "gallery", "width": 8000, "height": 10000, "desc": "AMG wheel and red brake caliper detail", "author": "Caleb Bennetts" }
+    ]
+  },
+  {
+    "model": "Mercedes-AMG GT",
+    "variantSeen": "Mercedes-AMG GT R (gallery detail: AMG GT Black Series)",
+    "primaryColor": "grey",
+    "images": [
+      { "id": "1618843479313-40f8afb4b4d8", "role": "primary", "width": 7381, "height": 4923, "desc": "Matte grey AMG GT R with yellow accents, front three-quarter", "author": "Aaron Huber" },
+      { "id": "1618863099278-75222d755814", "role": "gallery", "width": 7616, "height": 5080, "desc": "Side profile of the same AMG GT R", "author": "Aaron Huber" },
+      { "id": "1650585313140-36f77de7367c", "role": "gallery", "width": 6720, "height": 4480, "desc": "Grey AMG GT R on an alpine road", "author": "Paul Steiner" },
+      { "id": "1666195782998-5189c6a40793", "role": "gallery", "width": 7111, "height": 4000, "desc": "Matte black AMG GT Black Series headlight detail", "author": "Nothing ToC" }
+    ]
+  },
+  {
+    "model": "Aston Martin DB11",
+    "variantSeen": "Aston Martin Vantage F1 Edition (DB11 not available at sufficient resolution)",
+    "primaryColor": "green",
+    "images": [
+      { "id": "1730365646968-baa17eb4406e", "role": "primary", "width": 5891, "height": 3927, "desc": "Racing green Vantage F1 Edition front three-quarter before an ornate white building", "author": "Dark Ace Studios" },
+      { "id": "1730365646666-e854a4d87ed3", "role": "gallery", "width": 5603, "height": 3735, "desc": "Elevated rear view showing the wing and Aston Martin lettering", "author": "Dark Ace Studios" },
+      { "id": "1730365646174-5cd3d9136dd0", "role": "gallery", "width": 4432, "height": 5540, "desc": "Rolling front shot on an open road with headlights on", "author": "Dark Ace Studios" },
+      { "id": "1730365646529-0d0de23d7471", "role": "gallery", "width": 4363, "height": 6545, "desc": "Rear quarter detail of wing, tail light and diffuser", "author": "Dark Ace Studios" }
+    ]
+  },
+  {
+    "model": "Range Rover",
+    "variantSeen": "Full-size Range Rover (L405) shoot; grille detail from new L460",
+    "primaryColor": "black",
+    "images": [
+      { "id": "1688744207911-da0aeac913ad", "role": "primary", "width": 5822, "height": 3886, "desc": "Black full-size Range Rover front three-quarter among trees", "author": "César Badilla Miranda" },
+      { "id": "1688744208868-4e7b111c85dd", "role": "gallery", "width": 6016, "height": 4016, "desc": "Interior steering wheel with ivory leather and wood trim", "author": "César Badilla Miranda" },
+      { "id": "1688744207716-9113d0ca269d", "role": "gallery", "width": 6016, "height": 4016, "desc": "Range Rover key fob detail", "author": "César Badilla Miranda" },
+      { "id": "1705054780982-de950da197d4", "role": "gallery", "width": 4288, "height": 2848, "desc": "Black L460 front grille with RANGE lettering", "author": "Olivie Zemanova" }
+    ]
+  }
+]

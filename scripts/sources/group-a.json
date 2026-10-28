@@ -1,0 +1,68 @@
+[
+  {
+    "model": "Lamborghini Huracán STO",
+    "variantSeen": "Huracán STO (primary); gallery mixes STO, Performante and LP580-2",
+    "primaryColor": "Blu Laufey (bright blue) with Arancio orange accents",
+    "images": [
+      {"id": "1742800074526-cc655bf036a4", "role": "primary", "width": 5351, "height": 8011, "desc": "blue/orange Huracán STO in front of curved modern building, rear 3/4; PORTRAIT original, car sits mid-frame so a 16:9 crop (~5351x3010) works", "author": "noir."},
+      {"id": "1552176625-e47ff529b595", "role": "gallery", "width": 6016, "height": 4016, "desc": "dark green Huracán Performante with bronze wheels and orange calipers, snow-dusted, smoky dark studio, front 3/4 (landscape)", "author": "Håkon Sataøen"},
+      {"id": "1746455488303-fd15bc8cf7a7", "role": "gallery", "width": 4000, "height": 6000, "desc": "orange Huracán (STO-style rear wing) gold wheel close-up at Museo Lamborghini", "author": "Dominik Puskas"},
+      {"id": "1511919884226-fd3cad34687c", "role": "gallery", "width": 5184, "height": 3456, "desc": "yellow Huracán LP580-2 front 3/4 on tree-lined street (a few people in background)", "author": "Dhiva Krishna"}
+    ]
+  },
+  {
+    "model": "Lamborghini Aventador SVJ",
+    "variantSeen": "Aventador SVJ (primary + 2 gallery); Aventador SV-style Roadster (1 gallery)",
+    "primaryColor": "Giallo (yellow) with black accents",
+    "images": [
+      {"id": "1676113125191-c4237fbe7ebc", "role": "primary", "width": 5237, "height": 2946, "desc": "yellow Aventador SVJ on race track under stormy sky, rear 3/4 with big wing, motion", "author": "Damian Ochrymowicz"},
+      {"id": "1596711715198-16788fb84007", "role": "gallery", "width": 5568, "height": 3712, "desc": "yellow Aventador SVJ front 3/4 driving on road", "author": "Yannis Zaugg"},
+      {"id": "1696958363946-b58f40cda426", "role": "gallery", "width": 6000, "height": 3750, "desc": "orange Aventador Roadster on alpine mountain road, front 3/4, dramatic peaks", "author": "Václav Pechar"},
+      {"id": "1725201744106-ca6996682e39", "role": "gallery", "width": 3064, "height": 5456, "desc": "green Aventador SVJ headlight detail close-up (portrait)", "author": "Mathew Antony"}
+    ]
+  },
+  {
+    "model": "Lamborghini Urus",
+    "variantSeen": "Urus (facelift Urus S/Performante on primary; original Urus in gallery)",
+    "primaryColor": "Nero (black)",
+    "images": [
+      {"id": "1748189285388-c8852b6a7ed6", "role": "primary", "width": 5414, "height": 2707, "desc": "black Urus with red calipers on city street at dusk, front 3/4, moody", "author": "Samuel Hagger"},
+      {"id": "1575650681837-c0ca3b1e7275", "role": "gallery", "width": 5258, "height": 2958, "desc": "black Urus front 3/4 outside Hôtel Barrière Le Majestic, Cannes", "author": "Cristian Musolino"},
+      {"id": "1559385072-5adb2c4fc83f", "role": "gallery", "width": 4000, "height": 6000, "desc": "black Urus rear 3/4 in front of Dior boutique (portrait)", "author": "Danilo Capece"},
+      {"id": "1547672932-0c1fcf8be920", "role": "gallery", "width": 3456, "height": 5184, "desc": "Urus interior: steering wheel, dash and center console, black with red stitching (portrait)", "author": "Viktor Theo"}
+    ]
+  },
+  {
+    "model": "Ferrari SF90 Stradale",
+    "variantSeen": "SF90 Stradale",
+    "primaryColor": "Rosso Corsa (red)",
+    "images": [
+      {"id": "1675426513962-1db7e4c707c3", "role": "primary", "width": 6000, "height": 4000, "desc": "red SF90 Stradale on coastal road below sand dunes, rear 3/4", "author": "Ninah Heikamp"},
+      {"id": "1675426513824-25a43c3ae0ba", "role": "gallery", "width": 4000, "height": 6000, "desc": "red SF90 Stradale front 3/4 by sand dunes, same shoot (portrait)", "author": "Ninah Heikamp"},
+      {"id": "1714045220139-ea1991039054", "role": "gallery", "width": 3513, "height": 5707, "desc": "red SF90 Stradale head-on on steel bridge with trees (portrait)", "author": "Ninah Heikamp"},
+      {"id": "1642056095922-7ade96f52674", "role": "gallery", "width": 7952, "height": 5304, "desc": "red SF90 Stradale front view on autumn street", "author": "Adrian Newell"}
+    ]
+  },
+  {
+    "model": "Ferrari F8 Tributo",
+    "variantSeen": "F8 Tributo",
+    "primaryColor": "Rosso Corsa (red)",
+    "images": [
+      {"id": "1694725732944-033440f78f85", "role": "primary", "width": 4831, "height": 3225, "desc": "red F8 Tributo driving toward camera on tree-lined road, front 3/4, motion blur", "author": "Blacklist Tallinn"},
+      {"id": "1730110206438-84d983766aa1", "role": "gallery", "width": 3889, "height": 5833, "desc": "red F8 Tributo front 3/4 parked on Parisian street (portrait)", "author": "loïc pauwels"},
+      {"id": "1730110206434-37f276d38675", "role": "gallery", "width": 3752, "height": 5675, "desc": "red F8 Tributo rear view on Paris street, same shoot (portrait)", "author": "loïc pauwels"},
+      {"id": "1730110206435-09c2a9bae61d", "role": "gallery", "width": 3976, "height": 5964, "desc": "red F8 Tributo front bumper/hood detail with prancing horse, same shoot (portrait)", "author": "loïc pauwels"}
+    ]
+  },
+  {
+    "model": "Ferrari Roma",
+    "variantSeen": "Roma",
+    "primaryColor": "Rosso Corsa (red)",
+    "images": [
+      {"id": "1666790995628-9b55f65cdeeb", "role": "primary", "width": 5780, "height": 3891, "desc": "red Ferrari Roma in front of modern white villa, front 3/4, blue sky", "author": "Christo Griessel"},
+      {"id": "1643422487068-e3b0202c6b7c", "role": "gallery", "width": 3915, "height": 6960, "desc": "red Roma in Ferrari showroom under prancing horse logo, front 3/4 (portrait)", "author": "Paul Cuad"},
+      {"id": "1720070227808-9a8f79279af8", "role": "gallery", "width": 6240, "height": 4160, "desc": "black Roma close front 3/4 in glass showroom, red calipers", "author": "Aidan Tottori"},
+      {"id": "1676762480264-b4c6402ecab4", "role": "gallery", "width": 4024, "height": 6048, "desc": "black Roma wheel and side detail close-up (portrait)", "author": "serjan midili"}
+    ]
+  }
+]
