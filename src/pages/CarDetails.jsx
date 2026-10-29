@@ -20,7 +20,7 @@ import NotFound from './NotFound'
 const statusStyles = {
   Available: 'bg-volt/15 text-volt',
   Reserved: 'bg-ember/15 text-ember',
-  Arriving: 'bg-gold-400/15 text-gold-300',
+  Arriving: 'bg-gold-400/15 text-gold-500',
 }
 
 export default function CarDetails() {
@@ -103,7 +103,7 @@ export default function CarDetails() {
                   onClick={share}
                   aria-label="Share this car"
                   title="Share"
-                  className="ml-auto grid size-10 place-items-center rounded-full border border-white/15 text-bone transition hover:border-white/35 hover:bg-white/[0.04]"
+                  className="ml-auto grid size-10 place-items-center rounded-full border border-ink-700/50 text-bone transition hover:border-ink-600 hover:bg-ink-850"
                 >
                   <Share2 className="size-4" />
                 </button>
@@ -115,7 +115,7 @@ export default function CarDetails() {
               <h1 className="mt-2 font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1] font-extrabold tracking-tight text-bone">{car.model}</h1>
               <p className="mt-3 text-base text-mist">{car.tagline}</p>
 
-              <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-y border-white/[0.07] py-5">
+              <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-y border-ink-700/40 py-5">
                 <div>
                   <p className="text-[0.65rem] tracking-[0.2em] text-smoke uppercase">
                     {car.condition === 'New' ? 'Price from' : `${car.condition} · ${formatNumber(car.mileage)} km`}
@@ -129,7 +129,7 @@ export default function CarDetails() {
 
               <dl className="mt-5 grid grid-cols-2 gap-3">
                 {keyStats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-white/[0.07] bg-ink-900 p-4">
+                  <div key={stat.label} className="rounded-2xl border border-ink-700/40 bg-ink-900 p-4">
                     <dt className="flex items-center gap-1.5 text-[0.65rem] tracking-[0.16em] text-smoke uppercase">
                       <stat.icon className="size-3.5 text-gold-400" /> {stat.label}
                     </dt>
@@ -153,7 +153,7 @@ export default function CarDetails() {
                       aria-label={swatch.name}
                       aria-pressed={index === colorIndex}
                       title={swatch.name}
-                      className={`relative size-9 rounded-full border-2 transition duration-300 ${index === colorIndex ? 'scale-110 border-gold-400' : 'border-white/15 hover:scale-105 hover:border-white/40'}`}
+                      className={`relative size-9 rounded-full border-2 transition duration-300 ${index === colorIndex ? 'scale-110 border-gold-400' : 'border-ink-700/50 hover:scale-105 hover:border-ink-600'}`}
                     >
                       <span className="absolute inset-1 rounded-full shadow-inner" style={{ background: swatch.hex }} />
                     </button>
@@ -183,7 +183,7 @@ export default function CarDetails() {
       </Container>
 
       {related.length > 0 && (
-        <section className="border-t border-white/[0.07] py-20 sm:py-24">
+        <section className="border-t border-ink-700/40 py-20 sm:py-24">
           <Container>
             <SectionHeading
               eyebrow="You may also like"
@@ -212,9 +212,9 @@ export default function CarDetails() {
             <Link
               key={label}
               to={`/cars/${item.slug}`}
-              className={`group flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-white/[0.07] bg-ink-900 p-4 transition hover:border-gold-400/30 ${label === 'Next' ? 'sm:flex-row-reverse sm:text-right' : ''}`}
+              className={`group flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-4 transition hover:border-gold-400/30 ${label === 'Next' ? 'sm:flex-row-reverse sm:text-right' : ''}`}
             >
-              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-white/15 transition group-hover:border-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-ink-700/50 transition group-hover:border-gold-400 group-hover:bg-gold-400 group-hover:text-on-accent">
                 <Icon className="size-4" />
               </span>
               <span className="min-w-0">

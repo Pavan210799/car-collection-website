@@ -47,7 +47,7 @@ function Lightbox({ images, index, onClose, onNavigate }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed inset-0 z-[75] flex flex-col bg-black/95 backdrop-blur-xl"
+          className="fixed inset-0 z-[75] flex flex-col bg-ink-950/97 backdrop-blur-xl"
         >
           <div className="flex items-center justify-between px-4 py-4 sm:px-8">
             <p className="font-display text-sm font-bold text-bone tabular-nums">
@@ -58,7 +58,7 @@ function Lightbox({ images, index, onClose, onNavigate }) {
               onClick={onClose}
               aria-label="Close gallery"
               autoFocus
-              className="grid size-11 place-items-center rounded-full border border-white/15 text-bone transition hover:rotate-90 hover:border-white/40"
+              className="grid size-11 place-items-center rounded-full bg-bone text-on-accent transition duration-300 hover:rotate-90"
             >
               <X className="size-5" />
             </button>
@@ -87,14 +87,14 @@ function Lightbox({ images, index, onClose, onNavigate }) {
                   if (swipe < -swipeConfidence || offset.x < -120) go(1)
                   else if (swipe > swipeConfidence || offset.x > 120) go(-1)
                 }}
-                className="absolute inset-0 m-auto size-full cursor-grab object-contain px-2 active:cursor-grabbing sm:px-20"
+                className="absolute inset-0 m-auto size-full cursor-grab object-contain px-2 drop-shadow-2xl active:cursor-grabbing sm:px-20"
               />
             </AnimatePresence>
             <button
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous image"
-              className="absolute top-1/2 left-3 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-ink-950 sm:grid"
+              className="absolute top-1/2 left-3 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-ink-700/50 bg-ink-900/90 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-on-accent sm:grid"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -102,7 +102,7 @@ function Lightbox({ images, index, onClose, onNavigate }) {
               type="button"
               onClick={() => go(1)}
               aria-label="Next image"
-              className="absolute top-1/2 right-3 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-ink-950 sm:grid"
+              className="absolute top-1/2 right-3 hidden size-12 -translate-y-1/2 place-items-center rounded-full border border-ink-700/50 bg-ink-900/90 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-on-accent sm:grid"
             >
               <ChevronRight className="size-5" />
             </button>
@@ -122,7 +122,7 @@ function Lightbox({ images, index, onClose, onNavigate }) {
                   imageIndex === index ? 'ring-2 ring-gold-400' : 'opacity-50 hover:opacity-100'
                 }`}
               >
-                <Img src={image.src} alt="" sizes="96px" position={image.position} className="size-full" />
+                <Img src={image.src} alt="" sizes="96px" position={image.position} className="absolute inset-0" />
               </button>
             ))}
           </div>
@@ -140,7 +140,7 @@ export function Gallery({ images, name }) {
 
   return (
     <div>
-      <div className="group relative aspect-[16/10] overflow-hidden rounded-[1.75rem] border border-white/[0.07] bg-ink-900 sm:aspect-[16/9]">
+      <div className="group relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift sm:aspect-[16/9]">
         <AnimatePresence initial={false} mode="popLayout">
           <motion.div
             key={current.src}
@@ -150,7 +150,7 @@ export function Gallery({ images, name }) {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
-            <Img src={current.src} alt={current.alt} priority={active === 0} sizes="(min-width: 1280px) 62vw, 100vw" position={current.position} className="size-full" />
+            <Img src={current.src} alt={current.alt} priority={active === 0} sizes="(min-width: 1280px) 62vw, 100vw" position={current.position} className="absolute inset-0" />
           </motion.div>
         </AnimatePresence>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -158,12 +158,12 @@ export function Gallery({ images, name }) {
         <button
           type="button"
           onClick={() => setLightbox(active)}
-          className="absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-xs font-semibold text-bone backdrop-blur-md transition hover:border-gold-400 hover:bg-gold-400 hover:text-ink-950"
+          className="absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-bone shadow-soft backdrop-blur-md transition hover:bg-gold-400 hover:text-on-accent"
         >
-          <Expand className="size-3.5" /> View fullscreen
+          <Expand className="size-3.5" /> <span className="max-xs:hidden">View fullscreen</span>
         </button>
-        <span className="absolute bottom-5 left-5 font-display text-sm font-bold text-bone tabular-nums">
-          {String(active + 1).padStart(2, '0')} <span className="text-bone/50">/ {String(images.length).padStart(2, '0')}</span>
+        <span className="absolute bottom-5 left-5 font-display text-sm font-bold text-white tabular-nums">
+          {String(active + 1).padStart(2, '0')} <span className="text-white/60">/ {String(images.length).padStart(2, '0')}</span>
         </span>
 
         {images.length > 1 && (
@@ -172,7 +172,7 @@ export function Gallery({ images, name }) {
               type="button"
               onClick={() => setActive((active - 1 + images.length) % images.length)}
               aria-label="Previous image"
-              className="absolute top-1/2 left-3 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-bone backdrop-blur-md transition hover:bg-gold-400 hover:text-ink-950 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
+              className="absolute top-1/2 left-3 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-ink-700/50 bg-ink-900/90 text-bone backdrop-blur-md transition hover:bg-gold-400 hover:text-on-accent sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -180,7 +180,7 @@ export function Gallery({ images, name }) {
               type="button"
               onClick={() => setActive((active + 1) % images.length)}
               aria-label="Next image"
-              className="absolute top-1/2 right-3 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-bone backdrop-blur-md transition hover:bg-gold-400 hover:text-ink-950 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
+              className="absolute top-1/2 right-3 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-ink-700/50 bg-ink-900/90 text-bone backdrop-blur-md transition hover:bg-gold-400 hover:text-on-accent sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
             >
               <ChevronRight className="size-5" />
             </button>
@@ -197,10 +197,10 @@ export function Gallery({ images, name }) {
             aria-label={`Show image ${index + 1} of ${name}`}
             aria-current={index === active}
             className={`relative aspect-[4/3] overflow-hidden rounded-xl border transition duration-300 sm:rounded-2xl ${
-              index === active ? 'border-gold-400' : 'border-white/[0.07] opacity-60 hover:opacity-100'
+              index === active ? 'border-gold-400 shadow-soft' : 'border-transparent opacity-60 hover:opacity-100'
             }`}
           >
-            <Img src={image.src} alt="" sizes="(min-width: 1280px) 15vw, 25vw" position={image.position} className="size-full" />
+            <Img src={image.src} alt="" sizes="(min-width: 1280px) 15vw, 25vw" position={image.position} className="absolute inset-0" />
             {index === active && <motion.span layoutId="thumb-indicator" className="absolute inset-x-0 bottom-0 h-0.5 bg-gold-400" />}
           </button>
         ))}

@@ -15,7 +15,7 @@ export default function Wishlist() {
   const { wishlist, clearWishlist, setCompare } = useGarage()
   const { notify } = useToast()
   const [confirmOpen, setConfirmOpen] = useState(false)
-  const saved = wishlist.map((id) => carsById.get(id))
+  const saved = wishlist.map((id) => carsById.get(id)).filter(Boolean)
   const total = saved.reduce((sum, car) => sum + car.price, 0)
   const suggestions = cars.filter((car) => car.featured && !wishlist.includes(car.id)).slice(0, 3)
 
@@ -40,7 +40,7 @@ export default function Wishlist() {
       <Container className="pb-24">
         {saved.length > 0 ? (
           <>
-            <div className="mb-8 flex flex-col gap-5 rounded-[1.5rem] border border-white/[0.07] bg-ink-900 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="mb-8 flex flex-col gap-5 rounded-[1.75rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div className="flex flex-wrap gap-x-10 gap-y-3">
                 <div>
                   <p className="text-[0.65rem] tracking-[0.2em] text-smoke uppercase">Saved</p>
@@ -71,6 +71,7 @@ export default function Wishlist() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="min-w-0"
                   >
                     <CarCard car={car} />
                   </motion.div>
@@ -83,7 +84,7 @@ export default function Wishlist() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center rounded-[1.75rem] border border-dashed border-white/10 px-6 py-16 text-center"
+              className="flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-16 text-center"
             >
               <motion.span
                 animate={{ scale: [1, 1.12, 1] }}

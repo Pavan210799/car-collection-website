@@ -35,7 +35,7 @@ const chipLabel = (key, value) => {
 export default function Collection() {
   const [params, setParams] = useSearchParams()
   const filters = useMemo(() => filtersFromParams(params), [params])
-  const [view, setView] = useLocalStorage('veloce:view', 'grid')
+  const [view, setView] = useLocalStorage('aurion:view', 'grid')
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const update = useCallback(
@@ -81,13 +81,13 @@ export default function Collection() {
       <Container className="pb-24">
         <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[18.5rem_minmax(0,1fr)] xl:gap-12">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[1.5rem] border border-white/[0.07] bg-ink-900/60 p-6">
+            <div className="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[1.5rem] border border-ink-700/40 bg-ink-900/60 p-6">
               <div className="mb-5 flex items-center justify-between">
                 <p className="flex items-center gap-2 font-display text-lg font-bold text-bone">
                   <SlidersHorizontal className="size-4 text-gold-400" /> Filters
                 </p>
                 {activeCount > 0 && (
-                  <button type="button" onClick={clearAll} className="text-xs font-semibold text-gold-400 hover:text-gold-200">
+                  <button type="button" onClick={clearAll} className="text-xs font-semibold text-gold-400 hover:text-gold-500">
                     Reset ({activeCount})
                   </button>
                 )}
@@ -106,14 +106,14 @@ export default function Collection() {
                   value={filters.q}
                   onChange={(event) => update({ q: event.target.value })}
                   placeholder="Search by make, model or style…"
-                  className="h-11 w-full rounded-full border border-white/10 bg-ink-900 pr-11 pl-11 text-sm text-bone transition outline-none placeholder:text-smoke hover:border-white/25 focus:border-gold-400"
+                  className="h-11 w-full rounded-full border border-ink-700/45 bg-ink-900 pr-11 pl-11 text-sm text-bone transition outline-none placeholder:text-smoke hover:border-ink-700/55 focus:border-gold-400"
                 />
                 {filters.q && (
                   <button
                     type="button"
                     onClick={() => update({ q: '' })}
                     aria-label="Clear search"
-                    className="absolute top-1/2 right-2 grid size-7 -translate-y-1/2 place-items-center rounded-full text-mist transition hover:bg-white/10 hover:text-bone"
+                    className="absolute top-1/2 right-2 grid size-7 -translate-y-1/2 place-items-center rounded-full text-mist transition hover:bg-ink-800 hover:text-bone"
                   >
                     <X className="size-4" />
                   </button>
@@ -124,11 +124,11 @@ export default function Collection() {
                 <button
                   type="button"
                   onClick={() => setDrawerOpen(true)}
-                  className="relative flex h-11 shrink-0 items-center gap-2 rounded-full border border-white/10 bg-ink-900 px-4 text-sm font-semibold text-bone transition hover:border-white/25 lg:hidden"
+                  className="relative flex h-11 shrink-0 items-center gap-2 rounded-full border border-ink-700/45 bg-ink-900 px-4 text-sm font-semibold text-bone transition hover:border-ink-700/55 lg:hidden"
                 >
                   <SlidersHorizontal className="size-4 text-gold-400" />
                   Filters
-                  {activeCount > 0 && <span className="rounded-full bg-gold-400 px-1.5 text-xs leading-5 text-ink-950">{activeCount}</span>}
+                  {activeCount > 0 && <span className="rounded-full bg-gold-400 px-1.5 text-xs leading-5 text-on-accent">{activeCount}</span>}
                 </button>
                 <Dropdown
                   label="Sort"
@@ -138,7 +138,7 @@ export default function Collection() {
                   onChange={(sort) => update({ sort })}
                   className="min-w-0 flex-1 sm:w-64 sm:flex-none"
                 />
-                <div className="hidden h-11 shrink-0 items-center rounded-full border border-white/10 bg-ink-900 p-1 sm:flex" role="group" aria-label="Layout">
+                <div className="hidden h-11 shrink-0 items-center rounded-full border border-ink-700/45 bg-ink-900 p-1 sm:flex" role="group" aria-label="Layout">
                   {[
                     { id: 'grid', icon: LayoutGrid, label: 'Grid view' },
                     { id: 'list', icon: List, label: 'List view' },
@@ -149,7 +149,7 @@ export default function Collection() {
                       onClick={() => setView(option.id)}
                       aria-pressed={view === option.id}
                       aria-label={option.label}
-                      className={`relative grid size-9 place-items-center rounded-full transition-colors ${view === option.id ? 'text-ink-950' : 'text-mist hover:text-bone'}`}
+                      className={`relative grid size-9 place-items-center rounded-full transition-colors ${view === option.id ? 'text-on-accent' : 'text-mist hover:text-bone'}`}
                     >
                       {view === option.id && <motion.span layoutId="view-toggle" className="absolute inset-0 rounded-full bg-bone" />}
                       <option.icon className="relative size-4" />
@@ -174,7 +174,7 @@ export default function Collection() {
                     exit={{ opacity: 0, scale: 0.8 }}
                     type="button"
                     onClick={() => removeChip(chip)}
-                    className="group inline-flex items-center gap-1.5 rounded-full border border-gold-400/30 bg-gold-400/10 py-1 pr-2 pl-3 text-xs font-semibold text-gold-200 transition hover:border-gold-400/60"
+                    className="group inline-flex items-center gap-1.5 rounded-full border border-gold-400/30 bg-gold-400/10 py-1 pr-2 pl-3 text-xs font-semibold text-gold-500 transition hover:border-gold-400/60"
                   >
                     {chip.label}
                     <X className="size-3.5 transition-transform group-hover:rotate-90" />
@@ -192,7 +192,7 @@ export default function Collection() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-8 flex flex-col items-center rounded-[1.75rem] border border-dashed border-white/10 px-6 py-20 text-center"
+                className="mt-8 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-20 text-center"
               >
                 <span className="grid size-16 place-items-center rounded-full bg-gold-400/10 text-gold-400">
                   <SearchX className="size-7" />
@@ -209,18 +209,13 @@ export default function Collection() {
                 className={`mt-6 grid gap-5 sm:gap-6 ${view === 'grid' ? 'sm:grid-cols-2 2xl:grid-cols-3' : 'grid-cols-1'}`}
               >
                 <AnimatePresence mode="popLayout" initial={false}>
-                  {results.map((car, index) => (
-                    <motion.div
-                      key={car.id}
-                      layout
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.2 } }}
-                      transition={{ duration: 0.6, delay: Math.min(index, 8) * 0.04, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      {view === 'grid' ? <CarCard car={car} priority={index < 2} /> : <CarListItem car={car} />}
-                    </motion.div>
-                  ))}
+                  {results.map((car, index) =>
+                    view === 'grid' ? (
+                      <CarCard key={car.id} car={car} priority={index < 2} index={index} animated />
+                    ) : (
+                      <CarListItem key={car.id} car={car} index={index} animated />
+                    ),
+                  )}
                 </AnimatePresence>
               </motion.div>
             )}

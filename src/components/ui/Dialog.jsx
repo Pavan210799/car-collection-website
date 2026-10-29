@@ -78,7 +78,7 @@ export function Dialog({ open, onClose, title, description, side = 'center', cla
       {open && (
         <div className={`fixed inset-0 z-[70] flex ${config.wrapper}`}>
           <motion.div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-bone/35 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -93,10 +93,10 @@ export function Dialog({ open, onClose, title, description, side = 'center', cla
             tabIndex={-1}
             {...config.motion}
             transition={{ type: 'spring', stiffness: 300, damping: 34 }}
-            className={`relative flex flex-col overflow-hidden border border-white/10 bg-ink-900 shadow-2xl shadow-black/60 outline-none ${config.panel} ${className}`}
+            className={`relative flex flex-col overflow-hidden border border-ink-700/60 bg-ink-900 shadow-lift outline-none ${config.panel} ${className}`}
           >
             {title && (
-              <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] px-5 py-4 sm:px-7 sm:py-5">
+              <div className="flex items-start justify-between gap-4 border-b border-ink-700/40 px-5 py-4 sm:px-7 sm:py-5">
                 <div className="min-w-0">
                   <h2 id={titleId} className="font-display text-lg font-bold text-bone sm:text-xl">
                     {title}
@@ -107,14 +107,14 @@ export function Dialog({ open, onClose, title, description, side = 'center', cla
                   type="button"
                   onClick={onClose}
                   aria-label="Close"
-                  className="grid size-10 shrink-0 place-items-center rounded-full border border-white/10 text-mist transition hover:rotate-90 hover:border-white/30 hover:text-bone"
+                  className="grid size-10 shrink-0 place-items-center rounded-full border border-ink-700/45 text-mist transition hover:rotate-90 hover:border-ink-700/60 hover:text-bone"
                 >
                   <X className="size-4" />
                 </button>
               </div>
             )}
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">{children}</div>
-            {footer && <div className="border-t border-white/[0.08] px-5 py-4 sm:px-7">{footer}</div>}
+            {footer && <div className="border-t border-ink-700/40 px-5 py-4 sm:px-7">{footer}</div>}
           </motion.div>
         </div>
       )}

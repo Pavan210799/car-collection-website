@@ -1,63 +1,46 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'framer-motion'
-import { ArrowRight, ChevronLeft, ChevronRight, Gauge, Timer, Zap } from 'lucide-react'
+import { AnimatePresence, animate, motion, useAnimationFrame, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
+import { ArrowRight, Gauge, Play, Timer, Zap } from 'lucide-react'
 import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
+import { Img } from '../ui/Img'
 import { CountUp } from '../ui/CountUp'
-import { srcFor, srcSetFor } from '../ui/Img'
-import { HeroIntro, shouldPlayIntro } from './HeroIntro'
-import { heroSlides } from '../../data/site'
+import { heroSlides, stats } from '../../data/site'
 import { carsById } from '../../data/cars'
+import { formatNumber } from '../../lib/format'
 
-const SLIDE_DURATION = 7000
+const SLIDE_MS = 8000
 const EASE = [0.22, 1, 0.36, 1]
-const CINEMATIC = [0.76, 0, 0.24, 1]
 
-const slides = heroSlides.map((slide) => {
-  const car = carsById.get(slide.car)
-  return { ...slide, car, image: car.heroImage ?? car.images[0] }
-})
+const slides = heroSlides
+  .map((slide) => {
+    const car = carsById.get(slide.car)
+    if (!car?.images?.length) return null
+    return { ...slide, car, image: car.heroImage ?? car.images[0] }
+  })
+  .filter(Boolean)
 
-function LightTrails() {
-  const trails = [
-    { top: '22%', duration: 6.5, delay: 0.4, width: '38%' },
-    { top: '58%', duration: 8, delay: 2.2, width: '28%' },
-    { top: '74%', duration: 5.5, delay: 3.6, width: '46%' },
-  ]
-  return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      {trails.map((trail) => (
-        <motion.span
-          key={trail.top}
-          className="absolute left-0 h-px bg-gradient-to-r from-transparent via-gold-300/70 to-transparent"
-          style={{ top: trail.top, width: trail.width }}
-          initial={{ x: '-120%', opacity: 0 }}
-          animate={{ x: ['-120%', '320%'], opacity: [0, 1, 0] }}
-          transition={{ duration: trail.duration, delay: trail.delay, repeat: Infinity, repeatDelay: 2.5, ease: 'easeInOut' }}
-        />
-      ))}
-    </div>
-  )
+const FADE_S = 0.9
+const ZOOM_FROM = 1.12
+const FADE_EASE = [0.45, 0, 0.55, 1]
+
+const ZOOM_DRIFT = ((ZOOM_FROM - 1) * FADE_S * 1000) / SLIDE_MS
+
+const layerVariants = {
+  active: { opacity: 1, zIndex: 2, transition: { opacity: { duration: FADE_S, ease: FADE_EASE } } },
+  previous: { opacity: 0, zIndex: 1, transition: { opacity: { duration: FADE_S, ease: FADE_EASE } } },
+  idle: { opacity: 0, zIndex: 0, transition: { opacity: { duration: 0.3 } } },
 }
 
-function MaskedLine({ children, delay }) {
+function MaskedLine({ children, delay = 0 }) {
   return (
     <span className="block overflow-hidden pb-[0.08em]">
       <motion.span
         className="block"
-        initial={{ y: '110%', rotate: 3 }}
-        animate={{ y: '0%', rotate: 0 }}
-        exit={{ y: '-110%', transition: { duration: 0.5, ease: CINEMATIC } }}
-        transition={{ duration: 1.1, delay, ease: EASE }}
+        initial={{ y: '100%', opacity: 0, filter: 'blur(6px)' }}
+        animate={{ y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.9, delay: delay + 0.25, ease: EASE } }}
+        exit={{ y: '-60%', opacity: 0, filter: 'blur(6px)', transition: { duration: 0.45, ease: [0.55, 0, 0.75, 0.2] } }}
       >
         {children}
       </motion.span>
@@ -66,302 +49,302 @@ function MaskedLine({ children, delay }) {
 }
 
 export function Hero() {
-  const sectionRef = useRef(null)
   const reduce = useReducedMotion()
   const [index, setIndex] = useState(0)
-  const [direction, setDirection] = useState(1)
+  const [previous, setPrevious] = useState(null)
   const [paused, setPaused] = useState(false)
-  const [introPlays] = useState(shouldPlayIntro)
-  const [introDone, setIntroDone] = useState(!introPlays)
-  const base = introPlays ? 1.7 : 0.15
-  const enter = (offset) => (introDone ? 0.2 + offset : base + offset)
   const slide = slides[index]
 
-  const goTo = useCallback((next, dir) => {
-    setDirection(dir ?? 1)
-    setIndex((next + slides.length) % slides.length)
-  }, [])
-  const next = useCallback(() => goTo(index + 1, 1), [goTo, index])
-  const prev = useCallback(() => goTo(index - 1, -1), [goTo, index])
+  const pointerX = useMotionValue(0)
+  const pointerY = useMotionValue(0)
+  const springX = useSpring(pointerX, { stiffness: 70, damping: 18 })
+  const springY = useSpring(pointerY, { stiffness: 70, damping: 18 })
+  const imageX = useTransform(springX, [-0.5, 0.5], [-14, 14])
+  const imageY = useTransform(springY, [-0.5, 0.5], [-10, 10])
+  const cardX = useTransform(springX, [-0.5, 0.5], [10, -10])
+  const cardY = useTransform(springY, [-0.5, 0.5], [8, -8])
 
-  useEffect(() => {
-    if (paused || !introDone) return undefined
-    const timer = setTimeout(next, SLIDE_DURATION)
-    return () => clearTimeout(timer)
-  }, [index, paused, introDone, next])
+  const progress = useMotionValue(0)
+  const elapsed = useRef(0)
+  const activeScale = useTransform(progress, [0, 1], [ZOOM_FROM, 1])
+  const previousScale = useMotionValue(1)
 
-  useEffect(() => {
-    const onVisibility = () => setPaused(document.hidden)
-    document.addEventListener('visibilitychange', onVisibility)
-    return () => document.removeEventListener('visibilitychange', onVisibility)
-  }, [])
+  const goTo = useCallback(
+    (next) => {
+      const target = (next + slides.length) % slides.length
+      if (target === index) return
+      const from = activeScale.get()
+      previousScale.set(from)
+      animate(previousScale, from - ZOOM_DRIFT, { duration: FADE_S, ease: 'linear' })
+      elapsed.current = SLIDE_MS
+      setPrevious(index)
+      setIndex(target)
+    },
+    [index, activeScale, previousScale],
+  )
 
-  useEffect(() => {
-    const upcoming = slides[(index + 1) % slides.length].image
-    const img = new Image()
-    img.sizes = '100vw'
-    img.srcset = srcSetFor(upcoming.src)
-  }, [index])
+  useLayoutEffect(() => {
+    elapsed.current = 0
+    progress.set(0)
+  }, [index, progress])
 
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12])
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 })
-  const wordX = useTransform(springX, (value) => value * -2.2)
+  useAnimationFrame((_, delta) => {
+    if (paused || slides.length < 2 || elapsed.current >= SLIDE_MS) return
+    elapsed.current = Math.min(SLIDE_MS, elapsed.current + delta)
+    progress.set(elapsed.current / SLIDE_MS)
+    if (elapsed.current >= SLIDE_MS) goTo(index + 1)
+  })
 
   const onPointerMove = (event) => {
-    if (reduce || event.pointerType !== 'mouse') return
+    if (event.pointerType !== 'mouse') return
     const rect = event.currentTarget.getBoundingClientRect()
-    mouseX.set(((event.clientX - rect.left) / rect.width - 0.5) * 24)
-    mouseY.set(((event.clientY - rect.top) / rect.height - 0.5) * 16)
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5)
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5)
   }
 
-  const onKeyDown = (event) => {
-    if (event.key === 'ArrowRight') next()
-    if (event.key === 'ArrowLeft') prev()
+  const onPointerLeave = () => {
+    pointerX.set(0)
+    pointerY.set(0)
+    setPaused(false)
   }
+
+  if (!slide) return null
+
+  const specs = [
+    { icon: Zap, label: 'Power', value: `${formatNumber(slide.car.specs.power)} hp` },
+    { icon: Timer, label: '0–100', value: `${slide.car.specs.acceleration} s` },
+    { icon: Gauge, label: 'Top speed', value: `${slide.car.specs.topSpeed} km/h` },
+  ]
 
   return (
-    <section
-      ref={sectionRef}
-      aria-roledescription="carousel"
-      aria-label="Featured cars"
-      onPointerMove={onPointerMove}
-      onKeyDown={onKeyDown}
-      className="grain relative isolate h-[100svh] min-h-[44rem] overflow-hidden bg-ink-950"
-    >
-      <HeroIntro play={introPlays} onComplete={() => setIntroDone(true)} />
-
-      <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0 -z-10">
-        <motion.div style={{ x: springX, y: springY }} className="absolute -inset-8">
-          <AnimatePresence custom={direction}>
-            <motion.div
-              key={slide.car.id}
-              custom={direction}
-              className="absolute inset-0"
-              initial={{ clipPath: direction > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }}
-              animate={{ clipPath: 'inset(0 0% 0 0%)' }}
-              exit={{ opacity: 0.4, transition: { duration: 1.2, ease: CINEMATIC } }}
-              transition={{ duration: 1.3, ease: CINEMATIC }}
-            >
-              <motion.img
-                src={srcFor(slide.image.src, 'lg')}
-                srcSet={srcSetFor(slide.image.src)}
-                sizes="100vw"
-                alt={slide.image.alt}
-                fetchPriority={index === 0 ? 'high' : 'auto'}
-                decoding="async"
-                draggable="false"
-                style={{ objectPosition: slide.image.position ?? 'center' }}
-                className="size-full object-cover"
-                initial={{ scale: 1.22 }}
-                animate={{ scale: 1.04 }}
-                transition={{ duration: SLIDE_DURATION / 1000 + 1.5, ease: 'linear' }}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
-      </motion.div>
-
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/55 to-ink-950/5" />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink-950 via-ink-950/60 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink-950/80 to-transparent" />
-        <div className="absolute inset-0 shadow-[inset_0_0_200px_60px_rgba(0,0,0,0.65)]" />
-      </div>
-
+    <section aria-label="Featured cars" className="relative isolate overflow-hidden pt-24 pb-14 sm:pt-28 lg:pt-32 lg:pb-20">
+      <div aria-hidden="true" className="mesh-glow absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="dot-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
       <motion.div
         aria-hidden="true"
-        style={{ x: wordX }}
-        className="pointer-events-none absolute inset-x-0 top-[9%] -z-10 hidden overflow-hidden md:block [@media(max-height:46rem)]:hidden"
-      >
-        <AnimatePresence mode="popLayout">
-          <motion.p
-            key={slide.car.make}
-            initial={{ opacity: 0, x: direction > 0 ? 160 : -160 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction > 0 ? -160 : 160 }}
-            transition={{ duration: 1.4, ease: EASE }}
-            className="text-outline pr-[3vw] text-right font-display text-[11vw] leading-none font-extrabold tracking-tighter whitespace-nowrap uppercase opacity-45"
-          >
-            {slide.car.make}
-          </motion.p>
-        </AnimatePresence>
-      </motion.div>
+        className="absolute -top-32 -right-32 -z-10 size-[28rem] rounded-full bg-gold-400/15 blur-3xl"
+        animate={reduce ? undefined : { scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
-      <LightTrails />
+      <Container>
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14 xl:gap-20">
+          <div className="min-w-0 lg:py-6">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="inline-flex max-w-full items-center gap-2 rounded-full border border-ink-700/70 bg-ink-900/80 py-1.5 pr-4 pl-1.5 shadow-soft backdrop-blur"
+            >
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-volt text-on-accent">
+                <span className="size-1.5 animate-pulse-dot rounded-full bg-white" />
+              </span>
+              <span className="truncate text-xs font-semibold text-bone">{stats[0].value} hand-picked cars · available now</span>
+            </motion.div>
 
-      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative h-full">
-        <Container className="flex h-full flex-col justify-end pt-28 pb-6 sm:pb-8">
-          <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
-            <div className="@container min-w-0 max-w-4xl">
-              <AnimatePresence mode="wait">
-                <motion.div key={slide.car.id} exit={{ opacity: 0, transition: { duration: 0.45, delay: 0.1 } }}>
+            <div className="mt-6 grid min-h-[2.9em] text-[clamp(2.6rem,6.4vw,5.6rem)]" aria-live="polite">
+              {slides.map((item) => (
+                <div key={item.car.id} aria-hidden="true" className="invisible [grid-area:1/1]">
+                  <p className="eyebrow">{item.kicker}</p>
+                  <p className="mt-4 font-display text-[1em] leading-[0.95] font-extrabold tracking-tight break-words">
+                    <span className="block pb-[0.08em]">{item.title[0]}</span>
+                    <span className="block pb-[0.08em]">{item.title[1]}</span>
+                  </p>
+                </div>
+              ))}
+              <AnimatePresence initial={false}>
+                <motion.div key={slide.car.id} exit={{ opacity: 1 }} transition={{ duration: 0.45 }} className="[grid-area:1/1]">
                   <motion.p
-                    className="eyebrow flex items-center gap-3"
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: enter(0), ease: EASE }}
+                    exit={{ opacity: 0, x: 12 }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="eyebrow flex items-center gap-3"
                   >
-                    <motion.span
-                      className="h-px bg-gold-400"
-                      initial={{ width: 0 }}
-                      animate={{ width: 40 }}
-                      transition={{ duration: 0.9, delay: enter(0), ease: EASE }}
-                    />
+                    <span className="h-px w-8 bg-gold-400" />
                     {slide.kicker}
                   </motion.p>
-
-                  <h1 className="mt-5 font-display text-[clamp(1.5rem,8.4cqw,6rem)] leading-[0.95] font-extrabold tracking-[-0.025em] text-bone uppercase">
-                    <MaskedLine delay={enter(0.1)}>{slide.title[0]}</MaskedLine>
-                    <MaskedLine delay={enter(0.22)}>
+                  <h1 className="mt-4 font-display text-[1em] leading-[0.95] font-extrabold tracking-tight break-words text-bone">
+                    <MaskedLine delay={0.05}>{slide.title[0]}</MaskedLine>
+                    <MaskedLine delay={0.14}>
                       <span className="text-gradient-gold">{slide.title[1]}</span>
                     </MaskedLine>
                   </h1>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, delay: enter(0.35), ease: EASE }}
-                    className="mt-6 max-w-xl"
-                  >
-                    <p className="text-sm font-semibold tracking-[0.18em] text-bone/90 uppercase">
-                      {slide.car.year} {slide.car.name}
-                    </p>
-                    <p className="mt-2 text-base leading-relaxed text-mist sm:text-lg">{slide.blurb}</p>
-                  </motion.div>
                 </motion.div>
               </AnimatePresence>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: base + 0.5, ease: EASE }}
-                className="mt-8 flex flex-col gap-3 xs:flex-row xs:flex-wrap"
-              >
-                <Button to="/collection" size="lg">
-                  Explore the collection
-                  <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
-                </Button>
-                <Button to={`/cars/${slide.car.slug}`} variant="outline" size="lg" className="backdrop-blur-md">
-                  Discover the {slide.car.model.split(' ')[0]}
-                </Button>
-              </motion.div>
             </div>
 
-            <motion.dl
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: base + 0.6, ease: EASE }}
-              className="glass grid grid-cols-3 divide-x divide-white/10 rounded-2xl bg-ink-950/40 p-4 sm:p-5 lg:w-72 lg:grid-cols-1 lg:divide-x-0 lg:divide-y lg:p-6"
-            >
-              {[
-                { icon: Zap, label: 'Power', value: slide.car.specs.power, unit: 'hp' },
-                { icon: Timer, label: '0–100 km/h', value: slide.car.specs.acceleration, unit: 's', decimals: 1 },
-                { icon: Gauge, label: 'Top speed', value: slide.car.specs.topSpeed, unit: 'km/h' },
-              ].map((stat) => (
-                <div key={stat.label} className="min-w-0 px-2 first:pl-0 last:pr-0 lg:px-0 lg:py-4 lg:first:pt-0 lg:last:pb-0">
-                  <dt className="flex items-center gap-1.5 text-[0.6rem] font-semibold tracking-[0.18em] text-mist uppercase sm:text-[0.65rem]">
-                    <stat.icon className="hidden size-3.5 text-gold-400 xs:block" />
-                    <span className="truncate">{stat.label}</span>
-                  </dt>
-                  <dd className="mt-1.5 flex items-baseline gap-1 font-display text-xl font-bold text-bone sm:text-3xl">
-                    <CountUp key={`${slide.car.id}-${stat.label}`} value={stat.value} decimals={stat.decimals ?? 0} startOnView={false} delay={enter(0.6)} />
-                    <span className="text-[0.65rem] font-semibold text-gold-400 sm:text-xs">{stat.unit}</span>
-                  </dd>
-                </div>
+            <div className="mt-5 grid max-w-lg">
+              {slides.map((item) => (
+                <p key={item.car.id} aria-hidden="true" className="invisible text-base leading-relaxed [grid-area:1/1] sm:text-lg">
+                  <span className="font-semibold">
+                    {item.car.year} {item.car.name}.
+                  </span>{' '}
+                  {item.blurb}
+                </p>
               ))}
-            </motion.dl>
+              <AnimatePresence initial={false}>
+                <motion.p
+                  key={slide.car.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3, ease: EASE } }}
+                  exit={{ opacity: 0, y: -6, transition: { duration: 0.3 } }}
+                  className="text-base leading-relaxed text-mist [grid-area:1/1] sm:text-lg"
+                >
+                  <span className="font-semibold text-bone">
+                    {slide.car.year} {slide.car.name}.
+                  </span>{' '}
+                  {slide.blurb}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35, ease: EASE }}
+              className="mt-8 flex flex-col gap-3 xs:flex-row xs:flex-wrap"
+            >
+              <Button to="/collection" size="lg">
+                Explore collection <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
+              </Button>
+              <Button to={`/cars/${slide.car.slug}`} variant="light" size="lg">
+                <Play className="size-3.5 fill-current" /> View {slide.car.model.split(' ')[0]}
+              </Button>
+            </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: base + 0.8 }}
+            initial={{ opacity: 0, clipPath: 'inset(10% 6% 10% 6% round 2.25rem)' }}
+            animate={{ opacity: 1, clipPath: 'inset(-12% -8% -20% -8% round 2.25rem)' }}
+            transition={{ duration: 1.3, delay: 0.1, ease: EASE }}
+            className="relative min-w-0"
+            onPointerMove={onPointerMove}
+            onPointerLeave={onPointerLeave}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            className="mt-8 flex items-center gap-4 border-t border-white/10 pt-5 sm:gap-6"
           >
-            <p className="shrink-0 font-display text-sm font-bold text-bone tabular-nums">
-              {String(index + 1).padStart(2, '0')}
-              <span className="text-smoke"> / {String(slides.length).padStart(2, '0')}</span>
-            </p>
-
-            <div className="flex min-w-0 flex-1 gap-2 sm:gap-3" role="tablist" aria-label="Choose featured car">
-              {slides.map((item, itemIndex) => (
-                <button
-                  key={item.car.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={itemIndex === index}
-                  aria-label={`Show ${item.car.name}`}
-                  onClick={() => goTo(itemIndex, itemIndex > index ? 1 : -1)}
-                  className="group min-w-0 flex-1 py-2 text-left"
-                >
-                  <span className="relative block h-[2px] overflow-hidden rounded-full bg-white/15">
-                    {itemIndex < index && <span className="absolute inset-0 bg-bone/60" />}
-                    {itemIndex === index && (
-                      <motion.span
-                        key={`${index}-${paused}`}
-                        className="absolute inset-0 origin-left bg-gold-400"
-                        initial={{ scaleX: paused ? 1 : 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: paused || !introDone ? 0 : SLIDE_DURATION / 1000, ease: 'linear' }}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2.25rem] bg-ink-800 shadow-lift sm:aspect-[16/11] lg:aspect-[5/4] xl:aspect-[16/12]">
+              <motion.div style={{ x: imageX, y: imageY }} className="absolute -inset-4">
+                {slides.map((item, itemIndex) => {
+                  const state = itemIndex === index ? 'active' : itemIndex === previous ? 'previous' : 'idle'
+                  return (
+                    <motion.div
+                      key={item.car.id}
+                      initial={{ opacity: itemIndex === index ? 1 : 0, zIndex: itemIndex === index ? 2 : 0 }}
+                      animate={state}
+                      variants={layerVariants}
+                      style={{ scale: state === 'active' ? activeScale : state === 'previous' ? previousScale : ZOOM_FROM }}
+                      className="absolute inset-0 will-change-[opacity,transform]"
+                      aria-hidden={itemIndex !== index}
+                    >
+                      <Img
+                        src={item.image.src}
+                        alt={itemIndex === index ? item.image.alt : ''}
+                        priority={itemIndex === 0}
+                        loading="eager"
+                        sizes="(min-width: 1024px) 55vw, 100vw"
+                        position={item.image.position}
+                        className="absolute inset-0"
                       />
-                    )}
-                  </span>
-                  <span
-                    className={`mt-3 hidden truncate text-xs font-semibold tracking-wide transition-colors md:block ${
-                      itemIndex === index ? 'text-bone' : 'text-smoke group-hover:text-mist'
-                    }`}
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+              <div className="absolute top-4 right-4 z-[4] rounded-full bg-white/85 px-3 py-1.5 font-display text-xs font-bold text-bone tabular-nums shadow-soft backdrop-blur-md">
+                {String(index + 1).padStart(2, '0')} <span className="text-smoke">/ {String(slides.length).padStart(2, '0')}</span>
+              </div>
+
+              <motion.div style={{ x: cardX, y: cardY }} className="absolute inset-x-3 bottom-3 z-[4] sm:inset-x-auto sm:bottom-5 sm:left-5">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={slide.car.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.5, delay: 0.35, ease: EASE }}
+                    className="glass rounded-2xl p-3 sm:p-4"
                   >
-                    {item.car.name}
-                  </span>
-                </button>
-              ))}
+                    <Link to={`/cars/${slide.car.slug}`} className="block min-w-0 truncate text-[0.65rem] font-semibold tracking-[0.2em] text-volt uppercase hover:text-gold-500">
+                      {slide.car.make} · {slide.car.categoryName}
+                    </Link>
+                    <dl className="mt-2 grid grid-cols-3 gap-3 sm:gap-5">
+                      {specs.map((spec) => (
+                        <div key={spec.label} className="min-w-0">
+                          <dt className="flex items-center gap-1 text-[0.6rem] tracking-wide text-smoke uppercase">
+                            <spec.icon className="size-3 shrink-0 text-gold-400" />
+                            <span className="truncate">{spec.label}</span>
+                          </dt>
+                          <dd className="mt-0.5 truncate font-display text-sm font-bold text-bone sm:text-base">{spec.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
             </div>
 
-            <div className="flex shrink-0 gap-2">
-              <button
-                type="button"
-                onClick={prev}
-                aria-label="Previous car"
-                className="grid size-10 place-items-center rounded-full border border-white/15 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-ink-950 sm:size-11"
-              >
-                <ChevronLeft className="size-4" />
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                aria-label="Next car"
-                className="grid size-10 place-items-center rounded-full border border-white/15 text-bone transition hover:border-gold-400 hover:bg-gold-400 hover:text-ink-950 sm:size-11"
-              >
-                <ChevronRight className="size-4" />
-              </button>
+            <div
+              className="mt-4 grid grid-cols-4 gap-2 sm:gap-3"
+              role="tablist"
+              aria-label="Featured cars"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              {slides.map((item, itemIndex) => {
+                const active = itemIndex === index
+                return (
+                  <button
+                    key={item.car.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    aria-label={`Show ${item.car.name}`}
+                    onClick={() => goTo(itemIndex)}
+                    className="group min-w-0 text-left"
+                  >
+                    <span className="relative block h-1 overflow-hidden rounded-full bg-ink-800">
+                      {active && (
+                        <motion.span
+                          className="absolute inset-0 rounded-full bg-gold-400"
+                          style={{ scaleX: progress, originX: 0 }}
+                        />
+                      )}
+                      {!active && <span className="absolute inset-0 origin-left scale-x-0 rounded-full bg-bone/40 transition-transform duration-500 group-hover:scale-x-100" />}
+                    </span>
+                    <span className={`mt-2 hidden truncate text-xs font-semibold transition-colors sm:block ${active ? 'text-bone' : 'text-smoke group-hover:text-mist'}`}>
+                      {item.car.model}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </motion.div>
-        </Container>
-      </motion.div>
+        </div>
 
-      <Link
-        to="/collection"
-        className="absolute top-1/2 right-5 hidden -translate-y-1/2 rotate-90 items-center gap-3 text-[0.6rem] font-semibold tracking-[0.4em] text-mist uppercase transition-colors hover:text-gold-300 2xl:flex"
-      >
-        Scroll to explore
-        <span className="relative h-px w-12 overflow-hidden bg-white/20">
-          <motion.span
-            className="absolute inset-y-0 left-0 w-1/2 bg-gold-400"
-            animate={{ x: ['-100%', '200%'] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </span>
-      </Link>
+        <motion.dl
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.6 } } }}
+          className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink-700/60 pt-8 md:grid-cols-4"
+        >
+          {stats.map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } } }}
+              className="min-w-0"
+            >
+              <dd className="font-display text-3xl font-bold text-bone sm:text-4xl">
+                <CountUp value={stat.value} decimals={stat.decimals ?? 0} startOnView={false} delay={0.6} />
+                <span className="text-gold-400">{stat.suffix}</span>
+              </dd>
+              <dt className="mt-1 text-sm text-mist">{stat.label}</dt>
+            </motion.div>
+          ))}
+        </motion.dl>
+      </Container>
     </section>
   )
 }

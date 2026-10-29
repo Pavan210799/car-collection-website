@@ -70,7 +70,7 @@ export default function Compare() {
   const { compare, removeFromCompare, addToCompare, clearCompare } = useGarage()
   const [pickerOpen, setPickerOpen] = useState(false)
   const [diffOnly, setDiffOnly] = useState(false)
-  const selected = compare.map((id) => carsById.get(id))
+  const selected = compare.map((id) => carsById.get(id)).filter(Boolean)
   const slots = Array.from({ length: MAX_COMPARE }, (_, index) => selected[index] ?? null)
   const columns = 'grid-cols-[repeat(3,minmax(0,1fr))]'
 
@@ -88,7 +88,7 @@ export default function Compare() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-10 flex flex-col items-center rounded-[1.75rem] border border-dashed border-white/10 px-6 py-14 text-center"
+            className="mb-10 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-14 text-center"
           >
             <span className="grid size-16 place-items-center rounded-full bg-gold-400/10 text-gold-400">
               <Scale className="size-7" />
@@ -118,9 +118,9 @@ export default function Compare() {
                 role="switch"
                 aria-checked={diffOnly}
                 onClick={() => setDiffOnly((value) => !value)}
-                className={`relative h-6 w-11 rounded-full transition-colors ${diffOnly ? 'bg-gold-400' : 'bg-white/15'}`}
+                className={`relative h-6 w-11 rounded-full transition-colors ${diffOnly ? 'bg-gold-400' : 'bg-ink-700'}`}
               >
-                <motion.span layout className={`absolute top-1 size-4 rounded-full bg-bone shadow ${diffOnly ? 'right-1' : 'left-1'}`} />
+                <motion.span layout className={`absolute top-1 size-4 rounded-full bg-white shadow ${diffOnly ? 'right-1' : 'left-1'}`} />
               </button>
             </label>
             {selected.length > 0 && (
@@ -141,7 +141,7 @@ export default function Compare() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="group relative min-w-0 overflow-hidden rounded-2xl border border-white/[0.07] bg-ink-900 sm:rounded-[1.5rem]"
+                    className="group relative min-w-0 overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:rounded-[1.5rem]"
                   >
                     <Link to={`/cars/${car.slug}`} className="block">
                       <Img src={car.images[0].src} alt={car.images[0].alt} sizes="(min-width: 1024px) 25vw, 33vw" position={car.images[0].position} className="aspect-[4/3]" imgClassName="transition-transform duration-1000 group-hover:scale-105" />
@@ -155,7 +155,7 @@ export default function Compare() {
                       type="button"
                       onClick={() => removeFromCompare(car.id)}
                       aria-label={`Remove ${car.name}`}
-                      className="absolute top-2 right-2 grid size-7 place-items-center rounded-full border border-white/15 bg-black/60 text-bone backdrop-blur transition hover:border-ember hover:bg-ember sm:top-3 sm:right-3 sm:size-9"
+                      className="absolute top-2 right-2 grid size-7 place-items-center rounded-full bg-white/90 text-bone shadow-soft backdrop-blur transition hover:bg-ember hover:text-on-accent sm:top-3 sm:right-3 sm:size-9"
                     >
                       <X className="size-3.5 sm:size-4" />
                     </button>
@@ -166,7 +166,7 @@ export default function Compare() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     onClick={() => setPickerOpen(true)}
-                    className="group flex min-h-40 min-w-0 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/15 p-3 text-center text-mist transition hover:border-gold-400/60 hover:text-gold-200 sm:min-h-64 sm:rounded-[1.5rem]"
+                    className="group flex min-h-40 min-w-0 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-ink-700/50 p-3 text-center text-mist transition hover:border-gold-400/60 hover:text-gold-500 sm:min-h-64 sm:rounded-[1.5rem]"
                   >
                     <span className="grid size-10 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:rotate-90 sm:size-14">
                       <Plus className="size-4 sm:size-5" />
@@ -191,14 +191,14 @@ export default function Compare() {
               return (
                 <section key={group.title}>
                   <h2 className="eyebrow mb-3">{group.title}</h2>
-                  <div className="overflow-hidden rounded-[1.5rem] border border-white/[0.07]">
+                  <div className="overflow-hidden rounded-[1.5rem] border border-ink-700/60 bg-ink-900 shadow-soft">
                     {rows.map((row) => {
                       const values = slots.map((car) => (car ? row.get(car) : null))
                       const numeric = values.filter((value) => typeof value === 'number')
                       const winner = bestIndex(numeric, row.best)
                       const winnerValue = winner >= 0 ? numeric[winner] : null
                       return (
-                        <div key={row.label} className="border-b border-white/[0.07] last:border-b-0 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-4">
+                        <div key={row.label} className="border-b border-ink-700/40 last:border-b-0 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-4">
                           <div className="px-4 pt-3 text-[0.65rem] font-semibold tracking-[0.18em] text-smoke uppercase lg:flex lg:items-center lg:py-4 lg:pl-6 lg:text-xs">
                             {row.label}
                           </div>
@@ -206,7 +206,7 @@ export default function Compare() {
                             {values.map((value, index) => {
                               const isBest = value !== null && winnerValue !== null && value === winnerValue
                               return (
-                                <div key={index} className={`flex min-w-0 items-center gap-1.5 text-xs break-words sm:text-sm ${isBest ? 'font-bold text-gold-300' : 'text-bone'}`}>
+                                <div key={index} className={`flex min-w-0 items-center gap-1.5 text-xs break-words sm:text-sm ${isBest ? 'font-bold text-gold-500' : 'text-bone'}`}>
                                   {value === null ? <span className="text-smoke">—</span> : row.format ? row.format(value) : value}
                                   {isBest && <Crown className="size-3.5 shrink-0 text-gold-400" />}
                                 </div>

@@ -17,7 +17,7 @@ export function CarPicker({ open, onClose, onSelect, selected = [], title = 'Cho
 
   return (
     <Dialog open={open} onClose={close} title={title} description={`${cars.length} cars available`}>
-      <div className="sticky top-0 z-10 border-b border-white/[0.07] bg-ink-900 px-5 py-4 sm:px-7">
+      <div className="sticky top-0 z-10 border-b border-ink-700/40 bg-ink-900 px-5 py-4 sm:px-7">
         <label className="relative block">
           <span className="sr-only">Search cars</span>
           <Search className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-mist" />
@@ -26,7 +26,7 @@ export function CarPicker({ open, onClose, onSelect, selected = [], title = 'Cho
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search make or model…"
-            className="h-11 w-full rounded-full border border-white/10 bg-ink-850 pr-4 pl-11 text-sm text-bone outline-none placeholder:text-smoke focus:border-gold-400"
+            className="h-11 w-full rounded-full border border-ink-700/45 bg-ink-850 pr-4 pl-11 text-sm text-bone outline-none placeholder:text-smoke focus:border-gold-400"
           />
         </label>
       </div>
@@ -42,7 +42,7 @@ export function CarPicker({ open, onClose, onSelect, selected = [], title = 'Cho
                   onSelect(car.id)
                   close()
                 }}
-                className="group flex w-full items-center gap-3 rounded-2xl border border-transparent p-2 text-left transition hover:border-white/10 hover:bg-white/[0.04] disabled:opacity-40"
+                className="group flex w-full items-center gap-3 rounded-2xl border border-transparent p-2 text-left transition hover:border-ink-700/45 hover:bg-ink-850 disabled:opacity-40"
               >
                 <Img src={car.images[0].src} alt="" sizes="96px" position={car.images[0].position} className="h-14 w-20 shrink-0 rounded-xl" />
                 <span className="min-w-0 flex-1">

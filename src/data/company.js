@@ -1,10 +1,10 @@
-/** About Us content — prepared for the About page milestone. */
+/** About Us content */
 export const about = {
   headline: 'Curators of extraordinary automobiles since 2009',
   intro:
-    'Veloce began as a single Mayfair mews garage with three cars and one belief: that buying an exceptional car should feel as special as driving one. Today we curate a global collection of the world’s most desirable automobiles for collectors, enthusiasts and first-time dreamers alike.',
+    'Aurion began as a single Mayfair mews garage with three cars and one belief: that buying an exceptional car should feel as special as driving one. Today we curate a global collection of the world’s most desirable automobiles for collectors, enthusiasts and first-time dreamers alike.',
   story: [
-    'Every car that joins the Veloce collection is personally selected by our specialists, who travel to auctions, private collections and manufacturer allocations around the world.',
+    'Every car that joins the Aurion collection is personally selected by our specialists, who travel to auctions, private collections and manufacturer allocations around the world.',
     'Pre-owned cars undergo a 240-point inspection by marque-certified technicians, a full paint-depth audit and a road test before they are photographed for the collection.',
     'From private test drives on closed circuits to enclosed delivery in over 40 countries, our concierge team handles every detail so you can focus on the drive.',
   ],
@@ -13,7 +13,7 @@ export const about = {
 }
 
 export const milestones = [
-  { year: '2009', title: 'The first garage', description: 'Veloce opens a three-car mews garage in Mayfair, London.' },
+  { year: '2009', title: 'The first garage', description: 'Aurion opens a three-car mews garage in Mayfair, London.' },
   { year: '2013', title: 'Monaco calling', description: 'Our second showroom opens on Avenue Princesse Grace, Monte-Carlo.' },
   { year: '2017', title: 'Global delivery', description: 'Launch of enclosed, fully insured delivery to 40+ countries.' },
   { year: '2020', title: 'Electric era', description: 'A dedicated electric performance division joins the collection.' },

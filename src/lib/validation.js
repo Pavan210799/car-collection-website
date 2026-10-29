@@ -22,5 +22,5 @@ export function validate(values, schema) {
   )
 }
 
-export const bookingReference = (prefix = 'VLC') =>
+export const bookingReference = (prefix = 'AUR') =>
   `${prefix}-${Date.now().toString(36).slice(-4).toUpperCase()}${Math.random().toString(36).slice(2, 5).toUpperCase()}`

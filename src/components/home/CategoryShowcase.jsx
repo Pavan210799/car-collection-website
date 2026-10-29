@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
@@ -9,89 +8,80 @@ import { categories } from '../../data/categories'
 import { cars, carsById } from '../../data/cars'
 import { pluralize } from '../../lib/format'
 
-const withCounts = categories.map((category) => ({
-  ...category,
-  count: cars.filter((car) => car.category === category.slug).length,
-  image: carsById.get(category.cover).images[0],
-}))
+const tiles = categories
+  .map((category) => {
+    const image = carsById.get(category.cover)?.images?.[0] ?? cars.find((car) => car.category === category.slug)?.images?.[0]
+    return image ? { ...category, image, count: cars.filter((car) => car.category === category.slug).length } : null
+  })
+  .filter(Boolean)
+
+const layout = [
+  'md:col-span-2 lg:col-span-2 lg:row-span-2',
+  '',
+  '',
+  '',
+  '',
+  'lg:col-span-2',
+  'lg:col-span-2',
+]
 
 export function CategoryShowcase() {
-  const [active, setActive] = useState(0)
-
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative isolate overflow-hidden border-y border-ink-700/60 bg-ink-900 py-20 sm:py-28">
+      <div aria-hidden="true" className="dot-grid absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <Container>
         <SectionHeading
-          eyebrow="Browse by category"
-          title="Find your kind of thrill"
-          description="From silent electric missiles to twelve-cylinder grand tourers — explore the collection by the way you love to drive."
+          eyebrow="Disciplines"
+          title="Every way to go fast"
+          description="From thousand-horsepower hypercars to silent electric rockets — pick the kind of thrill you’re after."
         />
 
-        {/* Desktop: expanding accordion */}
-        <div className="mt-12 hidden h-[34rem] gap-3 lg:flex xl:h-[38rem]">
-          {withCounts.map((category, index) => {
-            const isActive = index === active
+        <div className="mt-12 grid auto-rows-[15rem] gap-4 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[14rem] xl:auto-rows-[16rem]">
+          {tiles.map((category, index) => {
+            const feature = index === 0
             return (
               <motion.div
                 key={category.slug}
-                layout
-                onMouseEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                animate={{ flexGrow: isActive ? 5 : 1 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative min-w-0 basis-0 overflow-hidden rounded-[1.75rem] border border-white/[0.07]"
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.75, delay: (index % 4) * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                className={`min-w-0 ${layout[index] ?? ''}`}
               >
-                <Link to={`/collection?category=${category.slug}`} className="group absolute inset-0 block outline-none">
+                <Link
+                  to={`/collection?category=${category.slug}`}
+                  className="group relative isolate flex size-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-ink-800 p-5 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:p-6"
+                >
                   <Img
                     src={category.image.src}
                     alt={category.image.alt}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    sizes={feature ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw'}
                     position={category.image.position}
-                    className="absolute inset-0"
-                    imgClassName={`transition-transform duration-[1.6s] ease-premium ${isActive ? 'scale-100' : 'scale-125'}`}
+                    className="absolute inset-0 -z-10"
+                    imgClassName="transition-transform duration-[1.6s] ease-premium group-hover:scale-110"
                   />
-                  <div
-                    className={`absolute inset-0 transition-colors duration-700 ${isActive ? 'bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent' : 'bg-ink-950/65'}`}
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-7">
-                    <motion.div animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 20 }} transition={{ duration: 0.6, delay: isActive ? 0.2 : 0 }} className={isActive ? '' : 'pointer-events-none'}>
-                      <p className="eyebrow">{category.tagline}</p>
-                      <h3 className="mt-3 font-display text-4xl font-bold text-bone">{category.name}</h3>
-                      <p className="mt-3 max-w-md text-sm leading-relaxed text-mist">{category.description}</p>
-                      <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-bone px-5 py-2.5 text-sm font-semibold text-ink-950 transition group-hover:bg-gold-400">
-                        Explore {pluralize(category.count, 'car')} <ArrowUpRight className="size-4" />
-                      </span>
-                    </motion.div>
+                  <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
+
+                  <span className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[0.65rem] font-bold tracking-[0.16em] text-bone uppercase backdrop-blur-md">
+                    {pluralize(category.count, 'car')}
+                  </span>
+                  <span className="absolute top-4 right-4 grid size-10 place-items-center rounded-full bg-white/90 text-bone backdrop-blur-md transition duration-500 ease-premium group-hover:rotate-45 group-hover:bg-gold-400 group-hover:text-on-accent">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+
+                  <div className="min-w-0 text-white">
+                    <h3 className={`font-display leading-tight font-bold break-words ${feature ? 'text-3xl sm:text-4xl' : 'text-2xl'}`}>{category.name}</h3>
+                    <p className="mt-1 text-sm text-white/80">{category.tagline}</p>
+                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-premium group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                      <p className={`overflow-hidden text-sm leading-relaxed text-white/75 ${feature ? 'max-w-md' : 'line-clamp-3'}`}>
+                        <span className="block pt-2">{category.description}</span>
+                      </p>
+                    </div>
                   </div>
-                  <motion.p
-                    animate={{ opacity: isActive ? 0 : 1 }}
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 rotate-180 font-display text-lg font-bold tracking-[0.18em] whitespace-nowrap text-bone uppercase [writing-mode:vertical-rl]"
-                  >
-                    {category.short}
-                  </motion.p>
                 </Link>
               </motion.div>
             )
           })}
-        </div>
-
-        {/* Mobile & tablet: snap rail */}
-        <div className="no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 lg:hidden">
-          {withCounts.map((category) => (
-            <Link
-              key={category.slug}
-              to={`/collection?category=${category.slug}`}
-              className="group relative aspect-[3/4] w-[78%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/[0.07] xs:w-[60%] sm:w-[42%] md:w-[34%]"
-            >
-              <Img src={category.image.src} alt={category.image.alt} sizes="(min-width: 640px) 42vw, 78vw" position={category.image.position} className="absolute inset-0" imgClassName="transition-transform duration-1000 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/20 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="text-[0.6rem] font-semibold tracking-[0.25em] text-gold-400 uppercase">{pluralize(category.count, 'car')}</p>
-                <h3 className="mt-1 font-display text-2xl font-bold text-bone">{category.name}</h3>
-                <p className="mt-1 text-xs text-mist">{category.tagline}</p>
-              </div>
-            </Link>
-          ))}
         </div>
       </Container>
     </section>

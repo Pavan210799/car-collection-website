@@ -9,7 +9,7 @@ import { cars } from '../../data/cars'
 import { categories } from '../../data/categories'
 import { sortCars } from '../../lib/carQuery'
 
-const tabs = [{ slug: 'all', short: 'All' }, ...categories]
+const tabs = [{ slug: 'all', short: 'Featured' }, ...categories]
 
 export function FeaturedCollection() {
   const [active, setActive] = useState('all')
@@ -20,25 +20,21 @@ export function FeaturedCollection() {
   }, [active])
 
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <Container>
         <SectionHeading
-          eyebrow="Featured collection"
-          title={
-            <>
-              Icons of <span className="text-gradient-gold">speed &amp; style</span>
-            </>
-          }
-          description="A rotating edit of the most coveted cars in our collection — hand-picked by our specialists this month."
+          eyebrow="The collection"
+          title="Machines worth the detour"
+          description="Hand-selected, inspected and photographed in-house. Filter by discipline to see what’s on the floor today."
           action={
-            <Button to="/collection" variant="outline">
-              View all {cars.length} cars <ArrowRight className="size-4" />
+            <Button to="/collection" variant="dark">
+              View all {cars.length} cars <ArrowRight className="size-4 transition-transform group-hover/btn:translate-x-1" />
             </Button>
           }
         />
 
-        <div className="no-scrollbar -mx-5 mt-10 overflow-x-auto px-5 sm:mx-0 sm:px-0">
-          <div role="tablist" aria-label="Filter featured cars" className="flex w-max gap-2 rounded-full border border-white/[0.07] bg-ink-900/60 p-1.5">
+        <div className="no-scrollbar mt-10 -mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+          <div role="tablist" aria-label="Filter featured cars" className="inline-flex gap-1 rounded-full border border-ink-700/60 bg-ink-900 p-1 shadow-soft">
             {tabs.map((tab) => (
               <button
                 key={tab.slug}
@@ -46,12 +42,12 @@ export function FeaturedCollection() {
                 role="tab"
                 aria-selected={active === tab.slug}
                 onClick={() => setActive(tab.slug)}
-                className={`relative rounded-full px-4 py-2 text-xs font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 sm:px-5 sm:text-sm ${
-                  active === tab.slug ? 'text-ink-950' : 'text-mist hover:text-bone'
+                className={`relative shrink-0 rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors duration-300 ${
+                  active === tab.slug ? 'text-on-accent' : 'text-mist hover:text-bone'
                 }`}
               >
                 {active === tab.slug && (
-                  <motion.span layoutId="featured-tab" className="absolute inset-0 rounded-full bg-gold-400" transition={{ type: 'spring', stiffness: 380, damping: 32 }} />
+                  <motion.span layoutId="featured-tab" className="absolute inset-0 rounded-full bg-bone" transition={{ type: 'spring', stiffness: 380, damping: 32 }} />
                 )}
                 <span className="relative">{tab.short}</span>
               </button>
@@ -59,19 +55,10 @@ export function FeaturedCollection() {
           </div>
         </div>
 
-        <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
-          <AnimatePresence mode="popLayout">
+        <motion.div layout className="mt-8 grid gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
+          <AnimatePresence mode="popLayout" initial={false}>
             {visible.map((car, index) => (
-              <motion.div
-                key={car.id}
-                layout
-                initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.25 } }}
-                transition={{ duration: 0.7, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <CarCard car={car} />
-              </motion.div>
+              <CarCard key={car.id} car={car} index={index} animated />
             ))}
           </AnimatePresence>
         </motion.div>

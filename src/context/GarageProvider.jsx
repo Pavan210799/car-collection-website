@@ -10,8 +10,8 @@ const keepKnown = (ids) => ids.filter((id) => carsById.has(id))
 
 export function GarageProvider({ children }) {
   const { notify } = useToast()
-  const [storedWishlist, setWishlist] = useLocalStorage('veloce:wishlist', EMPTY)
-  const [storedCompare, setCompare] = useLocalStorage('veloce:compare', EMPTY)
+  const [storedWishlist, setWishlist] = useLocalStorage('aurion:wishlist', EMPTY)
+  const [storedCompare, setCompare] = useLocalStorage('aurion:compare', EMPTY)
 
   const wishlist = useMemo(() => keepKnown(storedWishlist), [storedWishlist])
   const compare = useMemo(() => keepKnown(storedCompare).slice(0, MAX_COMPARE), [storedCompare])

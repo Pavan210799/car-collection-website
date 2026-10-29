@@ -1,21 +1,20 @@
 export const siteMeta = {
-  name: 'Veloce',
-  legalName: 'Veloce Collection Ltd.',
-  tagline: 'The Car Collection',
+  name: 'Aurion',
+  legalName: 'Aurion Motors Ltd.',
+  tagline: 'Curated Performance',
   description:
-    'A curated collection of hypercars, supercars, grand tourers and luxury SUVs — hand-picked, meticulously inspected and ready for the road.',
+    'A hand-selected fleet of hypercars, supercars, grand tourers and luxury SUVs — inspected, photographed and ready for the road.',
 }
 
-/** Primary navigation. `ready: false` pages are planned for the next milestone and stay hidden until built. */
 export const navigation = [
   { label: 'Home', to: '/', ready: true },
   { label: 'Collection', to: '/collection', ready: true },
   { label: 'Brands', to: '/brands', ready: true },
   { label: 'Compare', to: '/compare', ready: true },
   { label: 'Test Drive', to: '/test-drive', ready: true },
-  { label: 'About', to: '/about', ready: false },
-  { label: 'Contact', to: '/contact', ready: false },
-  { label: 'FAQ', to: '/faq', ready: false },
+  { label: 'About', to: '/about', ready: true },
+  { label: 'Contact', to: '/contact', ready: true, footerOnly: true },
+  { label: 'FAQ', to: '/faq', ready: true, footerOnly: true },
 ]
 
 export const heroSlides = [
@@ -85,36 +84,44 @@ export const services = [
 
 export const testimonials = [
   {
+    id: 'alex',
+    quote:
+      'The GT3 RS test drive on a closed circuit was unreal — no sales pressure, just a product genius who knows every millimetre of the car.',
     name: 'Alexander Reinholt',
-    role: 'Entrepreneur, Munich',
-    car: 'porsche-911-gt3-rs',
-    quote:
-      'The test drive was arranged at the Nürburgring within a week. Flawless from enquiry to handover — this is how buying a car should feel.',
+    role: 'Collector · Munich',
+    carSlug: 'porsche-911-gt3-rs',
     rating: 5,
+    image: 'detail-1',
   },
   {
+    id: 'priya',
+    quote:
+      'I compared three SUVs side by side before choosing the Cullinan. Aurion made a six-figure decision feel calm and informed.',
     name: 'Priya Venkataraman',
-    role: 'Surgeon, Dubai',
-    car: 'rolls-royce-cullinan',
-    quote:
-      'They understood exactly what I wanted before I did. The Cullinan arrived detailed to perfection with my monogram on the headrests.',
+    role: 'CEO · Singapore',
+    carSlug: 'rolls-royce-cullinan',
     rating: 5,
+    image: 'detail-2',
   },
   {
+    id: 'marcus',
+    quote:
+      'Enclosed delivery to Los Angeles was flawless — live tracking, white gloves, and the car arrived exactly as photographed.',
     name: 'Marcus Ellery',
-    role: 'Film Producer, Los Angeles',
-    car: 'ferrari-sf90-stradale',
-    quote:
-      'Comparing the SF90 against the 720S side by side made the decision easy. Honest advice, zero pressure, unbelievable cars.',
+    role: 'Film producer · Los Angeles',
+    carSlug: 'mclaren-720s',
     rating: 5,
+    image: 'road-2',
   },
   {
-    name: 'Sofia Marchetti',
-    role: 'Architect, Milan',
-    car: 'bentley-continental-gt',
+    id: 'sofia',
     quote:
-      'An exceptional collection curated by people who genuinely love cars. Their concierge handled financing, insurance and delivery.',
+      'From first enquiry to handover in Monaco, every touchpoint felt bespoke. This is how buying a dream car should feel.',
+    name: 'Sofia Marchetti',
+    role: 'Architect · Milan',
+    carSlug: 'ferrari-roma',
     rating: 5,
+    image: 'interior-2',
   },
 ]
 

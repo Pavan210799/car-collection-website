@@ -4,17 +4,17 @@ export const contactInfo = {
   intro: 'Our specialists respond to every enquiry within two business hours, seven days a week.',
   phone: '+44 20 7946 0321',
   whatsapp: '+44 7700 900 321',
-  email: 'concierge@veloce.cars',
-  pressEmail: 'press@veloce.cars',
+  email: 'concierge@aurion.motor',
+  pressEmail: 'press@aurion.motor',
   hours: 'Concierge available 24/7 for existing clients',
   image: 'showroom-3',
 }
 
 export const socialLinks = [
-  { label: 'Instagram', icon: 'Instagram', href: 'https://instagram.com' },
-  { label: 'YouTube', icon: 'Youtube', href: 'https://youtube.com' },
-  { label: 'X', icon: 'Twitter', href: 'https://x.com' },
-  { label: 'LinkedIn', icon: 'Linkedin', href: 'https://linkedin.com' },
+  { label: 'Instagram', icon: 'Camera', href: 'https://instagram.com' },
+  { label: 'YouTube', icon: 'Play', href: 'https://youtube.com' },
+  { label: 'X', icon: 'AtSign', href: 'https://x.com' },
+  { label: 'LinkedIn', icon: 'Briefcase', href: 'https://linkedin.com' },
 ]
 
 export const faqCategories = ['Buying', 'Test Drives', 'Finance', 'Delivery', 'Ownership']
@@ -54,7 +54,7 @@ export const faqs = [
     category: 'Test Drives',
     question: 'Can the test drive come to me?',
     answer:
-      'Absolutely. Our Home Delivery experience brings the car to your home or office within 50 km of any Veloce showroom.',
+      'Absolutely. Our Home Delivery experience brings the car to your home or office within 50 km of any Aurion showroom.',
   },
   {
     category: 'Finance',
@@ -90,7 +90,7 @@ export const faqs = [
     category: 'Ownership',
     question: 'Can you store and maintain my car?',
     answer:
-      'Our climate-controlled Veloce Vault offers secure storage, battery conditioning, detailing and scheduled servicing collected and returned to you.',
+      'Our climate-controlled Aurion Vault offers secure storage, battery conditioning, detailing and scheduled servicing collected and returned to you.',
   },
 ]
 

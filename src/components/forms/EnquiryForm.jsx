@@ -36,7 +36,7 @@ export function EnquiryForm({ carId, onDone, compact = false }) {
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
   const [reference, setReference] = useState('')
-  const [, setEnquiries] = useLocalStorage('veloce:enquiries', EMPTY_LIST)
+  const [, setEnquiries] = useLocalStorage('aurion:enquiries', EMPTY_LIST)
 
   const set = (key) => (event) => {
     const value = event?.target ? (event.target.type === 'checkbox' ? event.target.checked : event.target.value) : event
@@ -90,7 +90,7 @@ export function EnquiryForm({ carId, onDone, compact = false }) {
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-mist">
             Your enquiry{car ? ` about the ${car.name}` : ''} has been received. A specialist will reach you by {values.method.toLowerCase()} within two business hours.
           </p>
-          <p className="mt-5 rounded-full border border-white/10 px-4 py-2 font-mono text-xs tracking-wider text-gold-200">Reference {reference}</p>
+          <p className="mt-5 rounded-full border border-ink-700/45 px-4 py-2 font-mono text-xs tracking-wider text-gold-500">Reference {reference}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button variant="outline" onClick={reset}>
               Send another
@@ -137,7 +137,7 @@ export function EnquiryForm({ carId, onDone, compact = false }) {
             maxLength={600}
           />
           <Checkbox checked={values.consent} onChange={set('consent')} error={errors.consent} name="consent">
-            I agree to be contacted by a Veloce specialist about this enquiry. We never share your details.
+            I agree to be contacted by an Aurion specialist about this enquiry. We never share your details.
           </Checkbox>
           <Button type="submit" size="lg" disabled={status === 'submitting'} className="w-full sm:w-auto sm:justify-self-start">
             {status === 'submitting' ? (

@@ -1,65 +1,84 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Container } from '../ui/Container'
-import { CountUp } from '../ui/CountUp'
-import { stats } from '../../data/site'
+import { Button } from '../ui/Button'
+import { siteMeta } from '../../data/site'
 
-const statement =
-  'We don’t sell cars. We curate machines that quicken the pulse — each one hand-selected, meticulously inspected and ready to become part of your story.'
+const EASE = [0.22, 1, 0.36, 1]
 
-function Word({ children, progress, range }) {
-  const opacity = useTransform(progress, range, [0.14, 1])
-  const y = useTransform(progress, range, [6, 0])
-  return (
-    <motion.span style={{ opacity, y }} className="inline-block">
-      {children}&nbsp;
-    </motion.span>
-  )
-}
+const statement = 'We don’t sell cars. We curate machines that quicken the pulse — each one hand-selected, inspected and ready to become part of your story.'
+const highlight = new Set(['curate', 'machines', 'pulse'])
+
+const pillars = [
+  { index: '01', title: 'Curated', text: 'Fewer than one in twenty cars we evaluate earns a place in the collection.' },
+  { index: '02', title: 'Inspected', text: 'A 240-point check by marque-certified technicians on every pre-owned car.' },
+  { index: '03', title: 'Delivered', text: 'Enclosed, insured transport with white-glove handover in 40+ countries.' },
+]
 
 export function Manifesto() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] })
   const words = statement.split(' ')
-
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
-      <div className="pointer-events-none absolute top-1/2 left-1/2 size-[40rem] -translate-1/2 rounded-full bg-gold-500/[0.07] blur-3xl" />
-      <Container className="relative">
-        <p className="eyebrow flex items-center gap-3">
-          <span className="h-px w-8 bg-gold-400/70" />
-          The Veloce philosophy
-        </p>
-        <p
-          ref={ref}
-          className="mt-8 max-w-6xl font-display text-[clamp(1.6rem,4.2vw,3.6rem)] leading-[1.15] font-semibold tracking-tight text-balance text-bone"
-        >
-          {words.map((word, index) => (
-            <Word key={`${word}-${index}`} progress={scrollYProgress} range={[index / words.length, (index + 1) / words.length]}>
-              {word}
-            </Word>
-          ))}
-        </p>
-
-        <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.07] sm:mt-24 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+    <section className="py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-20">
+          <div className="min-w-0">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="h-px w-8 bg-gold-400" /> The {siteMeta.name} way
+            </p>
+            <motion.p
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative bg-ink-950 p-6 transition-colors duration-500 hover:bg-ink-900 sm:p-8 lg:p-10"
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.035 } } }}
+              className="mt-6 font-display text-[clamp(1.6rem,3.6vw,3rem)] leading-[1.18] font-semibold tracking-tight text-pretty text-bone"
             >
-              <dd className="font-display text-[clamp(2.25rem,5vw,4rem)] leading-none font-bold text-bone">
-                <CountUp value={stat.value} decimals={stat.decimals ?? 0} />
-                <span className="text-gradient-gold">{stat.suffix}</span>
-              </dd>
-              <dt className="mt-4 max-w-[14rem] text-sm leading-relaxed text-mist">{stat.label}</dt>
-              <span className="absolute bottom-0 left-0 h-px w-0 bg-gold-400 transition-all duration-700 ease-premium group-hover:w-full" />
+              {words.map((word, index) => {
+                const clean = word.replace(/[^a-z]/gi, '').toLowerCase()
+                return (
+                  <motion.span
+                    key={`${word}-${index}`}
+                    variants={{ hidden: { opacity: 0.12, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
+                    className={`inline-block ${highlight.has(clean) ? 'text-gradient-gold' : ''}`}
+                  >
+                    {word}&nbsp;
+                  </motion.span>
+                )
+              })}
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <Button to="/about" variant="dark">
+                Our story
+              </Button>
+              <Button to="/brands" variant="outline">
+                Meet the marques
+              </Button>
             </motion.div>
-          ))}
-        </dl>
+          </div>
+
+          <ol className="min-w-0 space-y-3 self-end">
+            {pillars.map((pillar, index) => (
+              <motion.li
+                key={pillar.index}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: index * 0.1, ease: EASE }}
+                className="group flex gap-5 rounded-[1.5rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift"
+              >
+                <span className="font-display text-2xl font-bold text-gold-400 transition-transform duration-500 group-hover:scale-110">{pillar.index}</span>
+                <span className="min-w-0">
+                  <span className="block font-display text-lg font-bold text-bone">{pillar.title}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-mist">{pillar.text}</span>
+                </span>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
       </Container>
     </section>
   )

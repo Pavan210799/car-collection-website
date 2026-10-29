@@ -39,9 +39,9 @@ export default function TestDrive() {
         description="Reserve a private test drive in under a minute, or ask our specialists anything — finance, part-exchange, bespoke specification or global delivery."
         image={siteImage('interior-1')}
       >
-        <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
           {assurances.map((item) => (
-            <div key={item.title} className="glass flex items-start gap-3 rounded-2xl bg-ink-950/40 p-4">
+            <div key={item.title} className="glass flex min-w-0 items-start gap-3 rounded-2xl p-4">
               <item.icon className="mt-0.5 size-4 shrink-0 text-gold-400" />
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold text-bone">{item.title}</span>
@@ -53,7 +53,7 @@ export default function TestDrive() {
       </PageHeader>
 
       <Container className="pb-24">
-        <div role="tablist" aria-label="Request type" className="mb-8 inline-flex max-w-full rounded-full border border-white/[0.07] bg-ink-900 p-1.5">
+        <div role="tablist" aria-label="Request type" className="mb-8 inline-flex max-w-full rounded-full border border-ink-700/40 bg-ink-900 p-1.5">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -62,7 +62,7 @@ export default function TestDrive() {
               aria-selected={active === tab.id}
               onClick={() => switchTab(tab.id)}
               className={`relative flex min-w-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:px-6 ${
-                active === tab.id ? 'text-ink-950' : 'text-mist hover:text-bone'
+                active === tab.id ? 'text-on-accent' : 'text-mist hover:text-bone'
               }`}
             >
               {active === tab.id && <motion.span layoutId="request-tab" className="absolute inset-0 rounded-full bg-gold-400" transition={{ type: 'spring', stiffness: 380, damping: 32 }} />}
@@ -78,7 +78,7 @@ export default function TestDrive() {
             <TestDriveForm initialCar={carParam} />
           ) : (
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[minmax(0,1fr)_24rem]">
-              <div className="min-w-0 rounded-[1.75rem] border border-white/[0.07] bg-ink-900/60 p-5 sm:p-8">
+              <div className="min-w-0 rounded-[1.75rem] border border-ink-700/40 bg-ink-900/60 p-5 sm:p-8">
                 <h2 className="font-display text-2xl font-bold text-bone">How can we help?</h2>
                 <p className="mt-2 mb-8 text-sm text-mist">{contactInfo.intro}</p>
                 <EnquiryForm carId={carParam} />
@@ -94,10 +94,10 @@ export default function TestDrive() {
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}
                     rel="noreferrer"
-                    className="group rounded-[1.5rem] border border-white/[0.07] bg-ink-900 p-6 transition hover:border-gold-400/30"
+                    className="group rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6 transition hover:border-gold-400/30"
                   >
                     <p className="eyebrow">{item.label}</p>
-                    <p className="mt-2 font-display text-lg font-bold break-words text-bone transition group-hover:text-gold-200">{item.value}</p>
+                    <p className="mt-2 font-display text-lg font-bold break-words text-bone transition group-hover:text-gold-500">{item.value}</p>
                   </a>
                 ))}
                 <p className="px-2 text-xs leading-relaxed text-smoke">{contactInfo.hours}</p>

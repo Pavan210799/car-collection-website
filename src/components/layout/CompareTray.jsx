@@ -30,7 +30,7 @@ export function CompareTray() {
             transition={{ type: 'spring', stiffness: 260, damping: 30 }}
             className="fixed inset-x-3 bottom-3 z-40 sm:inset-x-auto sm:left-1/2 sm:w-[min(40rem,calc(100vw-3rem))] lg:w-[min(54rem,calc(100vw-3rem))] sm:-translate-x-1/2"
           >
-            <div className="glass flex items-center gap-3 rounded-[1.4rem] bg-ink-900/85 p-2.5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] sm:gap-4 sm:p-3">
+            <div className="glass flex items-center gap-3 rounded-[1.25rem] p-2.5 shadow-lift sm:gap-4 sm:p-3">
               <ul className="flex min-w-0 flex-1 gap-2">
                 {Array.from({ length: MAX_COMPARE }, (_, index) => {
                   const car = selected[index]
@@ -41,7 +41,7 @@ export function CompareTray() {
                           layout
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="group relative flex h-12 items-center gap-2 overflow-hidden rounded-xl border border-white/10 bg-ink-800 pr-1"
+                          className="group relative flex h-12 items-center gap-2 overflow-hidden rounded-xl border border-ink-700/60 bg-ink-900 pr-1"
                         >
                           <Img src={car.images[0].src} alt="" sizes="96px" className="h-full w-12 shrink-0 sm:w-auto sm:flex-1 lg:w-16 lg:flex-none" />
                           <span className="hidden min-w-0 flex-1 truncate text-xs font-semibold text-bone lg:block">{car.model}</span>
@@ -49,13 +49,13 @@ export function CompareTray() {
                             type="button"
                             onClick={() => removeFromCompare(car.id)}
                             aria-label={`Remove ${car.name} from comparison`}
-                            className="absolute top-1 right-1 grid size-5 place-items-center rounded-full bg-black/70 text-bone transition hover:bg-ember sm:static sm:size-6 sm:bg-transparent sm:text-mist sm:hover:bg-white/10 sm:hover:text-bone"
+                            className="absolute top-1 right-1 grid size-5 place-items-center rounded-full bg-bone text-on-accent transition hover:bg-ember sm:static sm:size-6 sm:bg-transparent sm:text-smoke sm:hover:bg-ink-800 sm:hover:text-bone"
                           >
                             <X className="size-3" />
                           </button>
                         </motion.div>
                       ) : (
-                        <div className="grid h-12 place-items-center rounded-xl border border-dashed border-white/10 text-smoke">
+                        <div className="grid h-12 place-items-center rounded-xl border border-dashed border-ink-600/70 text-smoke">
                           <Plus className="size-4" />
                         </div>
                       )}

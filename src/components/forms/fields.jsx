@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { AlertCircle, Check, ChevronDown } from 'lucide-react'
 
 const control =
-  'w-full rounded-2xl border bg-ink-850 px-4 text-sm text-bone transition duration-300 outline-none placeholder:text-smoke hover:border-white/25 focus:border-gold-400 focus:bg-ink-800 focus:shadow-[0_0_0_4px_rgba(217,183,126,0.12)]'
+  'w-full rounded-2xl border bg-ink-850 px-4 text-sm text-bone transition duration-300 outline-none placeholder:text-smoke hover:border-ink-700/55 focus:border-gold-400 focus:bg-ink-800 focus:shadow-[0_0_0_4px_rgba(217,183,126,0.12)]'
 
 function ErrorText({ id, error }) {
   return (
@@ -28,7 +28,7 @@ function ErrorText({ id, error }) {
 export function Field({ label, error, hint, required, as = 'input', className = '', children, ...props }) {
   const id = useId()
   const errorId = `${id}-error`
-  const border = error ? 'border-ember/70' : 'border-white/10'
+  const border = error ? 'border-ember/70' : 'border-ink-700/45'
   const shared = {
     id,
     'aria-invalid': Boolean(error),
@@ -69,7 +69,7 @@ export function Checkbox({ checked, onChange, error, children, name }) {
         <input id={id} name={name} type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" />
         <span
           className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded-md border transition peer-focus-visible:ring-2 peer-focus-visible:ring-gold-400 ${
-            checked ? 'border-gold-400 bg-gold-400 text-ink-950' : error ? 'border-ember/70' : 'border-white/25 group-hover:border-white/50'
+            checked ? 'border-gold-400 bg-gold-400 text-on-accent' : error ? 'border-ember/70' : 'border-ink-700/55 group-hover:border-ink-600'
           }`}
         >
           <Check className={`size-3.5 transition-transform ${checked ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
@@ -92,8 +92,8 @@ export function ChoiceGroup({ label, options, value, onChange, error, columns = 
             type="button"
             onClick={() => onChange(option)}
             aria-pressed={value === option}
-            className={`min-h-11 rounded-xl border px-3 text-sm font-semibold transition ${
-              value === option ? 'border-gold-400 bg-gold-400/10 text-gold-200' : 'border-white/10 text-mist hover:border-white/30 hover:text-bone'
+            className={`min-h-11 min-w-0 rounded-xl border px-1.5 text-xs font-semibold break-words transition xs:px-3 xs:text-sm ${
+              value === option ? 'border-gold-400 bg-gold-400/10 text-gold-500' : 'border-ink-700/60 bg-ink-900 text-mist hover:border-ink-600 hover:text-bone'
             }`}
           >
             {option}

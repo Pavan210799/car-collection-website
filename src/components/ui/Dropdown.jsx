@@ -43,7 +43,7 @@ export function Dropdown({ label, value, options, onChange, icon: Icon, align = 
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
-        className="flex h-11 w-full items-center gap-2 rounded-full border border-white/10 bg-ink-900 px-4 text-sm text-bone transition hover:border-white/25"
+        className="flex h-11 w-full items-center gap-2 rounded-full border border-ink-700/45 bg-ink-900 px-4 text-sm text-bone transition hover:border-ink-700/55"
       >
         {Icon && <Icon className="size-4 shrink-0 text-gold-400" />}
         <span className="hidden shrink-0 text-mist sm:inline">{label}:</span>
@@ -60,7 +60,7 @@ export function Dropdown({ label, value, options, onChange, icon: Icon, align = 
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className={`absolute top-[calc(100%+0.5rem)] z-30 w-64 max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-white/10 bg-ink-850 p-1.5 shadow-2xl shadow-black/60 ${
+            className={`absolute top-[calc(100%+0.5rem)] z-30 w-64 max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900 p-1.5 shadow-lift ${
               align === 'right' ? 'right-0 origin-top-right' : 'left-0 origin-top-left'
             }`}
           >
@@ -73,8 +73,8 @@ export function Dropdown({ label, value, options, onChange, icon: Icon, align = 
                     onChange(option.value)
                     setOpen(false)
                   }}
-                  className={`flex w-full items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 text-left text-sm transition outline-none focus-visible:bg-white/[0.07] ${
-                    option.value === value ? 'bg-gold-400/10 text-gold-200' : 'text-mist hover:bg-white/[0.05] hover:text-bone'
+                  className={`flex w-full items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 text-left text-sm transition outline-none focus-visible:bg-ink-850 ${
+                    option.value === value ? 'bg-gold-400/10 text-gold-500' : 'text-mist hover:bg-ink-850 hover:text-bone'
                   }`}
                 >
                   {option.label}

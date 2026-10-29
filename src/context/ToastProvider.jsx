@@ -53,7 +53,7 @@ export function ToastProvider({ children }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, x: 40, transition: { duration: 0.2 } }}
                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                className="glass pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-2xl bg-ink-900/85 p-4 shadow-2xl shadow-black/50"
+                className="glass pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-2xl bg-ink-900/90 p-4 shadow-lift"
               >
                 <Icon
                   className={`mt-0.5 size-5 shrink-0 ${toast.tone === 'warning' ? 'text-ember' : 'text-gold-400'}`}
@@ -75,7 +75,7 @@ export function ToastProvider({ children }) {
                   type="button"
                   onClick={() => dismiss(toast.id)}
                   aria-label="Dismiss notification"
-                  className="rounded-full p-1 text-mist transition hover:bg-white/10 hover:text-bone"
+                  className="rounded-full p-1 text-mist transition hover:bg-ink-800 hover:text-bone"
                 >
                   <X className="size-4" />
                 </button>

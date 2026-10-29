@@ -9,7 +9,7 @@ import { PRICE_STEPS, POWER_STEPS } from './filterConfig'
 function Group({ title, children, defaultOpen = true, count = 0 }) {
   const [open, setOpen] = useState(defaultOpen)
   return (
-    <div className="border-b border-white/[0.07] py-5 first:pt-0 last:border-b-0">
+    <div className="border-b border-ink-700/40 py-5 first:pt-0 last:border-b-0">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -18,7 +18,7 @@ function Group({ title, children, defaultOpen = true, count = 0 }) {
       >
         <span className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-bone uppercase">
           {title}
-          {count > 0 && <span className="rounded-full bg-gold-400 px-1.5 text-[0.6rem] leading-4 text-ink-950">{count}</span>}
+          {count > 0 && <span className="rounded-full bg-gold-400 px-1.5 text-[0.6rem] leading-4 text-on-accent">{count}</span>}
         </span>
         <ChevronDown className={`size-4 text-mist transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -46,7 +46,7 @@ function CheckOption({ label, checked, count, onChange }) {
       <input type="checkbox" className="peer sr-only" checked={checked} disabled={disabled} onChange={onChange} />
       <span
         className={`grid size-5 shrink-0 place-items-center rounded-md border transition duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-gold-400 ${
-          checked ? 'border-gold-400 bg-gold-400 text-ink-950' : 'border-white/20 group-hover:border-white/40'
+          checked ? 'border-gold-400 bg-gold-400 text-on-accent' : 'border-ink-700/55 group-hover:border-ink-600'
         }`}
       >
         <Check className={`size-3.5 transition-transform duration-200 ${checked ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
@@ -66,7 +66,7 @@ function ChipOption({ label, checked, onChange, count }) {
       disabled={disabled}
       aria-pressed={checked}
       className={`rounded-full border px-3.5 py-2 text-xs font-semibold transition duration-300 disabled:opacity-30 ${
-        checked ? 'border-gold-400 bg-gold-400 text-ink-950' : 'border-white/12 text-mist hover:border-white/30 hover:text-bone'
+        checked ? 'border-gold-400 bg-gold-400 text-on-accent' : 'border-ink-700/45 text-mist hover:border-ink-700/60 hover:text-bone'
       }`}
     >
       {label}
@@ -82,7 +82,7 @@ function StepSelect({ label, value, steps, onChange, format, placeholder }) {
         <select
           value={value ?? ''}
           onChange={(event) => onChange(event.target.value === '' ? null : Number(event.target.value))}
-          className="w-full appearance-none rounded-xl border border-white/10 bg-ink-800 py-2.5 pr-8 pl-3 text-sm text-bone transition outline-none hover:border-white/25 focus:border-gold-400"
+          className="w-full appearance-none rounded-xl border border-ink-700/45 bg-ink-800 py-2.5 pr-8 pl-3 text-sm text-bone transition outline-none hover:border-ink-700/55 focus:border-gold-400"
         >
           <option value="">{placeholder}</option>
           {steps.map((step) => (
