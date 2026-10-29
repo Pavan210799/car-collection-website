@@ -10,7 +10,7 @@ import { heroSlides, stats } from '../../data/site'
 import { carsById } from '../../data/cars'
 import { formatNumber } from '../../lib/format'
 
-const SLIDE_MS = 8000
+const SLIDE_MS = 5500
 const EASE = [0.22, 1, 0.36, 1]
 
 const slides = heroSlides
@@ -21,7 +21,7 @@ const slides = heroSlides
   })
   .filter(Boolean)
 
-const FADE_S = 0.9
+const FADE_S = 0.65
 const ZOOM_FROM = 1.12
 const FADE_EASE = [0.45, 0, 0.55, 1]
 
@@ -39,8 +39,8 @@ function MaskedLine({ children, delay = 0 }) {
       <motion.span
         className="block"
         initial={{ y: '100%', opacity: 0, filter: 'blur(6px)' }}
-        animate={{ y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.9, delay: delay + 0.25, ease: EASE } }}
-        exit={{ y: '-60%', opacity: 0, filter: 'blur(6px)', transition: { duration: 0.45, ease: [0.55, 0, 0.75, 0.2] } }}
+        animate={{ y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.65, delay: delay + 0.12, ease: EASE } }}
+        exit={{ y: '-60%', opacity: 0, filter: 'blur(6px)', transition: { duration: 0.32, ease: [0.55, 0, 0.75, 0.2] } }}
       >
         {children}
       </motion.span>
@@ -187,8 +187,8 @@ export function Hero() {
                 <motion.p
                   key={slide.car.id}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3, ease: EASE } }}
-                  exit={{ opacity: 0, y: -6, transition: { duration: 0.3 } }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.45, delay: 0.18, ease: EASE } }}
+                  exit={{ opacity: 0, y: -6, transition: { duration: 0.22 } }}
                   className="text-base leading-relaxed text-mist [grid-area:1/1] sm:text-lg"
                 >
                   <span className="font-semibold text-bone">
