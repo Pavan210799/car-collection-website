@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import { useLocation, useOutlet, ScrollRestoration } from 'react-router-dom'
+import { useOutlet, ScrollRestoration } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { siteMeta } from '../../data/site'
 import { Navbar } from './Navbar'
 import { CompareTray } from './CompareTray'
 import { Footer } from './Footer'
+import { PageSkeleton, RouteProgress, skeletonVariant } from '../ui/Skeleton'
+import { usePageSkeleton } from '../../hooks/usePageSkeleton'
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -19,25 +21,27 @@ function ScrollProgress() {
 }
 
 export function RootLayout() {
-  const location = useLocation()
   const outlet = useOutlet()
+  const { showSkeleton, skeletonPath, pathname } = usePageSkeleton()
+  const skeleton = showSkeleton && skeletonVariant(skeletonPath) !== 'auth'
 
   useEffect(() => {
     document.title = `${siteMeta.name} — ${siteMeta.tagline}`
-  }, [location.pathname])
+  }, [pathname])
 
   return (
     <>
       <ScrollProgress />
+      {skeleton && <RouteProgress />}
       <Navbar />
       <motion.main
-        key={location.pathname}
-        initial={{ opacity: 0, y: 14 }}
+        key={skeleton ? 'skeleton' : pathname}
+        initial={{ opacity: 0, y: skeleton ? 0 : 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: skeleton ? 0.25 : 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="min-h-dvh"
       >
-        {outlet}
+        {skeleton ? <PageSkeleton pathname={skeletonPath} /> : outlet}
       </motion.main>
       <Footer />
       <CompareTray />

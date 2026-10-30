@@ -51,21 +51,22 @@ const stepSchemas = [
   },
 ]
 
+const icsStamp = (date) => date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+
 function downloadIcs(booking, car, showroom) {
   const [hours, minutes] = booking.time.split(':').map(Number)
   const start = new Date(`${booking.date}T00:00:00`)
   start.setHours(hours, minutes)
   const end = new Date(start.getTime() + 90 * 60 * 1000)
-  const stamp = (date) => date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Aurion//Test Drive//EN',
     'BEGIN:VEVENT',
     `UID:${booking.reference}@aurion.motor`,
-    `DTSTAMP:${stamp(new Date())}`,
-    `DTSTART:${stamp(start)}`,
-    `DTEND:${stamp(end)}`,
+    `DTSTAMP:${icsStamp(new Date())}`,
+    `DTSTART:${icsStamp(start)}`,
+    `DTEND:${icsStamp(end)}`,
     `SUMMARY:Aurion test drive — ${car.name}`,
     `LOCATION:${showroom.name}, ${showroom.address}`,
     `DESCRIPTION:Booking reference ${booking.reference}`,
@@ -212,7 +213,7 @@ export function TestDriveForm({ initialCar }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[minmax(0,1fr)_24rem]">
-      <div className="min-w-0 rounded-[1.75rem] border border-ink-700/40 bg-ink-900/60 p-5 sm:p-8">
+      <div className="spotlight hover-panel min-w-0 rounded-[1.75rem] border border-ink-700/40 bg-ink-900/60 p-5 sm:p-8">
         <ol className="grid grid-cols-4 gap-2" aria-label="Booking progress">
           {STEPS.map((label, index) => (
             <li key={label}>
@@ -456,7 +457,7 @@ export function TestDriveForm({ initialCar }) {
       </div>
 
       <aside className="min-w-0">
-        <div className="overflow-hidden rounded-[1.75rem] border border-ink-700/40 bg-ink-900 lg:sticky lg:top-24">
+        <div className="spotlight hover-panel hover-zoom overflow-hidden rounded-[1.75rem] border border-ink-700/40 bg-ink-900 lg:sticky lg:top-24">
           <div className="relative aspect-[16/10]">
             <AnimatePresence mode="popLayout" initial={false}>
               {car ? (

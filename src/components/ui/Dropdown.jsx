@@ -2,6 +2,19 @@ import { useEffect, useId, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check, ChevronDown } from 'lucide-react'
 
+function onListKey(event) {
+  const buttons = [...event.currentTarget.querySelectorAll('button')]
+  const position = buttons.indexOf(document.activeElement)
+  if (event.key === 'ArrowDown') {
+    event.preventDefault()
+    buttons[(position + 1) % buttons.length]?.focus()
+  }
+  if (event.key === 'ArrowUp') {
+    event.preventDefault()
+    buttons[(position - 1 + buttons.length) % buttons.length]?.focus()
+  }
+}
+
 export function Dropdown({ label, value, options, onChange, icon: Icon, align = 'right', className = '' }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
@@ -21,19 +34,6 @@ export function Dropdown({ label, value, options, onChange, icon: Icon, align = 
       document.removeEventListener('keydown', onKey)
     }
   }, [open])
-
-  const onListKey = (event) => {
-    const buttons = [...event.currentTarget.querySelectorAll('button')]
-    const position = buttons.indexOf(document.activeElement)
-    if (event.key === 'ArrowDown') {
-      event.preventDefault()
-      buttons[(position + 1) % buttons.length]?.focus()
-    }
-    if (event.key === 'ArrowUp') {
-      event.preventDefault()
-      buttons[(position - 1 + buttons.length) % buttons.length]?.focus()
-    }
-  }
 
   return (
     <div ref={ref} className={`relative ${className}`}>

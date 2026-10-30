@@ -45,7 +45,7 @@ export function Testimonials() {
     <section className="py-20 sm:py-28" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
-          <div className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift lg:aspect-[4/5]">
+          <div className="hover-zoom relative aspect-[4/3] min-w-0 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift lg:aspect-[4/5]">
             <AnimatePresence initial={false}>
               <motion.div
                 key={item.id}
@@ -86,7 +86,7 @@ export function Testimonials() {
                   transition={{ duration: 0.55, ease: EASE }}
                   className="[grid-area:1/1]"
                 >
-                  <div className="flex gap-1" aria-label={`${item.rating} out of 5 stars`}>
+                  <div className="flex gap-1" role="img" aria-label={`${item.rating} out of 5 stars`}>
                     {Array.from({ length: item.rating ?? 5 }, (_, starIndex) => (
                       <motion.span key={starIndex} initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 + starIndex * 0.06 }}>
                         <Star className="size-4 fill-gold-400 text-gold-400" />
@@ -119,9 +119,9 @@ export function Testimonials() {
                     onClick={() => setIndex(dotIndex)}
                     aria-label={`Show testimonial from ${testimonial.name}`}
                     aria-current={dotIndex === index}
-                    className="grid h-8 place-items-center"
+                    className="group grid h-8 place-items-center"
                   >
-                    <span className={`block h-1 rounded-full transition-all duration-500 ${dotIndex === index ? 'w-10 bg-gold-400' : 'w-4 bg-ink-700 hover:bg-ink-600'}`} />
+                    <span className={`block h-1 rounded-full transition-all duration-500 ${dotIndex === index ? 'w-10 bg-gold-400 group-hover:bg-gold-500' : 'w-4 bg-ink-700 group-hover:w-6 group-hover:bg-ink-600'}`} />
                   </button>
                 ))}
               </div>

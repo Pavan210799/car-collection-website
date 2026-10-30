@@ -32,7 +32,7 @@ export function Services() {
               >
                 <Link
                   to={service.to}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-950 p-6 transition duration-500 ease-premium hover:-translate-y-1.5 hover:border-gold-400/40 hover:bg-ink-900 hover:shadow-lift sm:p-7"
+                  className="spotlight group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-950 p-6 transition duration-500 ease-premium hover:-translate-y-1.5 hover:border-gold-400/40 hover:bg-ink-900 hover:shadow-lift sm:p-7"
                 >
                   <span aria-hidden="true" className="pointer-events-none absolute -top-24 -right-24 size-48 rounded-full bg-gold-400/0 blur-3xl transition-colors duration-700 group-hover:bg-gold-400/20" />
                   <span className="font-display text-xs font-bold text-smoke">0{index + 1}</span>

@@ -38,7 +38,7 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="grid gap-8 rounded-[2rem] border border-ink-700/60 bg-ink-950 p-6 shadow-soft sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center"
+          className="spotlight hover-panel grid gap-8 rounded-[2rem] border border-ink-700/60 bg-ink-950 p-6 shadow-soft sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center"
         >
           <div className="min-w-0">
             <p className="eyebrow">Newsletter</p>
@@ -136,7 +136,7 @@ export function Footer() {
           <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             {legalLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-xs text-mist transition hover:text-bone">
+                <Link to={link.to} className="link-underline text-xs text-mist hover:text-bone">
                   {link.label}
                 </Link>
               </li>

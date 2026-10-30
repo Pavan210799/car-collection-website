@@ -81,7 +81,7 @@ export default function Collection() {
       <Container className="pb-24">
         <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[18.5rem_minmax(0,1fr)] xl:gap-12">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[1.5rem] border border-ink-700/40 bg-ink-900/60 p-6">
+            <div className="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-[1.5rem] border border-ink-700/40 bg-ink-900/60 p-6 hover-panel">
               <div className="mb-5 flex items-center justify-between">
                 <p className="flex items-center gap-2 font-display text-lg font-bold text-bone">
                   <SlidersHorizontal className="size-4 text-gold-400" /> Filters
@@ -188,11 +188,12 @@ export default function Collection() {
               )}
             </div>
 
+            <h2 className="sr-only">Results</h2>
             {results.length === 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-8 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-20 text-center"
+                className="hover-dashed mt-8 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-20 text-center"
               >
                 <span className="grid size-16 place-items-center rounded-full bg-gold-400/10 text-gold-400">
                   <SearchX className="size-7" />

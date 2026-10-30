@@ -10,6 +10,7 @@ import { brands } from '../data/brands'
 import { categories } from '../data/categories'
 import { cars, carsById } from '../data/cars'
 import { formatCompactPrice, pluralize } from '../lib/format'
+import { useScrollEdges } from '../hooks/useScrollEdges'
 
 const EASE = [0.22, 1, 0.36, 1]
 
@@ -39,8 +40,8 @@ const disciplines = categories
 
 function AtlasPreview({ brand }) {
   return (
-    <div className="overflow-hidden rounded-[2rem] border border-ink-700/60 bg-ink-900 shadow-lift">
-      <div className="relative aspect-[4/3] overflow-hidden bg-ink-800">
+    <div className="spotlight hover-panel overflow-hidden rounded-[2rem] border border-ink-700/60 bg-ink-900 shadow-lift">
+      <div className="hover-zoom relative aspect-[4/3] overflow-hidden bg-ink-800">
         <AnimatePresence initial={false}>
           <motion.div
             key={brand.slug}
@@ -120,7 +121,7 @@ function MarqueCard({ brand, index }) {
     >
       <Link
         to={`/collection?brand=${brand.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift"
+        className="spotlight group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift"
       >
         <div className="relative m-2 aspect-[16/10] overflow-hidden rounded-[1.35rem] bg-ink-800">
           <Img src={brand.image.src} alt={brand.image.alt} sizes="(min-width: 640px) 50vw, 100vw" position={brand.image.position} className="absolute inset-0" imgClassName="transition-transform duration-[1.4s] ease-premium group-hover:scale-[1.07]" />
@@ -150,6 +151,7 @@ export default function Brands() {
   const [country, setCountry] = useState('All')
   const [activeSlug, setActiveSlug] = useState(marques[0]?.slug)
   const railRef = useRef(null)
+  const railEdges = useScrollEdges(railRef)
 
   const visible = useMemo(() => (country === 'All' ? marques : marques.filter((brand) => brand.country === country)), [country])
   const active = visible.find((brand) => brand.slug === activeSlug) ?? visible[0]
@@ -165,7 +167,7 @@ export default function Brands() {
     <>
       <header className="relative isolate overflow-hidden pt-28 pb-10 sm:pt-36 sm:pb-14">
         <div aria-hidden="true" className="mesh-glow absolute inset-0 -z-10" />
-        <div aria-hidden="true" className="dot-grid absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
+        <div aria-hidden="true" className="line-grid absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end">
             <div className="min-w-0">
@@ -196,7 +198,7 @@ export default function Brands() {
                   { label: 'Countries', value: countries.length - 1 },
                   { label: 'Cars', value: cars.length },
                 ].map((stat) => (
-                  <div key={stat.label} className="flex min-w-0 flex-col-reverse rounded-2xl border border-ink-700/60 bg-ink-900 px-1.5 py-3 text-center shadow-soft sm:p-4">
+                  <div key={stat.label} className="spotlight hover-lift flex min-w-0 flex-col-reverse rounded-2xl border border-ink-700/60 bg-ink-900 px-1.5 py-3 text-center shadow-soft sm:p-4">
                     <dt className="text-[0.6rem] font-semibold tracking-[0.08em] text-smoke uppercase xs:text-[0.65rem] xs:tracking-[0.18em]">{stat.label}</dt>
                     <dd className="font-display text-2xl font-bold text-bone sm:text-3xl">{stat.value}</dd>
                   </div>
@@ -317,26 +319,42 @@ export default function Brands() {
             description="Every car in the collection belongs to a category built around how you want to drive."
             action={
               <div className="flex gap-2">
-                <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous categories" className="grid size-11 place-items-center rounded-full border border-ink-700/70 bg-ink-900 text-bone transition hover:border-bone">
+                <button
+                  type="button"
+                  onClick={() => scrollRail(-1)}
+                  disabled={!railEdges.start}
+                  aria-label="Previous categories"
+                  className="grid size-11 place-items-center rounded-full border border-ink-700/70 bg-ink-900 text-bone transition duration-300 hover:-translate-y-0.5 hover:border-bone hover:shadow-soft disabled:pointer-events-none disabled:opacity-35"
+                >
                   <ArrowLeft className="size-4" />
                 </button>
-                <button type="button" onClick={() => scrollRail(1)} aria-label="Next categories" className="grid size-11 place-items-center rounded-full bg-bone text-on-accent transition hover:bg-night">
+                <button
+                  type="button"
+                  onClick={() => scrollRail(1)}
+                  disabled={!railEdges.end}
+                  aria-label="Next categories"
+                  className="grid size-11 place-items-center rounded-full bg-bone text-on-accent transition duration-300 hover:-translate-y-0.5 hover:bg-night hover:shadow-soft disabled:pointer-events-none disabled:opacity-35"
+                >
                   <ArrowRight className="size-4" />
                 </button>
               </div>
             }
           />
 
-          <div ref={railRef} className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4">
+          <motion.div
+            ref={railRef}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+            className="no-scrollbar -mx-5 mt-8 flex scroll-px-5 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-5 pt-2 pb-4 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:-mx-12 lg:scroll-px-12 lg:px-12"
+          >
             {disciplines.map((category, index) => (
               <motion.div
                 key={category.slug}
                 data-card
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, delay: Math.min(index, 4) * 0.08, ease: EASE }}
-                className="w-[82%] shrink-0 snap-start xs:w-[70%] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)] xl:w-[calc((100%-3rem)/4)]"
+                variants={{ hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } } }}
+                className="w-[82%] shrink-0 snap-start xs:w-[68%] sm:w-[calc((100%-2rem)/2.35)] lg:w-[calc((100%-3rem)/3.3)] xl:w-[calc((100%-4rem)/4.3)]"
               >
                 <Link
                   to={`/collection?category=${category.slug}`}
@@ -361,7 +379,7 @@ export default function Brands() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </Container>
       </section>
     </>

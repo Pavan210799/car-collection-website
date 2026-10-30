@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '../ui/Container'
@@ -8,11 +8,17 @@ import { CarCard } from '../cars/CarCard'
 import { cars } from '../../data/cars'
 import { categories } from '../../data/categories'
 import { sortCars } from '../../lib/carQuery'
+import { useScrollEdges } from '../../hooks/useScrollEdges'
 
 const tabs = [{ slug: 'all', short: 'Featured' }, ...categories]
 
+const fadeMask = ({ start, end }) =>
+  `linear-gradient(90deg, ${start ? 'transparent, black 2.5rem' : 'black'}, ${end ? 'black calc(100% - 2.5rem), transparent' : 'black'})`
+
 export function FeaturedCollection() {
   const [active, setActive] = useState('all')
+  const tabsRef = useRef(null)
+  const edges = useScrollEdges(tabsRef)
 
   const visible = useMemo(() => {
     const pool = active === 'all' ? cars.filter((car) => car.featured) : cars.filter((car) => car.category === active)
@@ -33,15 +39,24 @@ export function FeaturedCollection() {
           }
         />
 
-        <div className="no-scrollbar mt-10 -mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
-          <div role="tablist" aria-label="Filter featured cars" className="inline-flex gap-1 rounded-full border border-ink-700/60 bg-ink-900 p-1 shadow-soft">
+        <div className="relative mt-10 w-fit max-w-full overflow-hidden rounded-full border border-ink-700/60 bg-ink-900 p-1 shadow-soft">
+          <div
+            ref={tabsRef}
+            role="tablist"
+            aria-label="Filter featured cars"
+            className="no-scrollbar flex gap-1 overflow-x-auto overscroll-x-contain rounded-full transition-[mask-image] duration-300"
+            style={{ maskImage: fadeMask(edges), WebkitMaskImage: fadeMask(edges) }}
+          >
             {tabs.map((tab) => (
               <button
                 key={tab.slug}
                 type="button"
                 role="tab"
                 aria-selected={active === tab.slug}
-                onClick={() => setActive(tab.slug)}
+                onClick={(event) => {
+                  setActive(tab.slug)
+                  event.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+                }}
                 className={`relative shrink-0 rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors duration-300 ${
                   active === tab.slug ? 'text-on-accent' : 'text-mist hover:text-bone'
                 }`}

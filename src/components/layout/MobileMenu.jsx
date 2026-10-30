@@ -2,13 +2,14 @@ import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, X } from 'lucide-react'
+import { ArrowUpRight, LogOut, X } from 'lucide-react'
 import { Logo } from './Logo'
+import { Avatar, useSignOut } from './AccountMenu'
 import { Button } from '../ui/Button'
 import { navigation } from '../../data/site'
 import { contactInfo } from '../../data/support'
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll'
-import { useGarage } from '../../context/contexts'
+import { useAuth, useGarage } from '../../context/contexts'
 
 const EASE = [0.22, 1, 0.36, 1]
 
@@ -16,6 +17,8 @@ const links = [...navigation.filter((item) => item.ready), { label: 'Wishlist', 
 
 export function MobileMenu({ open, onClose }) {
   const { wishlist, compare } = useGarage()
+  const { user } = useAuth()
+  const signOut = useSignOut()
   useLockBodyScroll(open)
 
   useEffect(() => {
@@ -30,7 +33,7 @@ export function MobileMenu({ open, onClose }) {
   return createPortal(
     <AnimatePresence>
       {open && (
-        <motion.div key="mobile-menu" className="fixed inset-0 z-[60] lg:hidden" initial="closed" animate="open" exit="closed">
+        <motion.div key="mobile-menu" className="fixed inset-0 z-[60] xl:hidden" initial="closed" animate="open" exit="closed">
           <motion.button
             type="button"
             aria-label="Close menu"
@@ -61,6 +64,29 @@ export function MobileMenu({ open, onClose }) {
             </div>
 
             <nav className="relative flex-1 px-5 py-6 sm:px-8">
+              {user && (
+                <motion.div
+                  variants={{ closed: { opacity: 0, y: 12 }, open: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1, ease: EASE } } }}
+                  className="mb-4 flex items-center gap-3 rounded-2xl border border-ink-700/60 bg-ink-900 p-3 shadow-soft"
+                >
+                  <Avatar name={user.name} className="size-11 text-sm" />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-bone">{user.name}</p>
+                    <p className="truncate text-xs text-mist">{user.email}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose()
+                      signOut()
+                    }}
+                    aria-label="Sign out"
+                    className="grid size-10 shrink-0 place-items-center rounded-full border border-ink-700/70 text-ember transition hover:border-ember/40 hover:bg-ember/5"
+                  >
+                    <LogOut className="size-4" />
+                  </button>
+                </motion.div>
+              )}
               <motion.ul variants={{ open: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } }, closed: {} }}>
                 {links.map((item, index) => (
                   <motion.li
@@ -102,6 +128,11 @@ export function MobileMenu({ open, onClose }) {
               <Button to="/collection" onClick={onClose} variant="outline" size="lg" className="w-full">
                 Explore the collection
               </Button>
+              {!user && (
+                <Button to="/login" onClick={onClose} variant="light" size="lg" className="w-full">
+                  Sign in
+                </Button>
+              )}
               <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="mt-1 text-center text-sm text-mist hover:text-bone">
                 {contactInfo.phone}
               </a>

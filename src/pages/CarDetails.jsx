@@ -19,7 +19,7 @@ import NotFound from './NotFound'
 
 const statusStyles = {
   Available: 'bg-volt/15 text-volt',
-  Reserved: 'bg-ember/15 text-ember',
+  Reserved: 'bg-ember/15 text-red-800',
   Arriving: 'bg-gold-400/15 text-gold-500',
 }
 
@@ -109,7 +109,7 @@ export default function CarDetails() {
                 </button>
               </div>
 
-              <p className="mt-5 text-xs font-semibold tracking-[0.3em] text-gold-400 uppercase">
+              <p className="mt-5 text-xs font-semibold tracking-[0.3em] text-gold-500 uppercase">
                 {car.year} · {car.make}
               </p>
               <h1 className="mt-2 font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1] font-extrabold tracking-tight text-bone">{car.model}</h1>
@@ -129,7 +129,7 @@ export default function CarDetails() {
 
               <dl className="mt-5 grid grid-cols-2 gap-3">
                 {keyStats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-ink-700/40 bg-ink-900 p-4">
+                  <div key={stat.label} className="spotlight hover-lift rounded-2xl border border-ink-700/40 bg-ink-900 p-4">
                     <dt className="flex items-center gap-1.5 text-[0.65rem] tracking-[0.16em] text-smoke uppercase">
                       <stat.icon className="size-3.5 text-gold-400" /> {stat.label}
                     </dt>
@@ -212,7 +212,7 @@ export default function CarDetails() {
             <Link
               key={label}
               to={`/cars/${item.slug}`}
-              className={`group flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-4 transition hover:border-gold-400/30 ${label === 'Next' ? 'sm:flex-row-reverse sm:text-right' : ''}`}
+              className={`spotlight hover-lift group flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-4 hover:border-gold-400/30 ${label === 'Next' ? 'sm:flex-row-reverse sm:text-right' : ''}`}
             >
               <span className="grid size-11 shrink-0 place-items-center rounded-full border border-ink-700/50 transition group-hover:border-gold-400 group-hover:bg-gold-400 group-hover:text-on-accent">
                 <Icon className="size-4" />

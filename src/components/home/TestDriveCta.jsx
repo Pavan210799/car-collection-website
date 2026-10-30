@@ -18,7 +18,7 @@ export function TestDriveCta() {
   return (
     <section ref={ref} className="pb-20 sm:pb-28">
       <Container>
-        <div className="relative isolate overflow-hidden rounded-[2.5rem] border border-ink-700/60 bg-ink-900 shadow-lift">
+        <div className="spotlight hover-zoom relative isolate overflow-hidden rounded-[2.5rem] border border-ink-700/60 bg-ink-900 shadow-lift">
           {image && (
             <motion.div style={{ y }} className="absolute -inset-y-[12%] inset-x-0 -z-10">
               <Img src={image.src} alt="" sizes="100vw" position={image.position} className="absolute inset-0" />

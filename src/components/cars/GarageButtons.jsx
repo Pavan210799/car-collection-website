@@ -44,7 +44,7 @@ export function WishlistButton({ carId, className = '', withLabel = false }) {
         onClick={() => toggleWishlist(carId)}
         aria-pressed={active}
         className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold transition duration-300 active:scale-[0.97] ${
-          active ? 'border-gold-400/50 bg-gold-200/60 text-gold-500' : 'border-ink-700/70 bg-ink-900 text-bone hover:border-bone/40'
+          active ? 'border-gold-400/50 bg-gold-200/60 text-gold-500 hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-soft' : 'border-ink-700/70 bg-ink-900 text-bone hover:-translate-y-0.5 hover:border-bone/40 hover:shadow-soft'
         } ${className}`}
       >
         <HeartIcon active={active} />
@@ -83,7 +83,7 @@ export function CompareButton({ carId, className = '', withLabel = false }) {
         onClick={() => toggleCompare(carId)}
         aria-pressed={active}
         className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold transition duration-300 active:scale-[0.97] ${
-          active ? 'border-bone bg-bone text-on-accent' : 'border-ink-700/70 bg-ink-900 text-bone hover:border-bone/40'
+          active ? 'border-bone bg-bone text-on-accent hover:-translate-y-0.5 hover:bg-night hover:shadow-soft' : 'border-ink-700/70 bg-ink-900 text-bone hover:-translate-y-0.5 hover:border-bone/40 hover:shadow-soft'
         } ${className}`}
       >
         <Icon className="size-4" />

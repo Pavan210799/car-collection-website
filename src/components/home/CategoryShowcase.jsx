@@ -28,7 +28,7 @@ const layout = [
 export function CategoryShowcase() {
   return (
     <section className="relative isolate overflow-hidden border-y border-ink-700/60 bg-ink-900 py-20 sm:py-28">
-      <div aria-hidden="true" className="dot-grid absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+      <div aria-hidden="true" className="line-grid absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <Container>
         <SectionHeading
           eyebrow="Disciplines"
@@ -50,7 +50,7 @@ export function CategoryShowcase() {
               >
                 <Link
                   to={`/collection?category=${category.slug}`}
-                  className="group relative isolate flex size-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-ink-800 p-5 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:p-6"
+                  className="spotlight group relative isolate flex size-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-ink-800 p-5 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:p-6"
                 >
                   <Img
                     src={category.image.src}

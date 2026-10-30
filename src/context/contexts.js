@@ -2,6 +2,13 @@ import { createContext, useContext } from 'react'
 
 export const ToastContext = createContext(null)
 export const GarageContext = createContext(null)
+export const AuthContext = createContext(null)
+
+export function useAuth() {
+  const context = useContext(AuthContext)
+  if (!context) throw new Error('useAuth must be used inside <AuthProvider>')
+  return context
+}
 
 export function useToast() {
   const context = useContext(ToastContext)

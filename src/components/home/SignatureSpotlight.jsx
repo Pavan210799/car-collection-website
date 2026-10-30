@@ -91,7 +91,7 @@ export function SignatureSpotlight() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.7, delay: index * 0.08, ease: EASE }}
-              className="flex min-w-0 flex-col-reverse rounded-[1.5rem] border border-ink-700/60 bg-ink-900 p-4 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift sm:p-5"
+              className="spotlight flex min-w-0 flex-col-reverse rounded-[1.5rem] border border-ink-700/60 bg-ink-900 p-4 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift sm:p-5"
             >
               <dt className="mt-3 text-[0.65rem] font-semibold tracking-[0.16em] text-smoke uppercase">{stat.label}</dt>
               <dd className="min-w-0">

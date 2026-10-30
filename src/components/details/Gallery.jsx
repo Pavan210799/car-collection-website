@@ -158,6 +158,7 @@ export function Gallery({ images, name }) {
         <button
           type="button"
           onClick={() => setLightbox(active)}
+          aria-label="View fullscreen"
           className="absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-bone shadow-soft backdrop-blur-md transition hover:bg-gold-400 hover:text-on-accent"
         >
           <Expand className="size-3.5" /> <span className="max-xs:hidden">View fullscreen</span>

@@ -58,7 +58,7 @@ export function CarCard({ car, priority = false, sizes = '(min-width: 1280px) 30
   return (
     <motion.article
       {...motionProps}
-      className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition-[box-shadow,border-color,translate] duration-500 ease-premium hover:-translate-y-1.5 hover:border-ink-700 hover:shadow-lift"
+      className="spotlight group relative flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition-[box-shadow,border-color,translate] duration-500 ease-premium hover:-translate-y-1.5 hover:border-ink-700 hover:shadow-lift"
     >
       <div className="relative m-2 aspect-[16/10] overflow-hidden rounded-[1.35rem] bg-ink-800">
         <Img
@@ -126,7 +126,7 @@ export function CarListItem({ car, index = 0, animated = false }) {
   return (
     <motion.article
       {...motionProps}
-      className="group relative grid min-w-0 overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition-[box-shadow,border-color] duration-500 hover:border-ink-700 hover:shadow-lift sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]"
+      className="spotlight group relative grid min-w-0 overflow-hidden rounded-[1.75rem] border border-ink-700/60 bg-ink-900 shadow-soft transition-[box-shadow,border-color] duration-500 hover:border-ink-700 hover:shadow-lift sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)]"
     >
       <div className="relative m-2 aspect-[16/10] overflow-hidden rounded-[1.35rem] bg-ink-800 sm:aspect-auto sm:min-h-[12rem]">
         <Img

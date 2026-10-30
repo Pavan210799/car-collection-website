@@ -77,7 +77,7 @@ export function SpecTabs({ car }) {
             <p className="text-base leading-relaxed text-pretty text-mist sm:text-lg">{car.description}</p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {car.highlights.map((highlight) => (
-                <li key={highlight} className="flex items-start gap-3 rounded-2xl border border-ink-700/40 bg-ink-900 p-4 text-sm text-bone">
+                <li key={highlight} className="spotlight hover-lift flex items-start gap-3 rounded-2xl border border-ink-700/40 bg-ink-900 p-4 text-sm text-bone">
                   <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-gold-400/15 text-gold-400">
                     <Check className="size-3" strokeWidth={3} />
                   </span>
@@ -86,7 +86,7 @@ export function SpecTabs({ car }) {
               ))}
             </ul>
           </div>
-          <div className="flex min-w-0 flex-col gap-6 rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6 sm:p-8">
+          <div className="spotlight hover-panel flex min-w-0 flex-col gap-6 rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6 sm:p-8">
             <p className="eyebrow">Performance profile</p>
             <Bar label="Power" value={car.specs.power} max={1100} unit="hp" />
             <Bar label="Torque" value={car.specs.torque} max={1600} unit="Nm" />
@@ -105,7 +105,7 @@ export function SpecTabs({ car }) {
       content: (
         <div className="grid gap-6 md:grid-cols-3">
           {Object.entries(car.features).map(([group, items]) => (
-            <div key={group} className="rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6">
+            <div key={group} className="spotlight hover-lift rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6">
               <p className="eyebrow">{group}</p>
               <ul className="mt-5 flex flex-col gap-3">
                 {items.map((item) => (

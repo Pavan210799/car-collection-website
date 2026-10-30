@@ -27,7 +27,7 @@ export default function Contact() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="glass flex items-start gap-3 rounded-2xl p-4 transition hover:border-volt/40"
+                  className="spotlight hover-lift glass flex items-start gap-3 rounded-2xl p-4 hover:border-volt/40"
                 >
                   <item.icon className="mt-0.5 size-4 shrink-0 text-volt" />
                   <span className="min-w-0">
@@ -45,7 +45,7 @@ export default function Contact() {
                 {showrooms.map((room) => {
                   const image = siteImage(room.image)
                   return (
-                    <li key={room.id} className="group overflow-hidden rounded-[1.5rem] border border-ink-700/60 bg-ink-900 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift">
+                    <li key={room.id} className="spotlight group overflow-hidden rounded-[1.5rem] border border-ink-700/60 bg-ink-900 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift">
                       <div className="relative m-2 h-40 overflow-hidden rounded-[1.1rem] bg-ink-800">
                         {image && <Img src={image.src} alt={image.alt ?? ''} sizes="400px" position={image.position} className="absolute inset-0" imgClassName="transition-transform duration-[1.4s] ease-premium group-hover:scale-105" />}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
@@ -68,7 +68,7 @@ export default function Contact() {
             </div>
           </aside>
 
-          <div className="min-w-0 rounded-[1.75rem] border border-ink-700/40 bg-ink-900 p-6 sm:p-8">
+          <div className="spotlight hover-panel min-w-0 rounded-[1.75rem] border border-ink-700/40 bg-ink-900 p-6 sm:p-8">
             <h2 className="font-display text-2xl font-bold text-bone">Send a message</h2>
             <p className="mt-2 text-sm text-mist">A specialist will respond within two business hours.</p>
             <div className="mt-8">

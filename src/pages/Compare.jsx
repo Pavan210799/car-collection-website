@@ -88,7 +88,7 @@ export default function Compare() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-10 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-14 text-center"
+            className="hover-dashed mb-10 flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-14 text-center"
           >
             <span className="grid size-16 place-items-center rounded-full bg-gold-400/10 text-gold-400">
               <Scale className="size-7" />
@@ -118,7 +118,7 @@ export default function Compare() {
                 role="switch"
                 aria-checked={diffOnly}
                 onClick={() => setDiffOnly((value) => !value)}
-                className={`relative h-6 w-11 rounded-full transition-colors ${diffOnly ? 'bg-gold-400' : 'bg-ink-700'}`}
+                className={`relative h-6 w-11 rounded-full transition duration-300 hover:ring-4 hover:ring-gold-400/15 ${diffOnly ? 'bg-gold-400' : 'bg-ink-700'}`}
               >
                 <motion.span layout className={`absolute top-1 size-4 rounded-full bg-white shadow ${diffOnly ? 'right-1' : 'left-1'}`} />
               </button>
@@ -141,7 +141,7 @@ export default function Compare() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="group relative min-w-0 overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:rounded-[1.5rem]"
+                    className="spotlight group relative min-w-0 overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:rounded-[1.5rem]"
                   >
                     <Link to={`/cars/${car.slug}`} className="block">
                       <Img src={car.images[0].src} alt={car.images[0].alt} sizes="(min-width: 1024px) 25vw, 33vw" position={car.images[0].position} className="aspect-[4/3]" imgClassName="transition-transform duration-1000 group-hover:scale-105" />
@@ -191,7 +191,7 @@ export default function Compare() {
               return (
                 <section key={group.title}>
                   <h2 className="eyebrow mb-3">{group.title}</h2>
-                  <div className="overflow-hidden rounded-[1.5rem] border border-ink-700/60 bg-ink-900 shadow-soft">
+                  <div className="hover-panel overflow-hidden rounded-[1.5rem] border border-ink-700/60 bg-ink-900 shadow-soft">
                     {rows.map((row) => {
                       const values = slots.map((car) => (car ? row.get(car) : null))
                       const numeric = values.filter((value) => typeof value === 'number')

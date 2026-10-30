@@ -13,14 +13,14 @@
   /* Graphite type */
   --color-bone: #141416;
   --color-mist: #57534e;
-  --color-smoke: #8b857c;
+  --color-smoke: #706a62;
   --color-on-accent: #ffffff;
   --color-night: #0f0f12;
 
   /* Aurion coral (kept on gold-* for component compatibility) */
   --color-gold-200: #fde3e7;
   --color-gold-300: #f59aa8;
-  --color-gold-400: #e2445c;
+  --color-gold-400: #d63a52;
   --color-gold-500: #c4314a;
   --color-gold-600: #9f2439;
 
@@ -33,7 +33,7 @@
 
   --shadow-soft: 0 1px 2px rgb(20 20 22 / 0.04), 0 8px 24px -12px rgb(20 20 22 / 0.12);
   --shadow-lift: 0 2px 4px rgb(20 20 22 / 0.04), 0 24px 48px -20px rgb(20 20 22 / 0.28);
-  --shadow-glow: 0 18px 40px -18px rgb(226 68 92 / 0.55);
+  --shadow-glow: 0 18px 40px -18px rgb(214 58 82 / 0.55);
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
@@ -163,7 +163,7 @@
   }
 
   .text-outline {
-    -webkit-text-stroke: 1px rgb(20 20 22 / 0.28);
+    -webkit-text-stroke: 1px rgb(20 20 22 / 0.6);
     color: transparent;
   }
 
@@ -199,9 +199,32 @@
       radial-gradient(36rem 24rem at 92% 18%, rgb(15 118 110 / 0.1), transparent 70%);
   }
 
-  .dot-grid {
-    background-image: radial-gradient(rgb(20 20 22 / 0.09) 1px, transparent 1px);
-    background-size: 22px 22px;
+  .line-grid {
+    background-image:
+      linear-gradient(rgb(20 20 22 / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(20 20 22 / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .hero-flow-mask {
+    mask-image:
+      linear-gradient(180deg, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.45) 40%, black 62%, black 74%, transparent 84%);
+  }
+
+  @media (min-width: 64rem) {
+    .hero-flow-mask {
+      mask-image:
+        linear-gradient(90deg, rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.45) 35%, black 55%),
+        linear-gradient(180deg, black 68%, transparent 82%);
+      mask-composite: intersect;
+    }
+  }
+
+  .hero-wash {
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(72px) saturate(1.8);
+    mask-image: radial-gradient(ellipse 60% 55% at 65% 50%, black 20%, transparent 75%);
   }
 
   .skeleton {
@@ -210,12 +233,135 @@
     @apply animate-shimmer;
   }
 
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .spotlight::before,
+  .spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-premium);
+  }
+
+  .spotlight::before {
+    z-index: 3;
+    padding: 1px;
+    background: radial-gradient(18rem circle at var(--mx, 50%) var(--my, 0%), rgb(226 68 92 / 0.7), rgb(15 118 110 / 0.4) 45%, transparent 75%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+  }
+
+  .spotlight::after {
+    z-index: 2;
+    background: radial-gradient(26rem circle at var(--mx, 50%) var(--my, 0%), rgb(226 68 92 / 0.08), transparent 55%);
+  }
+
+  @media (hover: hover) {
+    .spotlight:hover::before,
+    .spotlight:hover::after {
+      opacity: 1;
+    }
+  }
+
+  .hover-lift {
+    transition:
+      translate 0.5s var(--ease-premium),
+      box-shadow 0.5s var(--ease-premium),
+      border-color 0.5s var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .hover-lift:hover {
+      translate: 0 -4px;
+      box-shadow: var(--shadow-lift);
+    }
+  }
+
+  .hover-zoom img {
+    transition:
+      scale 1.4s var(--ease-premium),
+      filter 0.8s var(--ease-premium);
+  }
+
+  .hover-panel {
+    transition:
+      box-shadow 0.5s var(--ease-premium),
+      border-color 0.5s var(--ease-premium),
+      background-color 0.5s var(--ease-premium);
+  }
+
+  .hover-dashed {
+    transition:
+      border-color 0.45s var(--ease-premium),
+      background-color 0.45s var(--ease-premium);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    padding-bottom: 2px;
+    transition:
+      background-size 0.45s var(--ease-premium),
+      color 0.3s ease;
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(100deg, var(--color-gold-400), var(--color-gold-500), var(--color-volt), var(--color-gold-400));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 8s linear infinite;
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* Unlayered so hover states beat the panels' own border/shadow utilities. */
+@media (hover: hover) {
+  .hover-zoom:hover img {
+    scale: 1.06;
+    filter: saturate(1.12) contrast(1.03);
+  }
+
+  .hover-panel:hover {
+    border-color: rgb(226 68 92 / 0.28);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .hover-dashed:hover {
+    border-color: rgb(226 68 92 / 0.45);
+    background-color: rgb(255 255 255 / 0.6);
+  }
+}
+
+@keyframes gradient-pan {
+  to {
+    background-position: 300% 0;
   }
 }
 

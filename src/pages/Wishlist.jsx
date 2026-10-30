@@ -40,7 +40,7 @@ export default function Wishlist() {
       <Container className="pb-24">
         {saved.length > 0 ? (
           <>
-            <div className="mb-8 flex flex-col gap-5 rounded-[1.75rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="spotlight hover-panel mb-8 flex flex-col gap-5 rounded-[1.75rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div className="flex flex-wrap gap-x-10 gap-y-3">
                 <div>
                   <p className="text-[0.65rem] tracking-[0.2em] text-smoke uppercase">Saved</p>
@@ -61,6 +61,7 @@ export default function Wishlist() {
               </div>
             </div>
 
+            <h2 className="sr-only">Saved cars</h2>
             <motion.div layout className="grid gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
               <AnimatePresence mode="popLayout">
                 {saved.map((car) => (
@@ -84,7 +85,7 @@ export default function Wishlist() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-16 text-center"
+              className="hover-dashed flex flex-col items-center rounded-[1.75rem] border border-dashed border-ink-700/45 px-6 py-16 text-center"
             >
               <motion.span
                 animate={{ scale: [1, 1.12, 1] }}

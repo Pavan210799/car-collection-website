@@ -36,7 +36,7 @@ export function Manifesto() {
                 return (
                   <motion.span
                     key={`${word}-${index}`}
-                    variants={{ hidden: { opacity: 0.12, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
+                    variants={{ hidden: { opacity: 0.5, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
                     className={`inline-block ${highlight.has(clean) ? 'text-gradient-gold' : ''}`}
                   >
                     {word}&nbsp;
@@ -68,7 +68,7 @@ export function Manifesto() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: EASE }}
-                className="group flex gap-5 rounded-[1.5rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift"
+                className="spotlight group flex gap-5 rounded-[1.5rem] border border-ink-700/60 bg-ink-900 p-5 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-lift"
               >
                 <span className="font-display text-2xl font-bold text-gold-400 transition-transform duration-500 group-hover:scale-110">{pillar.index}</span>
                 <span className="min-w-0">

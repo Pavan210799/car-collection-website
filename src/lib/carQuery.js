@@ -102,7 +102,7 @@ const sorters = {
   'name-asc': (a, b) => a.name.localeCompare(b.name),
 }
 
-export const sortCars = (cars, sort) => [...cars].sort(sorters[sort] ?? sorters.featured)
+export const sortCars = (cars, sort) => cars.toSorted(sorters[sort] ?? sorters.featured)
 
 export function countActiveFilters(filters) {
   return (

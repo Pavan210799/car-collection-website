@@ -5,7 +5,7 @@ import { AlertCircle, Check, ChevronDown } from 'lucide-react'
 const control =
   'w-full rounded-2xl border bg-ink-850 px-4 text-sm text-bone transition duration-300 outline-none placeholder:text-smoke hover:border-ink-700/55 focus:border-gold-400 focus:bg-ink-800 focus:shadow-[0_0_0_4px_rgba(217,183,126,0.12)]'
 
-function ErrorText({ id, error }) {
+export function ErrorText({ id, error }) {
   return (
     <AnimatePresence initial={false}>
       {error && (

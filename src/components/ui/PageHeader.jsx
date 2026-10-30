@@ -13,7 +13,7 @@ export function PageHeader({ eyebrow, title, description, image, children, compa
   return (
     <header ref={ref} className={`relative isolate overflow-hidden ${compact ? 'pt-28 pb-10 sm:pt-32 sm:pb-12' : 'pt-28 pb-12 sm:pt-36 sm:pb-16'}`}>
       <div aria-hidden="true" className="mesh-glow absolute inset-0 -z-10" />
-      <div aria-hidden="true" className="dot-grid absolute inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,black,transparent_75%)]" />
+      <div aria-hidden="true" className="line-grid absolute inset-x-0 top-0 -z-10 h-full [mask-image:linear-gradient(to_bottom,black,transparent_75%)]" />
       <Container>
         <div className={`grid gap-10 ${image ? 'lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-14' : ''}`}>
           <div className="min-w-0">
@@ -53,7 +53,7 @@ export function PageHeader({ eyebrow, title, description, image, children, compa
               initial={{ clipPath: 'inset(12% 12% 12% 12% round 2rem)', opacity: 0 }}
               animate={{ clipPath: 'inset(-8% -6% -12% -6% round 2rem)', opacity: 1 }}
               transition={{ duration: 1.2, delay: 0.15, ease: EASE }}
-              className={`relative min-w-0 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift ${compact ? 'aspect-[16/9] lg:aspect-[4/3]' : 'aspect-[16/10] lg:aspect-[5/4]'}`}
+              className={`hover-zoom relative min-w-0 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift ${compact ? 'aspect-[16/9] lg:aspect-[4/3]' : 'aspect-[16/10] lg:aspect-[5/4]'}`}
             >
               <motion.div style={{ scale: imageScale }} className="absolute inset-0">
                 <Img src={image.src} alt={image.alt ?? ''} sizes="(min-width: 1024px) 45vw, 100vw" priority position={image.position} className="absolute inset-0" />

@@ -6,6 +6,7 @@ import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { Img } from '../ui/Img'
 import { CountUp } from '../ui/CountUp'
+import { HeroBackdrop } from './HeroBackdrop'
 import { heroSlides, stats } from '../../data/site'
 import { carsById } from '../../data/cars'
 import { formatNumber } from '../../lib/format'
@@ -53,6 +54,7 @@ export function Hero() {
   const [index, setIndex] = useState(0)
   const [previous, setPrevious] = useState(null)
   const [paused, setPaused] = useState(false)
+  const stageRef = useRef(null)
   const slide = slides[index]
 
   const pointerX = useMotionValue(0)
@@ -118,14 +120,7 @@ export function Hero() {
 
   return (
     <section aria-label="Featured cars" className="relative isolate overflow-hidden pt-24 pb-14 sm:pt-28 lg:pt-32 lg:pb-20">
-      <div aria-hidden="true" className="mesh-glow absolute inset-0 -z-10" />
-      <div aria-hidden="true" className="dot-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
-      <motion.div
-        aria-hidden="true"
-        className="absolute -top-32 -right-32 -z-10 size-[28rem] rounded-full bg-gold-400/15 blur-3xl"
-        animate={reduce ? undefined : { scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      <HeroBackdrop image={slide.image} slideKey={slide.car.id} reduce={reduce} obstacleRef={stageRef} />
 
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14 xl:gap-20">
@@ -224,7 +219,7 @@ export function Hero() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2.25rem] bg-ink-800 shadow-lift sm:aspect-[16/11] lg:aspect-[5/4] xl:aspect-[16/12]">
+            <div ref={stageRef} className="hover-zoom relative aspect-[4/3] overflow-hidden rounded-[2.25rem] bg-ink-800 shadow-lift sm:aspect-[16/11] lg:aspect-[5/4] xl:aspect-[16/12]">
               <motion.div style={{ x: imageX, y: imageY }} className="absolute -inset-4">
                 {slides.map((item, itemIndex) => {
                   const state = itemIndex === index ? 'active' : itemIndex === previous ? 'previous' : 'idle'
@@ -314,7 +309,7 @@ export function Hero() {
                       )}
                       {!active && <span className="absolute inset-0 origin-left scale-x-0 rounded-full bg-bone/40 transition-transform duration-500 group-hover:scale-x-100" />}
                     </span>
-                    <span className={`mt-2 hidden truncate text-xs font-semibold transition-colors sm:block ${active ? 'text-bone' : 'text-smoke group-hover:text-mist'}`}>
+                    <span className={`mt-2 hidden truncate text-xs font-semibold transition-colors sm:block ${active ? 'text-bone' : 'text-mist group-hover:text-bone'}`}>
                       {item.car.model}
                     </span>
                   </button>

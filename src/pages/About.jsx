@@ -30,9 +30,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative min-h-72 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift lg:min-h-0"
+            className="hover-zoom relative min-h-72 overflow-hidden rounded-[2rem] bg-ink-800 shadow-lift lg:min-h-0"
           >
-            <Img src={secondaryImage.src} alt={secondaryImage.alt} sizes="(min-width: 1024px) 45vw, 100vw" position={secondaryImage.position} className="absolute inset-0" imgClassName="transition-transform duration-[1.6s] ease-premium hover:scale-105" />
+            <Img src={secondaryImage.src} alt={secondaryImage.alt} sizes="(min-width: 1024px) 45vw, 100vw" position={secondaryImage.position} className="absolute inset-0" />
           </motion.div>
         </div>
       </Container>
@@ -73,7 +73,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  className="glass rounded-[1.5rem] p-6"
+                  className="spotlight hover-lift glass rounded-[1.5rem] p-6"
                 >
                   {Icon && (
                     <span className="grid size-12 place-items-center rounded-2xl border border-volt/30 bg-volt/10 text-volt">
@@ -100,7 +100,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6"
+                className="spotlight hover-lift rounded-[1.5rem] border border-ink-700/40 bg-ink-900 p-6"
               >
                 <span className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-volt/20 to-gold-400/15 font-display text-lg font-bold text-bone">
                   {person.initials}
@@ -131,7 +131,7 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="glass rounded-[1.75rem] p-8">
+            <div className="spotlight glass rounded-[1.75rem] p-8">
               <h3 className="font-display text-2xl font-bold text-bone">Join the atelier</h3>
               <p className="mt-3 text-sm leading-relaxed text-mist">
                 We hire specialists, concierges and technicians who share our obsession with detail. Send your CV to careers@aurion.motor.

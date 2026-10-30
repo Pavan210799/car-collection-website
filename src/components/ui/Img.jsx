@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 const SIZES = [
   ['sm', 800],
@@ -28,13 +28,14 @@ export function Img({
   onLoad,
   ...rest
 }) {
-  const ref = useRef(null)
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    setLoaded(false)
-    if (ref.current?.complete && ref.current.naturalWidth > 0) setLoaded(true)
-  }, [src])
+  const [loadedSrc, setLoadedSrc] = useState(null)
+  const loaded = loadedSrc === src
+  const markIfCached = useCallback(
+    (node) => {
+      if (node?.complete && node.naturalWidth > 0) setLoadedSrc(src)
+    },
+    [src],
+  )
 
   return (
     <div className={`${POSITIONED.test(className) ? '' : 'relative'} overflow-hidden ${className}`}>
@@ -43,7 +44,7 @@ export function Img({
         className={`skeleton absolute inset-0 transition-opacity duration-700 ${loaded ? 'opacity-0' : 'opacity-100'}`}
       />
       <img
-        ref={ref}
+        ref={markIfCached}
         src={srcFor(src, 'md')}
         srcSet={srcSetFor(src)}
         sizes={sizes}
@@ -53,7 +54,7 @@ export function Img({
         decoding="async"
         draggable="false"
         onLoad={(event) => {
-          setLoaded(true)
+          setLoadedSrc(src)
           onLoad?.(event)
         }}
         style={{ objectPosition: position }}

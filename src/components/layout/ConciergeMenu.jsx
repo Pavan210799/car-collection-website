@@ -1,74 +1,28 @@
-import { useEffect, useId, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, CircleHelp, Headset, Mail, MessageSquare, Phone } from 'lucide-react'
 import { contactInfo } from '../../data/support'
+import { useNavPopover } from '../../hooks/useNavPopover'
 
 const links = [
   { to: '/contact', label: 'Contact us', text: 'Talk to a specialist today', icon: MessageSquare },
   { to: '/faq', label: 'FAQ', text: 'Buying, finance and delivery', icon: CircleHelp },
 ]
 
-export function ConciergeMenu({ className = '' }) {
+export function ConciergeMenu({ openId, setOpenId, className = '' }) {
   const { pathname } = useLocation()
-  const [open, setOpen] = useState(false)
-  const rootRef = useRef(null)
-  const closeTimer = useRef(null)
-  const openedByHover = useRef(false)
-  const panelId = useId()
+  const { open, panelId, rootProps, buttonProps } = useNavPopover('concierge', openId, setOpenId)
   const active = links.some((link) => pathname.startsWith(link.to))
 
-  useEffect(() => setOpen(false), [pathname])
-
-  useEffect(() => {
-    if (!open) {
-      openedByHover.current = false
-      return undefined
-    }
-    const onPointer = (event) => !rootRef.current?.contains(event.target) && setOpen(false)
-    const onKey = (event) => event.key === 'Escape' && setOpen(false)
-    document.addEventListener('pointerdown', onPointer)
-    document.addEventListener('keydown', onKey)
-    return () => {
-      document.removeEventListener('pointerdown', onPointer)
-      document.removeEventListener('keydown', onKey)
-    }
-  }, [open])
-
-  useEffect(() => () => clearTimeout(closeTimer.current), [])
-
-  const show = (event) => {
-    clearTimeout(closeTimer.current)
-    if (event.pointerType !== 'mouse') return
-    if (!open) openedByHover.current = true
-    setOpen(true)
-  }
-  const hide = (event) => {
-    if (event.pointerType !== 'mouse') return
-    clearTimeout(closeTimer.current)
-    closeTimer.current = setTimeout(() => setOpen(false), 160)
-  }
-  const toggle = () => {
-    if (openedByHover.current) {
-      openedByHover.current = false
-      setOpen(true)
-      return
-    }
-    setOpen((value) => !value)
-  }
-
   return (
-    <div ref={rootRef} onPointerEnter={show} onPointerLeave={hide} className={`relative ${className}`}>
+    <div {...rootProps} className={`relative ${className}`}>
       <button
         type="button"
-        onClick={toggle}
-        aria-expanded={open}
-        aria-controls={panelId}
+        {...buttonProps}
         aria-label="Help and contact"
-        title="Help & contact"
         className={`relative grid size-10 shrink-0 place-items-center rounded-full border transition duration-300 ${
           active || open
-            ? 'border-gold-400/50 bg-gold-200/60 text-gold-500'
+            ? 'border-gold-400/50 bg-gold-200/60 text-gold-500 hover:-translate-y-0.5 hover:shadow-soft'
             : 'border-ink-700/70 bg-ink-900/70 text-bone hover:-translate-y-0.5 hover:border-bone/30 hover:shadow-soft'
         }`}
       >
